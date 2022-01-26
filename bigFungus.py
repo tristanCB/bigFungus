@@ -5,6 +5,10 @@ from flask import Flask, redirect, request
 from flask import render_template, url_for, session
 import os
 import glob
+# Payments https://stripe.com/docs/checkout/quickstart
+import stripe
+# This is your test secret API key.
+stripe.api_key = '<my secret key>'
 
 app = Flask(__name__)
 
@@ -24,10 +28,7 @@ app = Flask(__name__)
 # https://docs.gunicorn.org/en/stable/deploy.html
 # 
 
-# Payments https://stripe.com/docs/checkout/quickstart
-import stripe
-# This is your test secret API key.
-stripe.api_key = 'sk_test_51KInLvCzLXa9dokVyiEzgp56Vou9SeAGbsc05etBaxSV9edDD0GVwNl6oUZ0rC6upYy9belcWZgFzM2AQWqHKEAS00QcI0IuZW'
+
 pages = ["shop", "about", "francais"]
 # Theaming
 logo_txt = 'big_fungus.png'
