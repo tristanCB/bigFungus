@@ -122,7 +122,7 @@ def add_product_to_cart(code = None, quantity = None):
     print(code, quantity)
     return redirect(url_for('format', page="shop"))
 
-YOUR_DOMAIN = 'http://127.0.0.1:5000'
+YOUR_DOMAIN = 'https://bigfungus.ca'
 @app.route('/create-checkout-session/', methods=['POST'])
 def create_checkout_session():
     cart = request.form
