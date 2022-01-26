@@ -1,0 +1,68 @@
+<!doctype html>
+{% include "header.html" %}
+
+<body  onload="refreshCart()">
+
+    <div class="products">
+        {% for product in products %}
+            <div class="product-tile" id={{ product["name"].replace(' ','-')}} onclick="changeTile(this)">
+
+                <div class="container" >
+                    {% if product["image_url"] %}
+                    <img class="product-image" src="{{url_for('static', filename=product["image_url"])}}" align="middle" />
+                    <div class="overlay"><p>See more</p></div>
+                    {% endif %}
+                </div>
+
+                {% if product["name"] %}
+                    
+                <h4 class="product-name">{{ product["name"] }}</h4>
+                <h4 class="product-name">{{ product["name"] }}</h4>
+                <h4 class="product-name">{{ product["name"] }}</h4>
+
+                {% else %}
+                <h2 class="product-tile">Name</h2>
+                {% endif %}
+
+                {% if product["alt_name"] %}
+                <h2 class="product-description">{{ product["alt_name"] }}</h2>
+                {% else %}
+                <h2 class="product-description">Generic Description</h2>
+                {% endif %}
+
+                <div class="floater">
+                    {% if product["price"] and  product["uom"]%}
+                        <p class="price">$ {{ product["price"] }} X </p>
+                            <select name="amount" class="amount" id="{{product['name'].replace(' ','-')}}">
+                                {% for amount in distribution_ammounts %}
+                                    {% if amount == 1 %}
+                                        <option value="{{amount}}">{{amount}} {{product["uom"]}}</option>
+                                    {% else %}
+                                        <option value="{{amount}}">{{amount}} {{product["uom"]}}s</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                    {% else %}
+                        <p class="sold">Sold Out!</p>
+                    {% endif %}
+                    </div>
+                    
+                    {% if product["description"] %}
+                        <p class="description">({{ product["description"] }})</p>
+                    {% endif %}
+                
+                    <div class="effect">
+                        <img class="image" src="{{url_for('static', filename="add_cart_clean.png")}}" onclick="addItem({{product}}, '{{product["price_code"]}}','{{product['name'].replace(" ","-")}}')"/>
+                    </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <form action="/create-checkout-session/" method="POST" name="cart" id="CartMenu">
+        <div id="Cart">
+            
+        </div>
+        <button type="submit" id="checkout-button">Checkout</button>
+        <button type="button" id="clear-cart"  onclick="clearCart()" >Clear</button>
+    </form>
+</body>

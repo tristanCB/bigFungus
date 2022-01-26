@@ -1,0 +1,416 @@
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color: rgba(190, 176, 147, 1);
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 50px;
+}
+.logo {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: rgba(226, 219, 200, 1);
+  text-align: center;
+}
+.logo img {
+  max-width:185px;
+  width: auto;
+  height: auto;
+}
+
+.products{
+  display: flex;                  /* establish flex container */
+  flex-direction: row;            /* default value; can be omitted */
+  flex-wrap: wrap;                /* default value; can be omitted */
+  /* background-color: lightyellow; */
+}
+.product-name{
+  font-style: italic;
+  position: relative;
+}
+.product-description{
+  padding-top: 20px;
+  height: 50px;
+  color: rgba(138, 183, 224, 1);
+}
+.product-tile{
+  color: rgb(255, 255, 255);
+  /* background-color: brown; */
+  width: 370px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 40px;
+  text-align: center;
+  font-size: 12px;
+}
+.floater{
+  display: flex;
+  content: inherit;
+  height: 50px;
+  justify-content: center;
+}
+.floater p{
+  padding-right: 20px;
+  font-size: 14px;
+}
+.sold{
+  color: rgba(255, 0, 0, 0.774);
+}
+.floater select{
+  padding-left: 10px;
+}
+.description {
+  color: rgba(65, 41, 41, 1);
+  font-weight: bold;
+  padding-right: 10px;
+  padding-left: 10px;
+  height: 25px;
+}
+.price{
+  color: rgba(65, 41, 41, 1);
+  font-size: 14px;
+  font-weight: bold;
+}
+/* .product-tile img{
+ padding: 20px;
+ 
+} */
+.product-tile h1 {
+  font-size: 20px;
+  text-decoration: underline;
+  text-underline-offset: 10px;
+}
+.product-tile h2 {
+  position: relative;
+  font-size: 18px;
+}
+.product-image{
+  border-radius: 50%;
+  padding-top: 10px;
+  padding-bottom: 15px;
+
+  width: 200px;
+  height: 200px;
+}
+
+.effect{
+ cursor: pointer;
+ position: relative;
+}
+
+.effect img:hover {
+  /* transform: scale(1.1); */
+  background-image: url(/static/add_cart.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.product-tile {
+  width: 260px;
+  height: 500px;
+}
+.product-tile:hover {
+  background-color: rgba(209, 191, 155, 0.5);
+  box-shadow: 0 0 20px rgba(148, 135, 110, 0.788);
+}
+.product-tile:hover .overlay {
+  opacity: 1;
+}
+
+.product-tile:hover .product-image {
+  /* box-shadow: 0 0 20px rgba(15, 14, 11, 0.788); */
+  filter: blur(2px);
+}
+
+.container {
+  position: relative;
+}
+
+.selected {
+  background-color: rgba(209, 191, 155, 0.5);
+  box-shadow: 0 0 20px rgba(148, 135, 110, 0.788);
+}
+
+#CartMenu {
+  position:absolute; 
+  right:10px;
+  top: 60px;
+  border: 10px;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  display: none;
+  background-color: rgba(226, 226, 226, 0.85);
+  -webkit-box-shadow: 0px 10px 14px 7px rgba(0,0,0,0.26); 
+  box-shadow: 0px 10px 14px 7px rgba(0,0,0,0.26);
+}
+
+.overlay {
+  position: absolute; 
+  bottom: 0; 
+  border-radius: 50%;
+  width:100%;
+  height: 100%;
+  text-align: center;
+  transition: .5s ease;
+  opacity:0;
+  color: rgb(255, 255, 255);
+  font-size: 26px;
+  display: flex;
+  align-items: center 
+}
+/* Change the color of links on hover
+.product-tile:hover {
+  background-color: rgb(114, 163, 182);
+} */
+.overlay p {
+  width: 100%;
+}
+.header {
+  display: block;
+}
+/* Style the links inside the navigation bar */
+.topnav a, .topnav p, .topnav div {
+  /* float: justify; */
+  color: rgb(255, 255, 255);;
+  text-align: center;
+  text-decoration: none;
+  /* padding-right:7%;
+  padding-left: 7%; */
+  font-size: 20px;
+  font-weight: bold;
+  margin: auto;
+  cursor: pointer;
+  display:inline;
+}
+
+.ffm {
+  width: 66px;
+}
+
+.txt_logo {
+  padding-top: 5px;
+}
+/* Change the color of links on hover */
+.topnav a:hover {
+  text-decoration: underline;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: rgba(1, 19, 33, 1);
+  color: white;
+}
+
+#logo {
+  width: 100%;
+  text-align:center;
+}
+
+html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+    font-family: "Segoe UI", monospace;
+}
+/* font was previously Roboto*/
+#logo-gif {
+  padding-top: 20px;
+}
+
+h4 {
+  text-align: center;
+  color: rgb(0, 0, 0);
+  font-size: 5em;
+  font-weight: 12;
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: underline;
+  text-underline-offset: 15px;
+  /*Create overlap*/
+  
+  margin: 0;
+  line-height: 0;
+  /*Animation*/
+  animation: glitch1 2s 1;
+
+}
+
+h4:nth-child(2) {
+  color: #67f3da;
+  animation: glitch2 2s 1;
+}
+
+h4:nth-child(3) {
+  color: #f16f6f;
+  animation: glitch3 2s 1;
+}
+/*Keyframes*/
+
+@keyframes glitch1 {
+  0% {
+    transform: none;
+    opacity: 1;
+  }
+  7% {
+    transform: skew(-0.5deg, -0.9deg);
+    opacity: 0.75;
+  }
+  10% {
+    transform: none;
+    opacity: 1;
+  }
+  27% {
+    transform: none;
+    opacity: 1;
+  }
+  30% {
+    transform: skew(0.8deg, -0.1deg);
+    opacity: 0.75;
+  }
+  35% {
+    transform: none;
+    opacity: 1;
+  }
+  52% {
+    transform: none;
+    opacity: 1;
+  }
+  55% {
+    transform: skew(-1deg, 0.2deg);
+    opacity: 0.75;
+  }
+  50% {
+    transform: none;
+    opacity: 1;
+  }
+  72% {
+    transform: none;
+    opacity: 1;
+  }
+  75% {
+    transform: skew(0.4deg, 1deg);
+    opacity: 0.75;
+  }
+  80% {
+    transform: none;
+    opacity: 1;
+  }
+  100% {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+@keyframes glitch2 {
+  0% {
+    transform: none;
+    opacity: 0.25;
+  }
+  7% {
+    transform: translate(-2px, -3px);
+    opacity: 0.5;
+  }
+  10% {
+    transform: none;
+    opacity: 0.25;
+  }
+  27% {
+    transform: none;
+    opacity: 0.25;
+  }
+  30% {
+    transform: translate(-5px, -2px);
+    opacity: 0.5;
+  }
+  35% {
+    transform: none;
+    opacity: 0.25;
+  }
+  52% {
+    transform: none;
+    opacity: 0.25;
+  }
+  55% {
+    transform: translate(-5px, -1px);
+    opacity: 0.5;
+  }
+  50% {
+    transform: none;
+    opacity: 0.25;
+  }
+  72% {
+    transform: none;
+    opacity: 0.25;
+  }
+  75% {
+    transform: translate(-2px, -6px);
+    opacity: 0.5;
+  }
+  80% {
+    transform: none;
+    opacity: 0.25;
+  }
+  100% {
+    transform: none;
+    opacity: 0.25;
+  }
+}
+
+@keyframes glitch3 {
+  0% {
+    transform: none;
+    opacity: 0.25;
+  }
+  7% {
+    transform: translate(2px, 3px);
+    opacity: 0.5;
+  }
+  10% {
+    transform: none;
+    opacity: 0.25;
+  }
+  27% {
+    transform: none;
+    opacity: 0.25;
+  }
+  30% {
+    transform: translate(5px, 2px);
+    opacity: 0.5;
+  }
+  35% {
+    transform: none;
+    opacity: 0.25;
+  }
+  52% {
+    transform: none;
+    opacity: 0.25;
+  }
+  55% {
+    transform: translate(5px, 1px);
+    opacity: 0.5;
+  }
+  50% {
+    transform: none;
+    opacity: 0.25;
+  }
+  72% {
+    transform: none;
+    opacity: 0.25;
+  }
+  75% {
+    transform: translate(2px, 6px);
+    opacity: 0.5;
+  }
+  80% {
+    transform: none;
+    opacity: 0.25;
+  }
+  100% {
+    transform: none;
+    opacity: 0.25;
+  }
+}
