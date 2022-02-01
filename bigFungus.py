@@ -36,6 +36,8 @@ class Autocalves(db.Model):
     img_href = db.Column(db.String(120), unique=False)
     img_alt = db.Column(db.String(120), unique=False)
     link = db.Column(db.String(250), primary_key=True)
+    item_type = db.Column(db.String(250), unique=False)
+
 
     def __repr__(self):
         return f'<User {self.price!r}>'
