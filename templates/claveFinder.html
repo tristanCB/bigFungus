@@ -1,0 +1,15 @@
+<!doctype html>
+{% include "header.html" %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/clave.css') }}">
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+
+{% for row  in rows %}
+<div id="clave" style="background-image: url('{{row['img_href']}}');">
+    <a href="{{row['link']}}">
+        <div class="onhover">
+            <p id='price'>{{row['price']}}</p>
+            <p id='description'>{{row['img_alt']}}</p>
+        </div>
+    </a>
+</div>
+{% endfor %}

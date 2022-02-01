@@ -15,3 +15,7 @@ restart nginx
 
 NGINX --> GUNICORN --> running app
 
+# To dos
+Create products on stripe and link them with the ones in .py script
+db itegraation? probably will go with alchemy SQL
+set environment variables

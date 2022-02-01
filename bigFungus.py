@@ -2,34 +2,84 @@
 from operator import index
 from re import template
 from flask import Flask, redirect, request
-from flask import render_template, url_for, session
+from flask import render_template, url_for, session, stream_with_context
+from flask import Response
+from time import sleep
+import datetime
+# Local modules
+# import content
+from flask_sqlalchemy import SQLAlchemy
 import os
 import glob
 # Payments https://stripe.com/docs/checkout/quickstart
 import stripe
+
 # This is your test secret API key.
-stripe.api_key = '<my secret key>'
+stripe.api_key = os.environ["stripeApiKey"]
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+mysqlconnector://admin:{os.environ["pwd"]}@{os.environ["DBENDPOINT"]}/big-fungus-2'
+db = SQLAlchemy(app)
 
-# @app.after_request
-# def add_header(r):
-#     """
-#     Add headers to both force latest IE rendering engine or Chrome Frame,
-#     and also to cache the rendered page for 10 minutes.
-#     """
-#     print("adding header")
-#     r.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
-#     r.headers["Pragma"] = "no-cache"
-#     r.headers["Expires"] = "0"
-#     r.headers['Cache-Control'] = 'public, max-age=0'
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(80), unique=True, nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+
+    def __repr__(self):
+        return '<User %r>' % self.username
+
+class Autocalves(db.Model):
+    __tablename__ = 'kijiji_'                
+    date_scrapped = db.Column(db.DateTime(), unique=False)
+    price = db.Column(db.String(50), unique=False)
+    img_href = db.Column(db.String(120), unique=False)
+    img_alt = db.Column(db.String(120), unique=False)
+    link = db.Column(db.String(250), primary_key=True)
+
+    def __repr__(self):
+        return f'<User {self.price!r}>'
+
+class Logger(db.Model):
+    __tablename__ = 'activity_'
+    date_accessed = db.Column(db.DateTime(), unique=False)
+    ip = db.Column(db.String(120), unique=False)
+    id = db.Column(db.Integer(), autoincrement=True, primary_key=True)
+
+    def __repr__(self):
+        return f'Connecting IP > {self.ip!r}'
+
+# DB interface
+from content.products import getProducts, getShippingOptionsStripe
+
+
+@app.teardown_request
+def add_header(r):
+    log = Logger(date_accessed=datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'), ip=request.remote_addr)
+    print(log)
+
+    db.session.add(log)
+    db.session.commit()
+    return r
+
+# # @app.after_request
+# # def add_header(r):
+# #     """
+# #     Add headers to both force latest IE rendering engine or Chrome Frame,
+# #     and also to cache the rendered page for 10 minutes.
+# #     """
+# #     print("adding header")
+# #     r.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+# #     r.headers["Pragma"] = "no-cache"
+# #     r.headers["Expires"] = "0"
+# #     r.headers['Cache-Control'] = 'public, max-age=0'
 #     return r
 
 # https://docs.gunicorn.org/en/stable/deploy.html
 # 
 
-
-pages = ["shop", "about", "francais"]
+pages = ["shop", "about", "clavereaper"]
+distribution_ammounts = [1, 2, 3, 4, 5]
 # Theaming
 logo_txt = 'big_fungus.png'
 css = '/css/style.css'
@@ -44,61 +94,11 @@ def format(theme="Light", code=200):
     page = "shop"
     print(code)
     print(theme)
-    distribution_ammounts = [1, 2, 3, 4, 5]
-    products = [
-        {
-            "name":"King Oyster Grow Kit",
-            "alt_name":"Inoculated ans colonized substrate ready to fruit",
-            "price": 39.99,
-            "price_code":"price_1KJrOtCzLXa9dokVAfHJkTc3",
-            "uom": "unit",
-            "image_url": "/product_images/readyToFruit.jpg",
-            "description": "Includes one fully colonized artificial log grown in sterile mushroom grow bag.",
-        }, 
-
-        {
-            "name":"King Oyster Tissue Culture",
-            "alt_name":"Sterile mushroom tissue culture.",
-            "price": 15.99,
-            "price_code":"price_1KJrTLCzLXa9dokV5oMt4KJq",
-            "uom":"unit",
-            "image_url": "/product_images/tissueCulture.jpg",
-            "description": "Perfect for starting your very own cultures.",
-
-        }, 
-
-        {
-            "name":"Unicorn grow bag T4 X 100",
-            "alt_name":"100 X heat tolerant plastic mushroom bags",
-            "image_url": "/product_images/T4GrowBag.jpg",
-            "price": 199.99,
-            "price_code":"price_1KJrXXCzLXa9dokVOlH6E10g",
-            "uom":"unit",
-            "description": "Made in the USA and have .3 micron filter patches. 100 bags per unit.",
-
-        },
-        {
-            "name":"Parafilm",
-            "alt_name":'Parafin thin film. 2" wide',
-            "uom":"unit",
-            "image_url": "/product_images/paraFilm.jpg",
-            "description": "Includes all in one spore syringe, and sterilized media bag with injection port.",
-
-        },
-        {
-            "name":"Seminar",
-            "alt_name":'1hr live, personalized seminar on biology and practical home growing.',
-            "uom":"unit",
-            "image_url": "/product_images/seminar.png",
-            "description": "Will contact to schedule time.",
-
-        }
-    ]
     
     return render_template(
         'index.html', 
         distribution_ammounts=distribution_ammounts, 
-        products=products,
+        products=getProducts(),
         css=css,
         splash=False,
         logo_txt=logo_txt,
@@ -116,6 +116,29 @@ def splash():
         logo_txt=logo_txt,
         pages=pages,
     )
+
+def stream_template(template_name, **context):
+    app.update_template_context(context)
+    t = app.jinja_env.get_template(template_name)
+    rv = t.stream(context)
+    # rv.enable_buffering(1)
+    return rv
+
+@app.route("/time/")
+def time():
+    def streamer():
+        while True:
+            yield str(datetime.datetime.now())
+            sleep(1)
+
+    return Response(streamer())
+
+@app.route('/clavereaper')
+def render_large_template():
+    claves = Autocalves.query.all()
+    print(claves)
+    return Response(stream_template('claveFinder.html', rows=stream_with_context(claves), logo_txt=logo_txt,
+        pages=pages,))
 
 @app.route('/add/<code>/<quantity>', methods=['POST'])
 def add_product_to_cart(code = None, quantity = None):
@@ -139,50 +162,7 @@ def create_checkout_session():
         shipping_address_collection={
             'allowed_countries': ['CA'],
         },
-         shipping_options=[
-            {
-                'shipping_rate_data': {
-                'type': 'fixed_amount',
-                'fixed_amount': {
-                    'amount': 0,
-                    'currency': 'cad',
-                },
-                'display_name': 'Free shipping',
-                # Delivers between 5-7 business days
-                'delivery_estimate': {
-                    'minimum': {
-                    'unit': 'business_day',
-                    'value': 5,
-                    },
-                    'maximum': {
-                    'unit': 'business_day',
-                    'value': 7,
-                    },
-                }
-                }
-            },
-            {
-                'shipping_rate_data': {
-                'type': 'fixed_amount',
-                'fixed_amount': {
-                    'amount': 1500,
-                    'currency': 'cad',
-                },
-                'display_name': 'Next day air',
-                # Delivers in exactly 1 business day
-                'delivery_estimate': {
-                    'minimum': {
-                    'unit': 'business_day',
-                    'value': 1,
-                    },
-                    'maximum': {
-                    'unit': 'business_day',
-                    'value': 1,
-                    },
-                }
-                }
-            },
-        ],
+        shipping_options=getShippingOptionsStripe(),
         line_items=line_items,
         mode='payment',
         success_url= YOUR_DOMAIN + '/shop',
