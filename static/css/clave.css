@@ -1,20 +1,16 @@
 #clave, #clave a {
-    height: 200px;
-    width: 200px;
+    height:75px;
+    width: 75px;
     float:left;
     background-size: cover;
     color: rgba(245, 245, 245, 0);
 }
 
-#price {
-    visibility: visible;
-    color: rgb(43, 27, 27);
-    text-align: center;
-    background-color: rgba(188, 143, 143, 0.87);
-    margin: 25px;
-    font-size: 16px;
-    border-radius: 12px;
-    font-weight: bold;
+#spanner {
+    display: flexbox;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    /* height: 150px; */
 }
 
 #description {
@@ -22,10 +18,13 @@
     font-size: medium;
 }
 
-.onhover:hover {
+.onhover:hover .iteminfo{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 250px;
     visibility: visible;
-    float:left;
-    width: 100%;
+    width: 250px;
     justify-content: center;
     text-align: center;
     color: whitesmoke;

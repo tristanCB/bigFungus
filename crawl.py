@@ -6,18 +6,30 @@ import pprint
 import re
 pp = pprint.PrettyPrinter(indent=4)
 from flask_sqlalchemy import SQLAlchemy
-from bigFungus import db
+from bigFungusWeb import db, keywords
 import os
-from bigFungus import Autocalves
+import model 
 import datetime
-
+import re
+import statistics
 db.create_all()
 # %%
-
+def clean_price(stringPrice):
+    print(stringPrice)
+    
+    def unclean_string_to_float(stringPrice):
+        noLetters = re.sub("[^0-9]", '', stringPrice)
+        if '' == noLetters: return 0
+        price = float(noLetters[:-2])
+        
+        return price
+    
+    return statistics.mean(unclean_string_to_float(i) for i in stringPrice.split("to"))
+    
 
 def add_clave(item, item_type="Steam Sterilizer"):
     try:
-        clave = Autocalves(item_type=item_type, date_scrapped= datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),price=item['price'], img_href=item['img_href'], img_alt=item['img_alt'], link=item['link'])
+        clave = model.Autocalves(item_type=item_type, date_scrapped= datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),price=item['price'], img_href=item['img_href'], img_alt=item['img_alt'], link=item['link'])
         db.session.add(clave)
         db.session.commit()
         return True
@@ -26,8 +38,7 @@ def add_clave(item, item_type="Steam Sterilizer"):
         print(e)
         return False
         
-keywords = ["Steam Sterilizer", "impulse sealer", "Mushroom bag", "Mushroom"]
-baseUrl = os.environ["URLSCRAPPED1"]
+baseUrl = "https://www.kijiji.ca"
 
 def getitems(url):
     soup = BeautifulSoup(requests.get(url).content, "html.parser")
@@ -47,7 +58,7 @@ def getitems(url):
         img_alt = img.attrs['alt']
         link = baseUrl + i.select_one(".title").select_one("a").attrs['href']
         item = {
-            "price":price, 
+            "price":clean_price(price), 
             "img_href":img_href, 
             "img_alt":img_alt,
             "link":link
@@ -58,7 +69,7 @@ def getitems(url):
 
 for keyword in keywords:
     def craw_ebay():
-        for i in range(10):
+        for i in range(1,2):
             url_at = f"https://www.ebay.ca/sch/i.html?_from=R40&_nkw={keyword}&_sacat=0&_pgn={i}"
             soup = BeautifulSoup(requests.get(url_at).content, "html.parser")
             tiles = soup.find_all("div", {"class": "s-item__wrapper clearfix"})
@@ -73,11 +84,12 @@ for keyword in keywords:
                     img_href = tile.find("img", attrs={"class":"s-item__image-img"})["src"]
 
                     item = {
-                        "price":price, 
+                        "price":clean_price(price), 
                         "img_href":img_href, 
                         "img_alt":img_alt,
                         "link":link
                         }
+                    if img_alt == 'Shop on eBay': continue
                     add_clave(item, item_type=keyword)
                     print(item)
                 except Exception as e:
@@ -86,7 +98,7 @@ for keyword in keywords:
     # %%
     def generateClaves():
         i = 0
-        while i < 5:
+        while i < 2:
             if i == 0:
                 endpoint = f"{baseUrl}/b-quebec/{keyword}/k0l9001?rb=true&dc=true"
             else:

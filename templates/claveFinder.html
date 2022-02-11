@@ -3,13 +3,20 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/clave.css') }}">
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 
-{% for row  in rows %}
-<div id="clave" style="background-image: url('{{row['img_href']}}');">
-    <a href="{{row['link']}}">
-        <div class="onhover">
-            <p id='price'>{{row['price']}}</p>
-            <p id='description'>{{row['img_alt']}}</p>
-        </div>
-    </a>
-</div>
+{% for key in rows %}
+    <h1>{{key}}</h1>
+    <div id="spanner">
+        {% for item in rows[key] %}
+            <div class="onhover" id="clave" style="background-image: url('{{item['img_href']}}');">
+                <a href="{{item['link']}}">
+                    <div class="iteminfo">
+                        <p id='type'>{{item['item_type']}}</p>
+                        <p id='price'>{{item['price']}}</p>
+                        <p id='description'>{{item['img_alt']}}</p>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+    <br>
 {% endfor %}

@@ -22,13 +22,13 @@ def getProducts():
             }, 
 
             {
-                "name":"Unicorn grow bag T4. Comes in bundle of 100",
+                "name":"Unicorn grow bag",
                 "alt_name":"100 X heat tolerant plastic mushroom bags",
                 "image_url": "/product_images/T4GrowBag.jpg",
                 "price": 199.99,
                 "price_code":"price_1KJrXXCzLXa9dokVOlH6E10g",
                 "uom":"unit",
-                "description": "Made in the USA and have .3 micron filter patches. 100 bags per unit.",
+                "description": "Model T4. Comes in bundle of 100. Made in the USA and have .3 micron filter patches. 100 bags per unit.",
 
             },
             {
