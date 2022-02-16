@@ -39,8 +39,9 @@ def log(r):
     db.session.commit()
     return r
 
-keywords = ["Steam Sterilizer", "Impulse sealer", "Mushroom bag", "Petri dish", "Isopropyl", "Hepa filter", "Humidifier"]
-pages = ["shop", "about", "clavereaper"]
+keywords    = ["Steam Sterilizer", "Impulse sealer", "Mushroom bag", "Petri dish", "Isopropyl", "Hepa filter", "Humidifier"]
+pages       = ["Myco-NET", "About", "Shop"]
+
 distribution_ammounts = [1, 2, 3, 4, 5]
 # Theaming
 logo_txt = 'big_fungus.png'
@@ -51,6 +52,7 @@ assert css
 
 @app.route('/')
 @app.route('/shop')
+@app.route('/Shop')
 def format(theme="Light", code=200):
     page = "shop"
     print(code)
@@ -69,6 +71,7 @@ def format(theme="Light", code=200):
 @app.route('/francais')
 @app.route('/home/')
 @app.route('/about')
+@app.route('/About')
 def splash():
     # print('At Home with big fungus')
     pass
@@ -93,15 +96,26 @@ def time():
             sleep(1)
     return Response(streamer())
 
-@app.route('/clavereaper')
+@app.route('/Myco-NET')
+def render_MycoNet():
+    return render_template('myco-net.html', logo_txt=logo_txt,
+        pages=pages,)
+
+@app.route('/Myco-NET-equipment')
 def render_large_template():
     claves = model.Autocalves.query.order_by(model.Autocalves.price.desc()).all()
     items_list = {}
     for i in keywords:
         items_list[f'{i}'] = list([clave for clave in claves if clave.item_type == i])
-    pp.pprint(items_list)
-    return render_template('claveFinder.html', rows=items_list, logo_txt=logo_txt,
+    # pp.pprint(items_list)
+    return render_template('equipment.html', rows=items_list, logo_txt=logo_txt,
         pages=pages,)
+    
+@app.route('/Myco-NET-recipes')
+def render_clavereaper_recipes():
+    recipes = model.Recipes.query.all()
+    return render_template('recipes.html', rows=recipes, logo_txt=logo_txt,
+    pages=pages,)
 
 @app.route('/add/<code>/<quantity>', methods=['POST'])
 def add_product_to_cart(code = None, quantity = None):

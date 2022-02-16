@@ -92,4 +92,11 @@ function changeTile(elem) {
     // console.log(elem);
 }
 
+function getPage() {
+    console.log(window.location.href)
+    return window.location.href
+}
+
 window.onload = refreshCart();
+
+

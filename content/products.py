@@ -1,25 +1,36 @@
 def getProducts():
     products = [
             {
-                "name":"King Oyster Grow Kit",
-                "alt_name":"Inoculated ans colonized substrate ready to fruit",
-                "price": 39.99,
-                "price_code":"price_1KJrOtCzLXa9dokVAfHJkTc3",
-                "uom": "unit",
-                "image_url": "/product_images/readyToFruit.jpg",
-                "description": "Includes one fully colonized artificial log grown in sterile mushroom grow bag.",
-            }, 
-
-            {
-                "name":"King Oyster Tissue Culture",
+                "name":"Tissue Culture",
                 "alt_name":"Sterile mushroom tissue culture.",
                 "price": 15.99,
                 "price_code":"price_1KJrTLCzLXa9dokV5oMt4KJq",
                 "uom":"unit",
-                "image_url": "/product_images/tissueCulture.jpg",
+                "image_url": "/product_images/tissueCulture.png",
                 "description": "Perfect for starting your very own cultures.",
 
-            }, 
+            },
+        
+            {
+                "name":"Spawn",
+                "alt_name":"Organic Rye Berry Grain Spawn",
+                "price": 25.99,
+                "price_code":"",
+                "uom":"unit",
+                "image_url": "/product_images/grainSpawn.png",
+                "description": "Perfect for inoculating your very own bulk substrate. 1L masonjar, 3/4 full, fully colonized and ready to use",
+
+            },
+        
+            {
+                "name":"Grow Kit",
+                "alt_name":"Ready to fruit, fully colonized bulk substrate",
+                "price": 39.99,
+                "price_code":"price_1KJrOtCzLXa9dokVAfHJkTc3",
+                "uom": "unit",
+                "image_url": "/product_images/5lbsColonized.png",
+                "description": "Includes one fully colonized artificial log grown in sterile mushroom grow bag.",
+            },
 
             {
                 "name":"Unicorn grow bag",

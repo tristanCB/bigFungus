@@ -6,22 +6,31 @@
 
 <div class="header">
     <div class="topnav">
-        <a href="/home" class='txt_logo'>            
+        <a id="menuItem" href="/home" class='txt_logo'>            
             <img src="{{url_for('static', filename=logo_txt)}}" />
         </a>
         {% for page in pages %}
-            {% if current ==  page %}
-                <a href="/{{page}}" style="text-decoration:underline;">{{page}}</a>
-            {% else %}
-                <a href="/{{page}}">{{page}}</a>
-            {% endif %}
+            <a id="menuItem" href="/{{page}}">{{page}}</a>
         {% endfor %}
+
         <div class="ffm">
             <p onclick="toogleCart()">Cart </p><p id="CartTotal"> </p>
         </div>
 
     </div>
     
+    <script>
+        var currentPage = getPage()
+        var elements = document.querySelectorAll('[id=menuItem]');
+        for (const element of elements) {
+            console.log(element)
+            console.log(element.href)
+            if (currentPage == element.href) {
+                element.style["text-decoration"] = "underline"
+            }
+        }
+    </script>
+
     {% if splash %}
         <div class="logo">
             {% if static_content_figma %}
@@ -32,3 +41,12 @@
         </div>
     {% endif %}
 </div>
+
+<form action="/create-checkout-session/" method="POST" name="cart" id="CartMenu" style="display: none;">
+    <div id="Cart">
+        
+    </div>
+    <button type="submit" id="checkout-button">Checkout</button>
+    <button type="button" id="clear-cart" onclick="clearCart()" >Clear</button>
+</form>
+<script>refreshCart()</script>

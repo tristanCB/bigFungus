@@ -1,0 +1,22 @@
+<!doctype html>
+{% include "header.html" %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/mycoNet.css') }}">
+<br>
+
+<div style="
+        display: flex;
+        justify-content: space-around;
+    ">
+
+    <a href="/Myco-NET-equipment">
+        <img src="{{ url_for('static', filename='equipmentIcon.png') }}">
+    </a>
+
+    <a href="/Myco-NET-recipes">
+        <img src="{{ url_for('static', filename='recipeIcon.png') }}">
+    </a>
+</div>
+
+<br>
+<h2 id="mycoNetStatment">Dedicated to bringing free online resources for the enjoyment of all things mushrooms</h2>
+

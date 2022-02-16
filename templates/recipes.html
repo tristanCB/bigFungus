@@ -1,0 +1,16 @@
+<!doctype html>
+{% include "header.html" %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/equipment.css') }}">
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+
+{% for item in rows %}
+    <div class="onhover" id="recipe" style="background-image: url('{{item['img_href']}}');">
+        <a href="{{item['link']}}">
+            <div class="iteminfo">
+                <p id='title'>{{item['title']}}</p>
+                <p id='website'>{{item['website']}}</p>
+            </div>
+        </a>
+    </div>
+{% endfor %}
+

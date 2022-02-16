@@ -1,7 +1,7 @@
 <!doctype html>
 {% include "header.html" %}
 
-<body  onload="refreshCart()">
+<body>
 
     <div class="products">
         {% for product in products %}
@@ -56,12 +56,4 @@
             </div>
         {% endfor %}
     </div>
-
-    <form action="/create-checkout-session/" method="POST" name="cart" id="CartMenu">
-        <div id="Cart">
-            
-        </div>
-        <button type="submit" id="checkout-button">Checkout</button>
-        <button type="button" id="clear-cart"  onclick="clearCart()" >Clear</button>
-    </form>
 </body>
