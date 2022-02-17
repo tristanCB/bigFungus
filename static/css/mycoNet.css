@@ -2,3 +2,159 @@
     display: flex;
     justify-content: space-around;
 }
+
+#mycoNetLinks {
+    display: flex;
+    justify-content: center;
+
+}
+
+#mycoNetLinks a {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.contentPanel {
+    width: auto;
+    height: auto;
+    border-radius: 12px;
+    margin: 25px;
+    margin-top: 0;
+    background-color: rgba(190, 176, 147, 1);
+    padding-bottom: 25px;
+    padding-top: 25px;
+}
+
+.contentPanel a {
+    color: inherit; /* blue colors for links too */
+    text-decoration: inherit; /* no underline */
+}
+
+.selector {
+    font-size:large;
+    font: bold;
+    font-style: italic;
+    font-family: "Segoe UI", monospace;
+    justify-content: center;
+}
+
+.selector span {
+    margin: 5px;
+    margin-left: 25px;
+    margin-right: 25px;
+    padding: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.pane {
+    cursor: pointer;
+    display: inline-grid;
+    border-radius: 16px;
+    margin: 25px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    width: 340px;
+    height: 440px;
+    background-color: #E3DBC7;
+    grid-gap: 10px;
+    position: relative;
+}
+
+.pane .sourceIcon {
+    position: inherit;
+    padding: 10px;
+    height: 35px;
+    width: 84px;
+}
+
+.pane .prodImage {
+    border-radius: 50%;
+    height: 220px;
+    width: 220px;
+    margin: auto;
+    border-style: outset;
+    border-width: medium;
+    border-color: #3e101071;
+    
+}
+
+.pane .itemDescription {
+    font-size:20px;
+    color: #8AB7E0;
+    padding: 10px;
+    padding-top: 0px;
+    margin: auto;
+    height: 95px;
+    text-align: center;
+}
+
+.dateTime {
+    font-size:small;
+    margin: auto;
+    padding-bottom: 15px;
+}
+
+.selected {
+    background-color: #C1CED0;
+}
+
+.floaterP {
+    z-index: 1;
+    position: absolute;
+    text-align: center;
+    margin-top:155px;
+    top: 0px; left: 0; bottom: 0; right: 0;
+    color: white;
+}
+
+.rating {
+    position: absolute;
+    right:15px;
+    top: 15px;
+}
+.rating p {
+    font-size: x-large;
+    font-weight: bold;
+    margin-bottom: 4px;
+    margin-top: 0px;
+    text-align: center;
+}
+
+.rating img {
+    padding: 3px;
+    border-radius: 5px;
+}
+
+.rating img:hover {
+    background-color: rgba(62, 16, 16, 0.5);
+}
+
+.priceTag {
+    background-color: rgba(62, 16, 16, 0.5);
+    font-size: xx-large;
+    margin: auto;
+    display: inline-block;
+}
+
+#content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.mycoNetNav img {
+    text-decoration: none;
+}
+.mycoNetNav a {
+    text-decoration: none;
+}
+
+.mycoNetNav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+

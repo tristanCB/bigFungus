@@ -31,13 +31,13 @@ import model
 # output_file_handler = logging.FileHandler("output.log")
 # app.logger.addHandler(output_file_handler)
 
-@app.after_request
-def log(r):
-    log = model.Logger(date_accessed=datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'), ip=request.remote_addr)
-    print(log)
-    db.session.add(log)
-    db.session.commit()
-    return r
+# @app.after_request
+# def log(r):
+#     log = model.Logger(date_accessed=datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'), ip=request.remote_addr)
+#     print(log)
+#     db.session.add(log)
+#     db.session.commit()
+#     return r
 
 keywords    = ["Steam Sterilizer", "Impulse sealer", "Mushroom bag", "Petri dish", "Isopropyl", "Hepa filter", "Humidifier"]
 pages       = ["Myco-NET", "About", "Shop"]
@@ -68,9 +68,7 @@ def format(theme="Light", code=200):
         pages=pages,
     )
 
-@app.route('/francais')
-@app.route('/home/')
-@app.route('/about')
+@app.route('/Home')
 @app.route('/About')
 def splash():
     # print('At Home with big fungus')
@@ -97,25 +95,20 @@ def time():
     return Response(streamer())
 
 @app.route('/Myco-NET')
-def render_MycoNet():
-    return render_template('myco-net.html', logo_txt=logo_txt,
-        pages=pages,)
-
-@app.route('/Myco-NET-equipment')
-def render_large_template():
-    claves = model.Autocalves.query.order_by(model.Autocalves.price.desc()).all()
-    items_list = {}
-    for i in keywords:
-        items_list[f'{i}'] = list([clave for clave in claves if clave.item_type == i])
-    # pp.pprint(items_list)
-    return render_template('equipment.html', rows=items_list, logo_txt=logo_txt,
-        pages=pages,)
-    
-@app.route('/Myco-NET-recipes')
-def render_clavereaper_recipes():
-    recipes = model.Recipes.query.all()
-    return render_template('recipes.html', rows=recipes, logo_txt=logo_txt,
-    pages=pages,)
+@app.route('/Myco-NET/<content>')
+def render_large_template(content = None):
+    pageToRender = 'myco-net-beta.html'
+    if (content == None or content == "Equipment"):
+        claves = model.Autocalves.query.order_by(model.Autocalves.price.desc()).all()
+        items = {}
+        for i in keywords:
+            items[f'{i}'] = list([clave for clave in claves if clave.item_type == i])
+        # pp.pprint(items)
+    elif (content == "Recipes"):
+        items = model.Recipes.query.all()
+    print(content)
+    return render_template(pageToRender, rows=items, logo_txt=logo_txt,
+        pages=pages, content=content, )
 
 @app.route('/add/<code>/<quantity>', methods=['POST'])
 def add_product_to_cart(code = None, quantity = None):

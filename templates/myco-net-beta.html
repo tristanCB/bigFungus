@@ -1,0 +1,57 @@
+<!doctype html>
+{% include "header.html" %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/mycoNet.css') }}">
+<script src={{ url_for('static', filename='js/mycoNet.js') }}></script>
+
+<div class="mycoNetNav" >
+    <a href="/Myco-NET/Equipment" style="text-decoration: none;">
+        <img src="{{ url_for('static', filename='mycoEquipmentIcon.png') }}">
+    </a>
+
+    <a href="/Myco-NET/Recipes" style="text-decoration: none;">
+        <img src="{{ url_for('static', filename='mycoRecipesIcon.png') }}">
+    </a>
+</div>
+
+<div class="contentPanel">
+    <div class="selector">
+        <span onclick="filter(event)" class="selected">All</span>
+        {% for key in rows %}
+            <span onclick="filter(event)">{{key}}</span>
+        {% endfor %}
+    </div>
+    <div id="content">
+        {% if "Equipment" == content %}
+            {% for key in rows %}
+                {% for item in rows[key] %}
+                <div class="paneWrap" data="{{key}}">
+                    <a href="{{item['link']}}" target="_blank">
+                        <div class="pane">
+                            <div class="rating">
+                                <p>0</p>
+                                <img src="{{ url_for('static', filename='arrowUp.png') }}">
+                                <img src="{{ url_for('static', filename='arrowDown.png') }}">
+                            </div>
+                            <img class="sourceIcon" src="{{ url_for('static', filename='ebay.png') }}"> 
+                            <img class="prodImage" src="{{item['img_href']}}">                     
+                                <div class="floaterP">
+                                    <p class="priceTag">$ {{item['price']}}</p>
+                                </div>
+                            </img>
+                            <p class="itemDescription">{{item['img_alt']}}</p>
+                            <p class="dateTime">Date Scrapped: {{item["date_scrapped"]}}</p>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            {% endfor %}
+
+        {% elif "Recipes" == content %}
+        my recipes go here
+        {% endif %}
+
+    </div>
+</div>
+
+                

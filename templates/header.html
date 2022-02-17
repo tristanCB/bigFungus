@@ -1,26 +1,35 @@
 <!doctype html>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EHTEQ4E6NG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EHTEQ4E6NG');
+</script>
+
 <title>Big Fungus</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 <script src={{ url_for('static', filename='js/scripts.js') }}></script>
 <script src="https://js.stripe.com/v3/"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <div class="header">
     <div class="topnav">
-        <a id="menuItem" href="/home" class='txt_logo'>            
+        <a id="menuItem" href="/Home" class='txt_logo'>            
             <img src="{{url_for('static', filename=logo_txt)}}" />
         </a>
         {% for page in pages %}
             <a id="menuItem" href="/{{page}}">{{page}}</a>
         {% endfor %}
-
         <div class="ffm">
             <p onclick="toogleCart()">Cart </p><p id="CartTotal"> </p>
         </div>
-
     </div>
     
     <script>
-        var currentPage = getPage()
+        var currentPage = window.location.href
         var elements = document.querySelectorAll('[id=menuItem]');
         for (const element of elements) {
             console.log(element)
