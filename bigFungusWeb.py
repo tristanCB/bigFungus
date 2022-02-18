@@ -10,7 +10,9 @@ from time import sleep
 import datetime
 # Local modules
 # import content
-from flask_sqlalchemy import SQLAlchemy, Model
+from flask_sqlalchemy import SQLAlchemy, Model, BaseQuery
+from sqlalchemy.orm.attributes import flag_modified
+
 import os
 import glob
 # Payments https://stripe.com/docs/checkout/quickstart
@@ -27,6 +29,8 @@ stripe.api_key = os.environ["stripeApiKey"]
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+mysqlconnector://admin:{os.environ["pwd"]}@{os.environ["DBENDPOINT"]}/big-fungus-2'
 db = SQLAlchemy(app)
+db.create_all()
+
 import model
 # output_file_handler = logging.FileHandler("output.log")
 # app.logger.addHandler(output_file_handler)
@@ -40,7 +44,7 @@ import model
 #     return r
 
 keywords    = ["Steam Sterilizer", "Impulse sealer", "Mushroom bag", "Petri dish", "Isopropyl", "Hepa filter", "Humidifier"]
-pages       = ["Myco-NET", "About", "Shop"]
+pages       = ["Myco-NET", "Shop"]
 
 distribution_ammounts = [1, 2, 3, 4, 5]
 # Theaming
@@ -94,21 +98,58 @@ def time():
             sleep(1)
     return Response(streamer())
 
+@app.route('/vote/<itemType>', methods=['POST'])
+def vote(itemType=None):
+    if request.method == 'POST':
+        if "Autoclave" in itemType: 
+            mod = model.Autocalves
+            redir = '/Myco-NET/Equipment'
+        elif "Recipe" in itemType: 
+            mod = model.Recipes
+            redir = '/Myco-NET/Recipes'
+        
+        if "voteDown" in request.form:
+            count =  mod.query.filter_by(id=str(request.form["voteDown"])).first()
+            if count.rating is None: 
+                count.rating = 0
+            else:
+                count.rating -= 1
+                
+        if "voteUp" in request.form:
+            count =  mod.query.filter_by(id=str(request.form["voteUp"])).first()
+            if count.rating is None: 
+                count.rating = 0
+            else:
+                count.rating += 1
+            
+        flag_modified(count, "rating")
+        db.session.merge(count)
+        db.session.flush()
+        db.session.commit()
+        return redirect(redir)
+
 @app.route('/Myco-NET')
-@app.route('/Myco-NET/<content>')
-def render_large_template(content = None):
+@app.route('/Myco-NET/')
+def handle_redirect():
+    return redirect('/Myco-NET/Equipment')
+
+@app.route('/Myco-NET/<mycNet>', methods=['GET'])
+def render_large_template(mycNet = None):
     pageToRender = 'myco-net-beta.html'
-    if (content == None or content == "Equipment"):
-        claves = model.Autocalves.query.order_by(model.Autocalves.price.desc()).all()
+    if (mycNet == "Equipment"):
+        print(type(model.Autocalves.query))
+        
+        baseQuery : BaseQuery = model.Autocalves.query
+        claves = baseQuery.order_by(model.Autocalves.rating.desc()).all()
         items = {}
         for i in keywords:
             items[f'{i}'] = list([clave for clave in claves if clave.item_type == i])
         # pp.pprint(items)
-    elif (content == "Recipes"):
-        items = model.Recipes.query.all()
-    print(content)
-    return render_template(pageToRender, rows=items, logo_txt=logo_txt,
-        pages=pages, content=content, )
+    elif (mycNet == "Recipes"):
+        items = model.Recipes.query.order_by(model.Recipes.rating.desc()).all()
+    print(mycNet)
+    return render_template(pageToRender, items=items, logo_txt=logo_txt,
+        pages=pages, mycNet=mycNet, )
 
 @app.route('/add/<code>/<quantity>', methods=['POST'])
 def add_product_to_cart(code = None, quantity = None):

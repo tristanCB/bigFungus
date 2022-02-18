@@ -22,6 +22,7 @@ def add_recipe(recipie):
     try:
         recep = model.Recipes(
                                   date_scrapped= datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                                , rating = 0
                                 , title=recipie['title']
                                 , website=recipie['website']
                                 , img_href=recipie['img_href']

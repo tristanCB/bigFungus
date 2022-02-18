@@ -12,6 +12,7 @@ import model
 import datetime
 import re
 import statistics
+import typing
 db.create_all()
 # %%
 def clean_price(stringPrice):
@@ -27,9 +28,9 @@ def clean_price(stringPrice):
     return statistics.mean(unclean_string_to_float(i) for i in stringPrice.split("to"))
     
 
-def add_clave(item, item_type="Steam Sterilizer"):
+def add_clave(item, website : str, item_type="Steam Sterilizer", ):
     try:
-        clave = model.Autocalves(item_type=item_type, date_scrapped= datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),price=item['price'], img_href=item['img_href'], img_alt=item['img_alt'], link=item['link'])
+        clave = model.Autocalves(website=website, item_type=item_type,rating=0, date_scrapped= datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),price=item['price'], img_href=item['img_href'], img_alt=item['img_alt'], link=item['link'])
         db.session.add(clave)
         db.session.commit()
         return True
@@ -90,7 +91,7 @@ for keyword in keywords:
                         "link":link
                         }
                     if img_alt == 'Shop on eBay': continue
-                    add_clave(item, item_type=keyword)
+                    add_clave(item, website="ebay", item_type=keyword)
                     print(item)
                 except Exception as e:
                     print(e)
@@ -106,7 +107,7 @@ for keyword in keywords:
             i += 1
             claves = getitems(endpoint)
             for z in claves:
-                yield add_clave(z, item_type=keyword)
+                yield add_clave(z, website="kijiji", item_type=keyword)
         yield
 
     def crawl_url_generated():

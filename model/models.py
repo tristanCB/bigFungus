@@ -10,14 +10,16 @@ class User(db.Model):
         return '<User %r>' % self.username
 
 class Autocalves(db.Model):
-    __tablename__   = 'kijiji_'                
+    __tablename__   = 'equipment_'
+    id              = db.Column(db.Integer(), primary_key=True, autoincrement=True)     
     date_scrapped   = db.Column(db.DateTime(), unique=False)
     price           = db.Column(db.Float(), unique=False)
     img_href        = db.Column(db.String(120), unique=False)
     img_alt         = db.Column(db.String(120), unique=False)
-    link            = db.Column(db.String(250), primary_key=True)
+    link            = db.Column(db.String(250), primary_key=False)
     item_type       = db.Column(db.String(250), unique=False)
-
+    rating          = db.Column(db.Integer(), unique=False, nullable=False)
+    website         = db.Column(db.String(120), unique=False, nullable=False)
     def __repr__(self):
         return f'{pprint.pformat(self.__dict__)}'
 
@@ -32,12 +34,15 @@ class Logger(db.Model):
     
 class Recipes(db.Model):
     __tablename__   = 'recipes_'
-    id              = db.Column(db.Integer, primary_key=True)
-    date_scrapped   = db.Column(db.DateTime(), unique=False)
-    title           = db.Column(db.String(255), unique=True, nullable=False)
+    id              = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    date_scrapped   = db.Column(db.DateTime(),  unique=False)
+    title           = db.Column(db.String(255), unique=False , nullable=False)
     website         = db.Column(db.String(255), unique=False, nullable=False)
     img_href        = db.Column(db.String(255), unique=True, nullable=False)
     link            = db.Column(db.String(255), unique=True, nullable=False)
+    rating          = db.Column(db.Integer(),   unique=False, nullable=False)
+    website         = db.Column(db.String(120), unique=False, nullable=False)
 
     def __repr__(self):
         return f'{pprint.pformat(self.__dict__)}'
+    
