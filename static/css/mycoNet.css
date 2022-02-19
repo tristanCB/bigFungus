@@ -35,7 +35,7 @@
 .contentPanel {
     width: auto;
     height: auto;
-    border-radius: 12px;
+    border-radius: 5px;
     margin: 25px;
     margin-top: 0;
     background-color: rgba(190, 176, 147, 1);
@@ -52,11 +52,14 @@
     font: bold;
     font-style: italic;
     font-family: "Segoe UI", monospace;
-    display: table-cell;
+    display: block;
+    background-color:#00000021;
+    padding-left: 25px;
+    padding-right: 25px;
 }
 
 .selector span {
-    margin: 5px;
+    margin: 12px;
     font-weight: 900;
     margin-left: 12px;
     margin-right: 12px;
@@ -64,6 +67,7 @@
     padding-left: 12px;
     padding-right: 12px;
     border-radius: 25px;
+    display: -webkit-inline-box;
     cursor: pointer;
 }
 
@@ -73,12 +77,12 @@
 
 .pane {
     display: inline-grid;
-    border-radius: 16px;
+    border-radius: 8px;
     margin: 25px;
     margin-right: 0px;
     margin-bottom: 0px;
-    width: 340px;
-    height: 440px;
+    width: 280px;
+    height: 430px;
     background-color: #E3DBC7;
     grid-gap: 10px;
     position: relative;
@@ -86,24 +90,25 @@
 
 .pane .sourceIcon {
     position: inherit;
-    padding: 10px;
+    margin-top:3px;
     height: 52px;
     width: 110px;
+    margin-bottom: 10px;
 }
 
 .pane .prodImage {
-    border-radius: 50%;
+    border-radius: 0;
     height: 220px;
     width: 220px;
     margin: auto;
-    border-style: outset;
-    border-width: medium;
-    border-color: #3e101071;
-    
+    margin-top: 5px;
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: rgba(0, 0, 0, 0.15);
 }
 
 .pane .itemDescription {
-    font-size:20px;
+    font-size:16px;
     color: #8AB7E0;
     padding: 10px;
     padding-top: 0px;
@@ -111,6 +116,7 @@
     height: 75px;
     text-align: center;
     cursor: pointer;
+    font-weight: bold;
 }
 /* #recipeDesc {
     height: 83px;
@@ -120,23 +126,21 @@
     font-size:small;
     margin: auto;
     padding-bottom: 15px;
+    color: rgba(32, 8, 8, 0.664);
 }
 
 .floaterP {
     z-index: 1;
     position: absolute;
     text-align: center;
-    margin-top: 272px;
-    top: 0px; left: 0; bottom: 0; right: 0;
+    top: 243px; left: 0; bottom: auto; right: 0;
     color: white;
-    margin-bottom: 225px;
-    
 }
 
 .rating {
     position: absolute;
-    right:15px;
-    top: 15px;
+    right:5px;
+    top: 5px;
 }
 .rating p {
     font-size: x-large;

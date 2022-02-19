@@ -16,7 +16,7 @@ class Autocalves(db.Model):
     price           = db.Column(db.Float(), unique=False)
     img_href        = db.Column(db.String(120), unique=False)
     img_alt         = db.Column(db.String(120), unique=False)
-    link            = db.Column(db.String(250), primary_key=False)
+    link            = db.Column(db.String(250), primary_key=False, unique=True)
     item_type       = db.Column(db.String(250), unique=False)
     rating          = db.Column(db.Integer(), unique=False, nullable=False)
     website         = db.Column(db.String(120), unique=False, nullable=False)
