@@ -156,6 +156,7 @@ def add_product_to_cart(code = None, quantity = None):
     print(code, quantity)
     return redirect(url_for('format', page="shop"))
 
+# Should add a thank you for ordering page, your order is being prepared when payment confirmed
 YOUR_DOMAIN = 'https://bigfungus.ca'
 @app.route('/create-checkout-session/', methods=['POST'])
 def create_checkout_session():

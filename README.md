@@ -19,3 +19,5 @@ NGINX --> GUNICORN --> running app
 Create products on stripe and link them with the ones in .py script
 db itegraation? probably will go with alchemy SQL
 set environment variables
+Look into either using https://github.com/cscortes/htmxflask/blob/master/ACTIVESEARCH/templates/index.html or Ajax with flask to optimize page loading
+

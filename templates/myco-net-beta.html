@@ -3,6 +3,8 @@
 
 <link rel="stylesheet" href="{{ url_for('static', filename='css/mycoNet.css') }}">
 <script src={{ url_for('static', filename='js/mycoNet.js') }}></script>
+<script src={{ url_for('static', filename='js/lazyBackground.js') }}></script>
+
 
 <div class="mycoNetNav" >
     <a href="/Myco-NET/Equipment" style="text-decoration: none;">
@@ -41,7 +43,7 @@
                                 </form>
                             </div>
                             <img class="sourceIcon" src="{{ url_for('static', filename=item["website"]+'.png') }}"> 
-                            <img class="prodImage" src="{{item['img_href']}}">                     
+                            <div id="prodImage" class="lazy" data ="background-image: url('{{item['img_href']}}')" style=""></div>
                                 <div class="floaterP">
                                     <p class="priceTag">$ {{item['price']}}</p>
                                 </div>
@@ -72,7 +74,7 @@
                         </form>
                     </div>
                     <img class="sourceIcon" src="{{ url_for('static', filename=item["website"]+'.png')}}"> 
-                    <img class="prodImage" src="{{item['img_href']}}"/>                     
+                    <div id="prodImage" class="lazy" data ="background-image: url('{{item['img_href']}}')" style=""></div>
                     <p id="recipeDesc" class="itemDescription">{{item['title']}}</p>
                     <p class="dateTime">Date Scrapped: {{item["date_scrapped"]}}</p>
                 </div>
