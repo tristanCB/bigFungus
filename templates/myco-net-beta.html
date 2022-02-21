@@ -18,21 +18,21 @@
 <div class="contentPanel">
     {% if 'Equipment' == mycNet %}
         <div class="selector">
-            <span onclick="filter(event)" class="selected">All</span>
-            {% for key in items %}
-                <span onclick="filter(event)">{{key}}</span>
+            {% for key in keywords %}
+                <a href="/Myco-NET/Equipment/{{key}}">
+                    <span {% if key == itemType %}class="selected"{% endif %}>{{key}}</span>
+                </a>
             {% endfor %}
         </div>
     {% endif %}
 
     <div id="content">
         {% if 'Equipment' == mycNet %}
-            {% for key in items %}
-                {% for item in items[key] %}
-                <div class="paneWrap" data="{{key}}">
+            {% for item in items %}
+                <div class="paneWrap" data="{{item["item_type"]}}">
                         <div class="pane">
                             <div class="rating">
-                                <form action= "/vote/Autoclave" id='voting' name='voting' method="POST">
+                                <form action= "/vote/{{mycNet}}/{{item["item_type"]}}" id='voting' name='voting' method="POST">
                                     <p>{{item['rating']}}</p>
                                     <button type="image" name="voteUp" src="{{ url_for('static', filename='arrowUp.png') }}" value="{{item['id']}}" data="Equipment"  alt="up">
                                         <img src="{{ url_for('static', filename='arrowUp.png') }}">
@@ -55,7 +55,6 @@
                         </div>
 
                 </div>
-                {% endfor %}
             {% endfor %}
 
         {% elif 'Recipes' in mycNet %}
@@ -63,7 +62,7 @@
             <a href="{{item['link']}}" target="_blank">
                 <div class="pane">
                     <div class="rating">
-                        <form action= "/vote/Recipe" id='voting' name='voting' method="POST">
+                        <form action= "/vote/{{mycNet}}/{{item["item_type"]}}" id='voting' name='voting' method="POST">
                             <p>{{item['rating']}}</p>
                             <button type="image" name="voteUp" src="{{ url_for('static', filename='arrowUp.png') }}" value="{{item['id']}}" data="Equipment"  alt="up">
                                 <img src="{{ url_for('static', filename='arrowUp.png') }}">

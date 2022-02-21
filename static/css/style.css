@@ -29,6 +29,7 @@
   flex-direction: row;            /* default value; can be omitted */
   flex-wrap: wrap;                /* default value; can be omitted */
   /* background-color: lightyellow; */
+  justify-content: center;
 }
 .product-name{
   font-style: italic;
@@ -39,16 +40,7 @@
   height: 50px;
   color: rgba(138, 183, 224, 1);
 }
-.product-tile{
-  color: rgb(255, 255, 255);
-  /* background-color: brown; */
-  width: 370px;
-  margin-left: 20px;
-  margin-right: 20px;
-  margin-top: 40px;
-  text-align: center;
-  font-size: 12px;
-}
+
 .floater{
   display: flex;
   content: inherit;
@@ -104,14 +96,22 @@
 }
 
 .effect img:hover {
-  /* transform: scale(1.1); */
-  background-image: url(/static/add_cart.png);
+  transform: scale(1.1);
+  /* background-image: url(/static/add_cart.png); */
   background-repeat: no-repeat;
   background-position: center;
 }
 .product-tile {
+  color: rgb(255, 255, 255);
+  /* background-color: brown; */
+  margin-left: 20px;
+  margin-right: 20px;
+  text-align: center;
+  font-size: 12px;
+  margin-bottom: 7px;
+  margin-top: 15px;
   width: 260px;
-  height: 500px;
+  height: 455px;
 }
 .product-tile:hover {
   background-color: rgba(209, 191, 155, 0.5);
@@ -128,6 +128,7 @@
 
 .container {
   position: relative;
+  text-align: center;
 }
 
 .selected {
@@ -151,18 +152,16 @@
 }
 
 .overlay {
-  position: absolute; 
-  bottom: 0; 
-  border-radius: 50%;
-  width:100%;
-  height: 100%;
-  text-align: center;
+  position: absolute;
   transition: .5s ease;
-  opacity:0;
   color: rgb(255, 255, 255);
   font-size: 26px;
-  display: flex;
-  align-items: center 
+  z-index: 1;
+  opacity: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
 }
 /* Change the color of links on hover
 .product-tile:hover {
@@ -173,6 +172,9 @@
 }
 .header {
   display: block;
+  position: sticky;
+  top: 0;
+  z-index: 2;
 }
 /* Style the links inside the navigation bar */
 .topnav a, .topnav p, .topnav div {
@@ -219,7 +221,7 @@ html,body
     margin: 0px;
     padding: 0px;
     overflow-x: hidden;
-    font-family: "Segoe UI", monospace;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Ubuntu, sans-serif;
 }
 /* font was previously Roboto*/
 #logo-gif {

@@ -38,7 +38,7 @@
     border-radius: 5px;
     margin: 25px;
     margin-top: 0;
-    background-color: rgba(190, 176, 147, 1);
+    background-color: rgb(190 176 147 / 37%);
     padding-bottom: 25px;
     padding-top: 25px;
 }
@@ -80,12 +80,10 @@
 .pane {
     display: inline-grid;
     border-radius: 8px;
-    margin: 25px;
-    margin-right: 0px;
-    margin-bottom: 0px;
+    margin: 12px;
     width: 280px;
     height: 430px;
-    background-color: #E3DBC7;
+    background-color: rgb(255 255 255);
     grid-gap: 10px;
     position: relative;
 }

@@ -7,8 +7,8 @@ document.addEventListener("DOMContentLoaded", function() {
           if (entry.isIntersecting) {
             var style = entry.target.getAttribute("data")
             entry.target.setAttribute("style", style)
-            console.log(style)
-            console.log(entry.target)
+            // console.log(style)
+            // console.log(entry.target)
             lazyBackgroundObserver.unobserve(entry.target);
           }
         });

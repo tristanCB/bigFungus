@@ -83,15 +83,6 @@ function toogleCart() {
     }
 }
 
-function changeTile(elem) {
-    for (const element of document.getElementsByClassName("selected")) {
-        element.classList.remove("selected");
-    }
-    elem.classList.add("selected");
-
-    // console.log(elem);
-}
-
 function getPage() {
     console.log(window.location.href)
     return window.location.href

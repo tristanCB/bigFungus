@@ -1,16 +1,20 @@
 <!doctype html>
 {% include "header.html" %}
+<script src={{ url_for('static', filename='js/shop.js') }}></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/shop.css') }}">
+
 
 <body>
 
     <div class="products">
         {% for product in products %}
             <div class="product-tile" id={{ product["name"].replace(' ','-')}} onclick="changeTile(this)">
-                <div class="container" >
+                <div class="container toggler" >
                     {% if product["image_url"] %}
-                    <img class="product-image" src="{{url_for('static', filename=product["image_url"])}}" align="middle" />
-                    <div class="overlay"><p>See more</p></div>
+                    <img class="product-image" src="{{url_for('static', filename=product["image_url"])}}" align="middle" />    
                     {% endif %}
+                    <div class="overlay"><p>See more</p></div>
+
                 </div>
 
                 {% if product["name"] %}
@@ -46,14 +50,32 @@
                     {% endif %}
                     </div>
                     
-                    {% if product["description"] %}
-                        <p class="description">({{ product["description"] }})</p>
-                    {% endif %}
-                
                     <div class="effect">
                         <img class="image" src="{{url_for('static', filename="add_cart_clean.png")}}" onclick="addItem({{product}}, '{{product["price_code"]}}','{{product['name'].replace(" ","-")}}')"/>
                     </div>
             </div>
+            
+            {% if product["description"] %}
+            <div class="toggled_content"style='display:none;'>
+                {% if product["image_url_desc"] %}
+                    <img class="product-image-desc" src="{{url_for('static', filename=product["image_url_desc"])}}" align="middle" />    
+                {% endif %}
+                <div id="textContentDesc">
+                    
+                    {% if product["title_description"] %}
+                        <h1>{{product["title_description"]}}</h1>
+                    {% endif %}
+
+                    <p class="description">{{ product["description"] }}</p>
+
+                    {% if product["description2"] %}
+                        <p class="description2">{{ product["description2"] }}</p>
+                    {% endif %}
+                </div>
+                
+            </div>
+            {% endif %}
+        
         {% endfor %}
     </div>
 </body>

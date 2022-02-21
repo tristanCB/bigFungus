@@ -7,7 +7,12 @@ def getProducts():
                 "price_code":"price_1KJrTLCzLXa9dokV5oMt4KJq",
                 "uom":"unit",
                 "image_url": "/product_images/tissueCulture.png",
-                "description": "Perfect for starting your very own cultures.",
+                
+                "image_url_desc": "/product_images/kingTransparent.png",
+
+                "title_description": "Pure, Isolated Mycelium",
+                "description": "Perfect for starting your very own grainspawn or liquid cultures.",
+                "description2": "The Agar medium was made using a recipe similar to Sabouraud agar. Our propriatary blend of ingredients and high standard of clenliness while manufacturing plates provides you with a guaranteed start to exploring a vast array of new mushroom strains. All batches are tested for possible baterial contamination.",
 
             },
         
@@ -18,7 +23,11 @@ def getProducts():
                 "price_code":"",
                 "uom":"unit",
                 "image_url": "/product_images/grainSpawn.png",
+                
+                "image_url_desc": "/product_images/grainSpawnCrossSection.jpg",
+                "title_description": "Organic Rye Grain Spawn",
                 "description": "Perfect for inoculating your very own bulk substrate. 1L masonjar, 3/4 full, fully colonized and ready to use",
+                "description2": "On the left a cross section of grain can be seen. Because thr Mycelium is burried deep inside the grains, It can be broken vigurously and evenly mixed in bulk substrate for faster colonization.",
 
             },
         
@@ -29,7 +38,12 @@ def getProducts():
                 "price_code":"price_1KJrOtCzLXa9dokVAfHJkTc3",
                 "uom": "unit",
                 "image_url": "/product_images/5lbsColonized.png",
-                "description": "Includes one fully colonized artificial log grown in sterile mushroom grow bag.",
+                
+                "image_url_desc": "/product_images/blackFruiting.jpg",
+                "title_description": "Ready To Fruit Fully Colonized",
+                "description": "Includes one fully colonized artificial log grown in sterile mushroom grow bag. Can expect to get first harvest after keeping in humid environment for approximatly two weeks.",
+                "description2": "One the left a block of black oysters can be seen emerging from the block. The plastic top was cut off,the block was then kept in a humid environment exposed to some light.",
+
             },
 
             {
@@ -40,6 +54,16 @@ def getProducts():
                 "price_code":"price_1KJrXXCzLXa9dokVOlH6E10g",
                 "uom":"unit",
                 "description": "Model T4. Comes in bundle of 100. Made in the USA and have .3 micron filter patches. 100 bags per unit.",
+
+            },
+            {
+                "name":"Liquid Culture",
+                "alt_name":'Mycelial Suspension',
+                "uom":"unit",
+                "image_url": "/product_images/liquidCulture.png",
+                "title_description": "Syringe Filled With Mycelium",
+                "description": "Encapsulated mycelium in a propreatary suspension for effective use of injection ported bags.",
+                "description2": "All Solutions are made using ISO9001 standards.",
 
             },
             {

@@ -12,7 +12,7 @@ import datetime
 # import content
 from flask_sqlalchemy import SQLAlchemy, Model, BaseQuery
 from sqlalchemy.orm.attributes import flag_modified
-
+import typing
 import os
 import glob
 # Payments https://stripe.com/docs/checkout/quickstart
@@ -50,18 +50,12 @@ distribution_ammounts = [1, 2, 3, 4, 5]
 # Theaming
 logo_txt = 'big_fungus.png'
 css = '/css/style.css'
-print(f"css --> {css}")
-# Units
 assert css
 
 @app.route('/')
 @app.route('/shop')
 @app.route('/Shop')
-def format(theme="Light", code=200):
-    page = "shop"
-    print(code)
-    print(theme)
-    
+def format():    
     return render_template(
         'index.html', 
         distribution_ammounts=distribution_ammounts, 
@@ -98,15 +92,13 @@ def time():
             sleep(1)
     return Response(streamer())
 
-@app.route('/vote/<itemType>', methods=['POST'])
-def vote(itemType=None):
+@app.route('/vote/<mycNet>/<itemType>', methods=['POST'])
+def vote(mycNet = None, itemType=None):
     if request.method == 'POST':
-        if "Autoclave" in itemType: 
+        if "Equipment" in mycNet: 
             mod = model.Autocalves
-            redir = '/Myco-NET/Equipment'
-        elif "Recipe" in itemType: 
+        elif "Recipes" in mycNet: 
             mod = model.Recipes
-            redir = '/Myco-NET/Recipes'
         
         if "voteDown" in request.form:
             count =  mod.query.filter_by(id=str(request.form["voteDown"])).first()
@@ -126,30 +118,35 @@ def vote(itemType=None):
         db.session.merge(count)
         db.session.flush()
         db.session.commit()
-        return redirect(redir)
+        return redirect(f'/Myco-NET/{mycNet}/{itemType}')
 
 @app.route('/Myco-NET')
 @app.route('/Myco-NET/')
 def handle_redirect():
     return redirect('/Myco-NET/Equipment')
 
+
 @app.route('/Myco-NET/<mycNet>', methods=['GET'])
-def render_large_template(mycNet = None):
+@app.route('/Myco-NET/<mycNet>/<itemType>')
+def render_large_template(mycNet = None, itemType = None):
+    if itemType == None: itemType = keywords[0]
     pageToRender = 'myco-net-beta.html'
     if (mycNet == "Equipment"):
         print(type(model.Autocalves.query))
         
         baseQuery : BaseQuery = model.Autocalves.query
-        claves = baseQuery.order_by(model.Autocalves.rating.desc()).all()
-        items = {}
-        for i in keywords:
-            items[f'{i}'] = list([clave for clave in claves if clave.item_type == i])
+        items = baseQuery.filter(model.Autocalves.item_type == itemType).order_by(model.Autocalves.rating.desc()).all()
+        # items = {}
+        # for i in keywords:
+        #     items[f'{i}'] = list([clave for clave in claves if clave.item_type == i])
         # pp.pprint(items)
+        
     elif (mycNet == "Recipes"):
         items = model.Recipes.query.order_by(model.Recipes.rating.desc()).all()
+        
     print(mycNet)
     return render_template(pageToRender, items=items, logo_txt=logo_txt,
-        pages=pages, mycNet=mycNet, )
+        pages=pages, mycNet=mycNet, keywords=keywords, itemType=itemType)
 
 @app.route('/add/<code>/<quantity>', methods=['POST'])
 def add_product_to_cart(code = None, quantity = None):
