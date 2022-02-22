@@ -87,7 +87,7 @@ def getProducts():
 
 def getMycoNetBuilds() -> dict: 
     teks = {
-        "PF Tek (psilocybe fanaticus technique)" : {
+        "PF Tek" : {
             "affiliateItems": [
                 '<a target="_blank"  href="https://www.amazon.com/gp/product/B0000BYCFU/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B0000BYCFU&linkCode=as2&tag=bigfungus-20&linkId=91b53cc5b92863592fe9fe366458efd6"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=US&ASIN=B0000BYCFU&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL250_&tag=bigfungus-20" ></a>',
                 '<a target="_blank"  href="https://www.amazon.com/gp/product/B07MZF9J2G/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B07MZF9J2G&linkCode=as2&tag=bigfungus-20&linkId=60d2df268ab5871defea2d4f32c91a42"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=US&ASIN=B07MZF9J2G&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL250_&tag=bigfungus-20" ></a>',                
@@ -109,7 +109,13 @@ def getMycoNetBuilds() -> dict:
                 "Close pressure cooker, bring it up to pressure and allow for 1hour to pass",
                 "Empty pressure cooker and let the jars cool down in a relatively clean place (Inside your stove while it is off)",
                 "Procure liquid mycelium syringe or spore syringe from bigfungus.ca or other source"
-            ]
+            ],
+            "website": "bigfungus",
+            "item_type": "Tek (Technique)",
+            "price":"~ 250 $",
+            "img_href": "teks/pftek.png",
+            "shortDesc": "Psilocybe fanaticus technique",
+            "level": "Beginner"
         }
         
     }

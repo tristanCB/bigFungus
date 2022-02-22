@@ -130,15 +130,18 @@ def handle_redirect():
 @app.route('/Myco-NET/<mycNet>', methods=['GET'])
 @app.route('/Myco-NET/<mycNet>/<itemType>')
 def render_large_template(mycNet = None, itemType = None, items = None):
-    if itemType == None: itemType = keywords[0]
     pageToRender = 'myco-net-beta.html'
     
     if (mycNet == "GrowGuides"):
-        pageToRender = "growingGuides.html"
+        pageToRender = "mycoGrowingGuides.html"
         teks = getMycoNetBuilds()
-        items = teks
+        if itemType == None:
+            items = teks
+        else:
+            items = {f"{itemType}": teks[itemType]}
     
     if (mycNet == "Equipment"):
+        if itemType == None: itemType = keywords[0]
         print(type(model.Autocalves.query))
         
         baseQuery : BaseQuery = model.Autocalves.query

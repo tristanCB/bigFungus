@@ -1,0 +1,68 @@
+h1 {
+    width: 100%;
+    text-align: center;
+    background-color: #00000021;
+    font-style: italic;
+    padding: 5px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+h2 {
+    padding: 20px;
+}
+#affiliateLinks {
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+ol {
+    margin-left: 50px;
+}
+
+#tektitle {
+    position: absolute;
+    width: 100%;
+    top: 22px;
+    text-align: center;
+    font-size: x-large;
+}
+
+#prodImageTek a img {
+    weight:50px;
+    height:50px;
+}
+.tekDisplay {
+    border-radius: 0;
+    height: 220px;
+    width: 220px;
+    margin: auto;
+    display: flex;
+    background: transparent no-repeat center;
+    background-size: cover;
+    background-color: rgba(0, 0, 0, 0.15);
+    content: flex-start;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+.pane #prodImageTek {
+    border-radius: 0;
+    height: 220px;
+    width: 220px;
+    margin: auto;
+    background: transparent no-repeat center;
+    background-size: cover;
+    background-color: rgba(0, 0, 0, 0.15);
+}
+.floaterPTek {
+    z-index: 1;
+    position: absolute;
+    text-align: center;
+    top: 341px;
+    left: 0;
+    bottom: auto;
+    right: 0;
+    color: white;
+}
+.tek {
+    cursor:default;
+}

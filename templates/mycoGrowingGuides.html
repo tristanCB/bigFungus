@@ -1,0 +1,54 @@
+<!doctype html>
+{% include "header.html" %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/mycoNet.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/teks.css') }}">
+
+<script src={{ url_for('static', filename='js/mycoNet.js') }}></script>
+<script src={{ url_for('static', filename='js/lazyBackground.js') }}></script>
+
+{% include "mycoNetNav.html" %}
+<div class="contentPanel">
+    <div id="content">
+        {% for item in items %}
+            <div class="paneWrap" data="{{items[item]["item_type"]}}">
+                    <div class="pane">
+                        <a href="/Myco-NET/GrowGuides/{{item}}">
+                            <img class="sourceIcon" src ="{{ url_for('static', filename=items[item]["website"]+'.png') }}"></img> 
+                            <p id="tektitle">{{item}}</p>
+                            <div id="prodImageTek" class="tekDisplay" style="">
+                        </a>
+                            {% for itemTek in items[item]['affiliateItems'] %}
+                                {{itemTek|safe}}
+                            {% endfor %}
+                            <a href="/Myco-NET/GrowGuides/{{item}}">
+                                <div class="floaterPTek">
+                                    <p class="priceTag">$ {{items[item]['price']}}</p>
+                                </div>
+                            </a>
+                        </div>
+
+
+                        <p class="itemDescription tek">{{items[item]['shortDesc']}}</p>
+                        <p class="dateTime">Expertise level: {{items[item]["level"]}}</p>
+                    </div>
+               
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% for item in items %}
+    <h1>{{item}}</h1>
+    <div id="affiliateLinks"> 
+        {% for itemTek in items[item]['affiliateItems'] %}
+            {{itemTek|safe}}
+        {% endfor %}
+    </div>
+    <h2>{{items[item]["desc"]}}</h2>
+    <ol>
+        {% for step in items[item]['steps'] %}
+            <li>{{step}}</li>
+        {% endfor %}
+    </ol>
+{% endfor %}
