@@ -12,26 +12,19 @@
     <div id="content">
         {% for item in items %}
             <div class="paneWrap" data="{{items[item]["item_type"]}}">
+                <a href="/Myco-NET/GrowGuides/{{item}}">
+
                     <div class="pane">
-                        <a href="/Myco-NET/GrowGuides/{{item}}">
                             <img class="sourceIcon" src ="{{ url_for('static', filename=items[item]["website"]+'.png') }}"></img> 
                             <p id="tektitle">{{item}}</p>
-                            <div id="prodImageTek" class="tekDisplay" style="">
-                        </a>
-                            {% for itemTek in items[item]['affiliateItems'] %}
-                                {{itemTek|safe}}
-                            {% endfor %}
-                            <a href="/Myco-NET/GrowGuides/{{item}}">
-                                <div class="floaterPTek">
-                                    <p class="priceTag">$ {{items[item]['price']}}</p>
-                                </div>
-                            </a>
-                        </div>
-
-
+                            <img id="prodImageTek" class="tekDisplay" style="" src ="{{ url_for('static', filename=items[item]["img_href"]) }}"/>
+                            <div class="floaterPTek">
+                                <p class="priceTag">$ {{items[item]['price']}}</p>
+                            </div>
                         <p class="itemDescription tek">{{items[item]['shortDesc']}}</p>
                         <p class="dateTime">Expertise level: {{items[item]["level"]}}</p>
                     </div>
+                </a>
                
             </div>
         {% endfor %}
