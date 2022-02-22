@@ -11,6 +11,7 @@ import datetime
 # Local modules
 # import content
 from flask_sqlalchemy import SQLAlchemy, Model, BaseQuery
+from numpy import product
 from sqlalchemy.orm.attributes import flag_modified
 import typing
 import os
@@ -20,7 +21,7 @@ import stripe
 import pprint
 pp = pprint.PrettyPrinter(indent=2)
 # DB interface
-from content.products import getProducts, getShippingOptionsStripe
+from content.products import getProducts, getShippingOptionsStripe, getMycoNetBuilds
 # import logging 
 
 # This is your test secret API key.
@@ -128,9 +129,15 @@ def handle_redirect():
 
 @app.route('/Myco-NET/<mycNet>', methods=['GET'])
 @app.route('/Myco-NET/<mycNet>/<itemType>')
-def render_large_template(mycNet = None, itemType = None):
+def render_large_template(mycNet = None, itemType = None, items = None):
     if itemType == None: itemType = keywords[0]
     pageToRender = 'myco-net-beta.html'
+    
+    if (mycNet == "GrowGuides"):
+        pageToRender = "growingGuides.html"
+        teks = getMycoNetBuilds()
+        items = teks
+    
     if (mycNet == "Equipment"):
         print(type(model.Autocalves.query))
         

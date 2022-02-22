@@ -1,0 +1,23 @@
+<!doctype html>
+{% include "header.html" %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/mycoNet.css') }}">
+<script src={{ url_for('static', filename='js/mycoNet.js') }}></script>
+<script src={{ url_for('static', filename='js/lazyBackground.js') }}></script>
+
+{% include "mycoNetNav.html" %}
+
+{% for item in items %}
+    <h1>{{item}}</h1>
+    <div id="affiliateLinks"> 
+        {% for itemTek in items[item]['affiliateItems'] %}
+            {{itemTek|safe}}
+        {% endfor %}
+    </div>
+    <h2>{{items[item]["desc"]}}</h2>
+    <ol>
+        {% for step in items[item]['steps'] %}
+            <li>{{step}}</li>
+        {% endfor %}
+    </ol>
+{% endfor %}

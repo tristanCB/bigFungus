@@ -39,7 +39,7 @@ def getProducts():
                 "uom": "unit",
                 "image_url": "/product_images/5lbsColonized.png",
                 
-                "image_url_desc": "/product_images/blackFruiting.jpg",
+                "image_url_desc": "/product_images/blackOysters.png",
                 "title_description": "Ready To Fruit Fully Colonized",
                 "description": "Includes one fully colonized artificial log grown in sterile mushroom grow bag. Can expect to get first harvest after keeping in humid environment for approximatly two weeks.",
                 "description2": "One the left a block of black oysters can be seen emerging from the block. The plastic top was cut off,the block was then kept in a humid environment exposed to some light.",
@@ -84,6 +84,36 @@ def getProducts():
             }
     ]
     return products
+
+def getMycoNetBuilds() -> dict: 
+    teks = {
+        "PF Tek (psilocybe fanaticus technique)" : {
+            "affiliateItems": [
+                '<a target="_blank"  href="https://www.amazon.com/gp/product/B0000BYCFU/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B0000BYCFU&linkCode=as2&tag=bigfungus-20&linkId=91b53cc5b92863592fe9fe366458efd6"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=US&ASIN=B0000BYCFU&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL250_&tag=bigfungus-20" ></a>',
+                '<a target="_blank"  href="https://www.amazon.com/gp/product/B07MZF9J2G/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B07MZF9J2G&linkCode=as2&tag=bigfungus-20&linkId=60d2df268ab5871defea2d4f32c91a42"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=US&ASIN=B07MZF9J2G&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL250_&tag=bigfungus-20" ></a>',                
+                '<a target="_blank"  href="https://www.amazon.com/gp/product/B07N7PSQM1/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B07N7PSQM1&linkCode=as2&tag=bigfungus-20&linkId=9ff5a81e190df74b37553b119a02206d"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=US&ASIN=B07N7PSQM1&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL250_&tag=bigfungus-20" ></a>',
+                '<a target="_blank"  href="https://www.amazon.com/gp/product/B00PG8RT6O/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B00PG8RT6O&linkCode=as2&tag=bigfungus-20&linkId=b9d2b97c0976c9e06029b1eeed404295"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=US&ASIN=B00PG8RT6O&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL250_&tag=bigfungus-20" ></a>',
+                '<a target="_blank"  href="https://www.amazon.com/gp/product/B07J49CD76/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B07J49CD76&linkCode=as2&tag=bigfungus-20&linkId=c5ac9d11b317e539cbe5bddc26c7634e"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=US&ASIN=B07J49CD76&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL250_&tag=bigfungus-20" ></a>',
+                '<a target="_blank"  href="https://www.amazon.com/gp/product/B000W7NNKA/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B000W7NNKA&linkCode=as2&tag=bigfungus-20&linkId=9019181d34abbbd61bf31f4364d5b151"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=US&ASIN=B000W7NNKA&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL250_&tag=bigfungus-20" ></a>'
+            ],
+            "desc": "PF tek is a common and simple method for beginers. It involves using a spore syringe to innoculate pasterized or sterilized substarte made from vermiculite and brown rice flour. If you are just starting or like to keep things simple, this tek is what you are looking for.",
+            "steps": [
+                "Mix 450ml of water with 450g of vermiculite in a bowl",
+                "Coat Vermiculite evenly with 250g of brown rice flour",
+                "Loosely fill mason jars to leave approximatly 1cm of head space in each",
+                "Wide 1cm rim clean of any water or debrit using a paper towel",
+                "Top mason jar off with dry vermiculite",
+                "drill 4 small holes in lids of jars, and tape them over with the millipore tape, cover full mason jar with taped lid, rim and a sheet of aluminium foil",
+                "Line bottom of pressure cooker or cauldron with mason jar rims in order to prop the mason jar off the bottom during sterilization or pasterization",
+                "Fill the bottom of the pressure cooker up with water (Follow the manufacturers instructions) and load the filled mason jar up",
+                "Close pressure cooker, bring it up to pressure and allow for 1hour to pass",
+                "Empty pressure cooker and let the jars cool down in a relatively clean place (Inside your stove while it is off)",
+                "Procure liquid mycelium syringe or spore syringe from bigfungus.ca or other source"
+            ]
+        }
+        
+    }
+    return teks
 
 def getShippingOptionsStripe():
     ship = [

@@ -37,7 +37,7 @@
 }
 .product-description{
   padding-top: 20px;
-  height: 50px;
+  height: auto;
   color: rgba(138, 183, 224, 1);
 }
 
@@ -103,15 +103,15 @@
 }
 .product-tile {
   color: rgb(255, 255, 255);
-  /* background-color: brown; */
   margin-left: 20px;
   margin-right: 20px;
   text-align: center;
   font-size: 12px;
   margin-bottom: 7px;
+  padding-bottom: 7px;
   margin-top: 15px;
-  width: 260px;
-  height: 455px;
+  width: 300px;
+  height: auto;
 }
 .product-tile:hover {
   background-color: rgba(209, 191, 155, 0.5);
@@ -160,7 +160,14 @@
   opacity: 0;
   top: 50%;
   left: 50%;
+  height: 100%;
+  width: 75%;
+  display: flex;
   transform: translate(-50%, -50%);
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: row;
   
 }
 /* Change the color of links on hover

@@ -185,3 +185,23 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+h1 {
+    width: 100%;
+    text-align: center;
+    background-color: #00000021;
+    font-style: italic;
+    padding: 5px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+h2 {
+    padding: 20px;
+}
+#affiliateLinks {
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+ol {
+    margin-left: 50px;
+}
