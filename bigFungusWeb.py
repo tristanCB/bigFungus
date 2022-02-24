@@ -11,7 +11,6 @@ import datetime
 # Local modules
 # import content
 from flask_sqlalchemy import SQLAlchemy, Model, BaseQuery
-from numpy import product
 from sqlalchemy.orm.attributes import flag_modified
 import typing
 import os
@@ -53,7 +52,6 @@ logo_txt = 'big_fungus.png'
 css = '/css/style.css'
 assert css
 
-@app.route('/')
 @app.route('/shop')
 @app.route('/Shop')
 def format():    
@@ -121,17 +119,20 @@ def vote(mycNet = None, itemType=None):
         db.session.commit()
         return redirect(f'/Myco-NET/{mycNet}/{itemType}')
 
+@app.route('/')
 @app.route('/Myco-NET')
 @app.route('/Myco-NET/')
 def handle_redirect():
-    return redirect('/Myco-NET/Equipment')
+    return redirect('/Myco-NET/GrowGuides')
 
-
-@app.route('/Myco-NET/<mycNet>', methods=['GET'])
+@app.route('/', methods=['GET'])
+@app.route('/Myco-NET/')
+@app.route('/Myco-NET/<mycNet>')
 @app.route('/Myco-NET/<mycNet>/<itemType>')
 def render_large_template(mycNet = None, itemType = None, items = None):
     pageToRender = 'myco-net-beta.html'
-    
+    print("-------")
+    print(mycNet)
     if (mycNet == "GrowGuides"):
         pageToRender = "mycoGrowingGuides.html"
         teks = getMycoNetBuilds()

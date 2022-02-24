@@ -15,6 +15,9 @@
 .mycoNetNav img:hover {
     background: #8AB7E0;
 }
+.mycoNetNav .selectedMycNet {
+    background: #8AB7E0;
+}
 
 #mycoNetStatment {
     display: flex;
