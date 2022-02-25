@@ -1,5 +1,6 @@
 <!doctype html>
 {% include "header.html" %}
+<link rel="canonical" href="https://bigfungus.ca/Myco-NET" />
 
 <link rel="stylesheet" href="{{ url_for('static', filename='css/mycoNet.css') }}">
 <script src={{ url_for('static', filename='js/mycoNet.js') }}></script>
@@ -26,21 +27,21 @@
                             <div class="rating">
                                 <form action= "/vote/{{mycNet}}/{{item["item_type"]}}" id='voting' name='voting' method="POST">
                                     <p>{{item['rating']}}</p>
-                                    <button type="image" name="voteUp" src="{{ url_for('static', filename='arrowUp.png') }}" value="{{item['id']}}" data="Equipment"  alt="up">
+                                    <button type="image" name="voteUp" src="{{ url_for('static', filename='arrowUp.png') }}" value="{{item['id']}}" data="Equipment"  alt="Vote up">
                                         <img src="{{ url_for('static', filename='arrowUp.png') }}">
                                     </button>
-                                    <button type="image" name="voteDown" src="{{ url_for('static', filename='arrowUp.png') }}" value="{{item['id']}}" data="Equipment"  alt="up">
+                                    <button type="image" name="voteDown" src="{{ url_for('static', filename='arrowUp.png') }}" value="{{item['id']}}" data="Equipment"  alt="Vote down">
                                         <img src="{{ url_for('static', filename='arrowDown.png') }}">
                                     </button>
                                 </form>
                             </div>
-                            <img class="sourceIcon" src="{{ url_for('static', filename=item["website"]+'.png') }}"> 
+                            <img class="sourceIcon" alt="Icon" src="{{ url_for('static', filename=item["website"]+'.png') }}"> 
                             <div id="prodImage" class="lazy" data ="background-image: url('{{item['img_href']}}')" style=""></div>
                                 <div class="floaterP">
                                     <p class="priceTag">$ {{item['price']}}</p>
                                 </div>
                             </img>
-                            <a href="{{item['link']}}" target="_blank">
+                            <a href="{{item['link']}}" alt="Link to {{item['img_alt']}}" target="_blank">
                                 <p class="itemDescription">{{item['img_alt']}}</p>
                             </a>
                             <p class="dateTime">Date Scrapped: {{item["date_scrapped"]}}</p>
@@ -50,20 +51,20 @@
 
         {% elif 'Recipes' in mycNet %}
             {% for item in items %}
-            <a href="{{item['link']}}" target="_blank">
+            <a href="{{item['link']}}" alt="link to {{item['title']}}" target="_blank">
                 <div class="pane">
                     <div class="rating">
                         <form action= "/vote/{{mycNet}}/{{item["item_type"]}}" id='voting' name='voting' method="POST">
                             <p>{{item['rating']}}</p>
-                            <button type="image" name="voteUp" src="{{ url_for('static', filename='arrowUp.png') }}" value="{{item['id']}}" data="Equipment"  alt="up">
+                            <button type="image" name="voteUp" src="{{ url_for('static', filename='arrowUp.png') }}" value="{{item['id']}}" data="Equipment"  alt="Vote up">
                                 <img src="{{ url_for('static', filename='arrowUp.png') }}">
                             </button>
-                            <button type="image" name="voteDown" src="{{ url_for('static', filename='arrowUp.png') }}" value="{{item['id']}}" data="Equipment"  alt="up">
+                            <button type="image" name="voteDown" src="{{ url_for('static', filename='arrowUp.png') }}" value="{{item['id']}}" data="Equipment"  alt="Vote down">
                                 <img src="{{ url_for('static', filename='arrowDown.png') }}">
                             </button>
                         </form>
                     </div>
-                    <img class="sourceIcon" src="{{ url_for('static', filename=item["website"]+'.png')}}"> 
+                    <img class="sourceIcon" src="{{ url_for('static', filename=item["website"]+'.png')}}" alt="{{item["website"]}} icon"> 
                     <div id="prodImage" class="lazy" data ="background-image: url('{{item['img_href']}}')" style=""></div>
                     <p id="recipeDesc" class="itemDescription">{{item['title']}}</p>
                     <p class="dateTime">Date Scrapped: {{item["date_scrapped"]}}</p>

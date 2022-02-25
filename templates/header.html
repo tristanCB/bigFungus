@@ -1,7 +1,28 @@
 <!doctype html>
-<!-- Global site tag (gtag.js) - Google Analytics -->
+<html prefix="og: https://ogp.me/ns#" lang="en">
+
+<meta charset="UTF-8">
+<title>Mushroom growing: Big Fungus, for all tings fungi</title>
+
+<meta property="og:title" content="Mushroom Growing Recipes Teks and Techniques" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://bigfungus.ca/" />
+<meta property="og:image" content="{{ url_for('static', filename='favicon.ico') }}" />
+<meta property="og:description" 
+  content="Growing mushrooms can be tricky. BigFungus provides you with all the necessary information 
+            needed to grow mushrooms indoor and outdoors. Whether you are searching for beginner techniques, 
+            obscure teks or anything of the like, bigfungus provides you with vetted protocols and 
+            established experience to grow your very own mushrooms at home." 
+/>
+<meta property="og:site_name" content="Big Fungus">
+
+<meta name="robots" content="max-image-preview:large">
+<meta name="description" content="Growing mushrooms can be tricky. BigFungus provides you with all the necessary information needed to grow mushrooms indoor and outdoors. Whether you are searching for beginner techniques, obscure teks or anything of the like, bigfungus provides you with vetted protocols and established experience to grow your very own mushrooms at home.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EHTEQ4E6NG"></script>
+<meta name="google-site-verification" content="b4TX8d_iYCuewWMk8AD502m_9dMdQmtzv0l7GvXII2U">
+<meta name="thumbnail" content={{ url_for('static', filename='figmaDeploy/logo.png') }}>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -18,14 +39,14 @@
 
 <div class="header">
     <div class="topnav">
-        <a id="menuItem" href="/Home" class='txt_logo'>            
-            <img src="{{url_for('static', filename=logo_txt)}}" />
+        <a id="menuItem" href="/Home" class='txt_logo' alt="home" alt="home">            
+            <img src="{{url_for('static', filename=logo_txt)}}" alt="home" />
         </a>
         {% for page in pages %}
-            <a id="menuItem" href="/{{page}}">{{page}}</a>
+            <a id="menuItem" href="/{{page}}" alt="{{page}}">{{page}}</a>
         {% endfor %}
         <div class="ffm">
-            <p onclick="toogleCart()">Cart </p><p id="CartTotal"> </p>
+            <p onclick="toogleCart()">Cart </p><p id="CartTotal"> </p> 
         </div>
     </div>
     
@@ -53,10 +74,15 @@
 </div>
 
 <form action="/create-checkout-session/" method="POST" name="cart" id="CartMenu" style="display: none;">
-    <div id="Cart">
-        
+    <div id="cartTop">
+        <img id="cartIcon" src={{url_for('static', filename='shoppingCart.png')}} alt="shopping cart"/>
+        <div id="Cart">
+            
+        </div>
     </div>
-    <button type="submit" id="checkout-button">Checkout</button>
-    <button type="button" id="clear-cart" onclick="clearCart()" >Clear</button>
+    <div id="cartBottom">
+        <button type="submit" id="checkout-button" alt="checkout">Checkout</button>
+        <button type="button" id="clear-cart" onclick="clearCart()" alt="clearCart">Clear</button>
+    </div>
 </form>
 <script>refreshCart()</script>

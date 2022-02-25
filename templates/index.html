@@ -3,7 +3,6 @@
 <script src={{ url_for('static', filename='js/shop.js') }}></script>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/shop.css') }}">
 
-
 <body>
 
     <div class="products">
@@ -11,7 +10,7 @@
             <div class="product-tile" id={{ product["name"].replace(' ','-')}} onclick="changeTile(this)">
                 <div class="container toggler" >
                     {% if product["image_url"] %}
-                    <img class="product-image" src="{{url_for('static', filename=product["image_url"])}}" align="middle" />    
+                    <img class="product-image" alt="product image for {{ product["name"].replace(' ','-')}}" src="{{url_for('static', filename=product["image_url"])}}" align="middle" />    
                     {% endif %}
                     <div class="overlay"><p>See more</p></div>
 
@@ -19,9 +18,9 @@
 
                 {% if product["name"] %}
                     
-                <h4 class="product-name">{{ product["name"] }}</h4>
-                <h4 class="product-name">{{ product["name"] }}</h4>
-                <h4 class="product-name">{{ product["name"] }}</h4>
+                <h4 class="product-name" alt="{{product["name"]}}">{{ product["name"] }}</h4>
+                <h4 class="product-name" alt="{{product["name"]}}">{{ product["name"] }}</h4>
+                <h4 class="product-name" alt="{{product["name"]}}">{{ product["name"] }}</h4>
 
                 {% else %}
                 <h2 class="product-tile">Name</h2>
@@ -51,14 +50,14 @@
                     </div>
                     
                     <div class="effect">
-                        <img class="image" src="{{url_for('static', filename="add_cart_clean.png")}}" onclick="addItem({{product}}, '{{product["price_code"]}}','{{product['name'].replace(" ","-")}}')"/>
+                        <img class="image" src="{{url_for('static', filename="add_cart_clean.png")}}" onclick="addItem({{product}}, '{{product["price_code"]}}','{{product['name'].replace(" ","-")}}')" alt="Add To Cart"/>
                     </div>
             </div>
             
             {% if product["description"] %}
             <div class="toggled_content"style='display:none;'>
                 {% if product["image_url_desc"] %}
-                    <img class="product-image-desc" src="{{url_for('static', filename=product["image_url_desc"])}}" align="middle" />    
+                    <img class="product-image-desc" src="{{url_for('static', filename=product["image_url_desc"])}}" alt="product image for {{product["name"]}}" align="middle" />    
                 {% endif %}
                 <div id="textContentDesc">
                     

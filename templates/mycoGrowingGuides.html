@@ -12,12 +12,12 @@
     <div id="content">
         {% for item in items %}
             <div class="paneWrap" data="{{items[item]["item_type"]}}">
-                <a href="/Myco-NET/GrowGuides/{{item}}">
+                <a href="/Myco-NET/GrowGuides/{{item}}" alt="{{item}}">
 
                     <div class="pane">
-                            <img class="sourceIcon" src ="{{ url_for('static', filename=items[item]["website"]+'.png') }}"></img> 
+                            <img class="sourceIcon" src ="{{ url_for('static', filename=items[item]["website"]+'.png') }}" alt="Guide source icon"></img> 
                             <p id="tektitle">{{item}}</p>
-                            <img id="prodImageTek" class="tekDisplay" style="" src ="{{ url_for('static', filename=items[item]["img_href"]) }}"/>
+                            <img id="prodImageTek" class="tekDisplay" style="" src ="{{ url_for('static', filename=items[item]["img_href"]) }}" alt="Guide image"/>
                             <div class="floaterPTek">
                                 <p class="priceTag">$ {{items[item]['price']}}</p>
                             </div>
@@ -33,7 +33,7 @@
 
 {% for item in items %}
     <h1>{{item}}</h1>
-    <div id="affiliateLinks"> 
+    <div id="affiliateLinks" alr="Amazon links to products"> 
         {% for itemTek in items[item]['affiliateItems'] %}
             {{itemTek|safe}}
         {% endfor %}

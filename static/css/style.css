@@ -137,18 +137,47 @@
 }
 
 #CartMenu {
-  position:absolute; 
-  right:10px;
-  top: 60px;
-  border: 10px;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
+  position: absolute;
+  right: 20px;
+  FONT-VARIANT: JIS04;
+  padding-bottom: 0px;
+  border-radius: 0px 0px 10px 10px;
+  text-align: end;
   display: none;
-  z-index: 1;
-  background-color: rgba(226, 226, 226, 0.85);
-  -webkit-box-shadow: 0px 10px 14px 7px rgba(0,0,0,0.26); 
-  box-shadow: 0px 10px 14px 7px rgba(0,0,0,0.26);
+  width: 207px;
+  z-index: 3;
+  background-color: rgb(226 226 226 / 99%);
+  -webkit-box-shadow: 0px 10px 14px 7px rgb(0 0 0 / 26%);
+  box-shadow: 0px 10px 14px 7px rgb(0 0 0 / 26%);
+}
+#cartBottom {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 0px;
+}
+#cartTop {
+  padding: 27px;
+  padding-top: 50px;
+  padding-bottom: 0px;
+}
+#CartMenu button {
+  padding: 7px;
+  width: 50%;
+  font-size: initial;
+}
+#checkout-button {
+  border-radius: 0px 0px 0px 10px;
+  background-color: rgba(138, 183, 224, 1);
+}
+#clear-cart {
+  float: right;
+  border-radius: 0px 0px 10px 0px;
+  background-color: rgb(247, 140, 108);
+}
+#cartIcon {
+  position: absolute;
+  left: 13px;
+  top: 13px;
 }
 
 .overlay {

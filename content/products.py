@@ -12,7 +12,7 @@ def getProducts():
 
                 "title_description": "Pure, Isolated Mycelium",
                 "description": "Perfect for starting your very own grainspawn or liquid cultures.",
-                "description2": "The Agar medium was made using a recipe similar to Sabouraud agar. Our propriatary blend of ingredients and high standard of clenliness while manufacturing plates provides you with a guaranteed start to exploring a vast array of new mushroom strains. All batches are tested for possible baterial contamination.",
+                "description2": "The Agar medium was made using a recipe similar to Sabouraud agar. Our proprietary blend of ingredients and high standard of cleanliness while manufacturing plates provides you with a guaranteed start to exploring a vast array of new mushroom strains. All batches are tested for possible baterial contamination.",
 
             },
         
@@ -27,7 +27,7 @@ def getProducts():
                 "image_url_desc": "/product_images/grainSpawnCrossSection.jpg",
                 "title_description": "Organic Rye Grain Spawn",
                 "description": "Perfect for inoculating your very own bulk substrate. 1L masonjar, 3/4 full, fully colonized and ready to use",
-                "description2": "On the left a cross section of grain can be seen. Because thr Mycelium is burried deep inside the grains, It can be broken vigurously and evenly mixed in bulk substrate for faster colonization.",
+                "description2": "On the left a cross section of grain can be seen. Because thr Mycelium is burried deep inside the grains, It can be broken vigorously and evenly mixed in bulk substrate for faster colonization.",
 
             },
         
@@ -41,7 +41,7 @@ def getProducts():
                 
                 "image_url_desc": "/product_images/blackOysters.png",
                 "title_description": "Ready To Fruit Fully Colonized",
-                "description": "Includes one fully colonized artificial log grown in sterile mushroom grow bag. Can expect to get first harvest after keeping in humid environment for approximatly two weeks.",
+                "description": "Includes one fully colonized artificial log grown in sterile mushroom grow bag. Can expect to get first harvest after keeping in humid environment for approximately two weeks.",
                 "description2": "One the left a block of black oysters can be seen emerging from the block. The plastic top was cut off,the block was then kept in a humid environment exposed to some light.",
 
             },
@@ -62,7 +62,7 @@ def getProducts():
                 "uom":"unit",
                 "image_url": "/product_images/liquidCulture.png",
                 "title_description": "Syringe Filled With Mycelium",
-                "description": "Encapsulated mycelium in a propreatary suspension for effective use of injection ported bags.",
+                "description": "Encapsulated mycelium in a proprietary suspension for effective use of injection ported bags.",
                 "description2": "All Solutions are made using ISO9001 standards.",
 
             },
@@ -96,15 +96,15 @@ def getMycoNetBuilds() -> dict:
                 '<a target="_blank"  href="https://www.amazon.com/gp/product/B07J49CD76/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B07J49CD76&linkCode=as2&tag=bigfungus-20&linkId=c5ac9d11b317e539cbe5bddc26c7634e"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=US&ASIN=B07J49CD76&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL250_&tag=bigfungus-20" ></a>',
                 '<a target="_blank"  href="https://www.amazon.com/gp/product/B000W7NNKA/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B000W7NNKA&linkCode=as2&tag=bigfungus-20&linkId=9019181d34abbbd61bf31f4364d5b151"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=US&ASIN=B000W7NNKA&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL250_&tag=bigfungus-20" ></a>'
             ],
-            "desc": "PF tek is a common and simple method for beginers. It involves using a spore syringe to innoculate pasterized or sterilized substarte made from vermiculite and brown rice flour. If you are just starting or like to keep things simple, this tek is what you are looking for.",
+            "desc": "PF tek is a common and simple method for beginers. It involves using a spore syringe to inoculate pasterized or sterilized substarte made from vermiculite and brown rice flour. If you are just starting or like to keep things simple, this tek is what you are looking for.",
             "steps": [
                 "Mix 450ml of water with 450g of vermiculite in a bowl",
                 "Coat Vermiculite evenly with 250g of brown rice flour",
-                "Loosely fill mason jars to leave approximatly 1cm of head space in each",
+                "Loosely fill mason jars to leave approximately 1cm of head space in each",
                 "Wide 1cm rim clean of any water or debrit using a paper towel",
                 "Top mason jar off with dry vermiculite",
-                "drill 4 small holes in lids of jars, and tape them over with the millipore tape, cover full mason jar with taped lid, rim and a sheet of aluminium foil",
-                "Line bottom of pressure cooker or cauldron with mason jar rims in order to prop the mason jar off the bottom during sterilization or pasterization",
+                "drill 4 small holes in lids of jars, and tape them over with the millipore tape, cover full mason jar with taped lid, rim and a sheet of aluminum foil",
+                "Line bottom of pressure cooker or cauldron with mason jar rims in order to prop the mason jar off the bottom during sterilization or pasteurization",
                 "Fill the bottom of the pressure cooker up with water (Follow the manufacturers instructions) and load the filled mason jar up",
                 "Close pressure cooker, bring it up to pressure and allow for 1hour to pass",
                 "Empty pressure cooker and let the jars cool down in a relatively clean place (Inside your stove while it is off)",
@@ -129,10 +129,10 @@ def getMycoNetBuilds() -> dict:
                 "After 15 mintues, remove the potatoes with a slotted spoon and put the potato water aside",
                 "Mix the 1L of potato water with 20g of AGAR and 20g of DEXTROSE(substitute with table sugar)",
                 "Mix thorougly and pour the mixture into 3 small MASON JARS. Put lid on but DO NOT close lid tightly as to not risk breaking the jar.",
-                "Set the agar filled mason jars in your AUTOCLAVE and sterilise for 1 hour. It is useful to use the extra autoclave space to sterilise your SCALPEL and RAZOR BLADE",
+                "Set the agar filled mason jars in your AUTOCLAVE and sterilize for 1 hour. It is useful to use the extra autoclave space to sterilize your SCALPEL and RAZOR BLADE",
                 "Prepare PETRI DISHES by disinfecting them in a BLEACH solution for 20 minutes. The recipe for the bleach solution is as follows [1L WATER : 70mL BLEACH] this will give a 3000 ppm solution",
                 "After 20 minutes, set your petri dishes down in front of your flow hood and let them dry",
-                "While waiting for your petri dishes to dry, wait for the autoclave sterilising cycle to finish and remove your agar jars and scalpel and put them in fron of your flow hood as well",
+                "While waiting for your petri dishes to dry, wait for the autoclave sterilizing cycle to finish and remove your agar jars and scalpel and put them in front of your flow hood as well",
                 "While remaining in front of your flow hood, carefully pour a small amount of potato agar into the bottom of each dish: there should be enough agar for 25 petri dishes",
                 "Assemble each dish with a matching top and let cool a bit longer to let the potato agar firm up in the dish, you are now ready to isolate your mycelium",
             ],
@@ -149,21 +149,21 @@ def getMycoNetBuilds() -> dict:
             ],
             "desc": "This procedure will give you a step by step on how to isolate your chosen mycelium on an empty petri dish",
             "steps": [
-                "Note: it is recommened to wear a MASK and NITRILE GLOVES for this procedure to minimise bacterial contamination",
+                "Note: it is recommend to wear a MASK and NITRILE GLOVES for this procedure to minimise bacterial contamination",
                 "Find a suitable mushroom sample, it can be from a trusted market, grocery store, or even foraged from the forest (Make sure you know what you're getting!!)",
                 "Clean the mushroom sample gently with running water to remove debris and spray lightly with ISOPROPYL ALCOHOL",
                 "Wait for the sample to dry a bit while you compose yourself, take this moment to visualize the mushroom growing",
                 "Using the Razor blade, slice the top of the mushroom down the center going a few centimeters deep, then grab both side of the mushroom to split it even down the center",
                 "The reason for doing it this way is to avoid smearing surface bacteria into the center of the mushroom where you will take your sample",
-                "Without touching the center of the mushroom you just exposed, take your sterilised scalpel and take a small shallow sample from the middle of the mushroom",
+                "Without touching the center of the mushroom you just exposed, take your sterilized scalpel and take a small shallow sample from the middle of the mushroom",
                 "This sample should be taken where the cap meets the stem of the mushroom, this is where the mycelium will be most active",
-                "Put a small section of the sampple into each petri dish. The more you make, the more chance you have of getting a petri with no contamination",
+                "Put a small section of the sample into each petri dish. The more you make, the more chance you have of getting a petri with no contamination",
                 "You will now wait 2-3 weeks for the samples to cover your agar plate",
                 "Some will have bacterial or fungal contamination (See our GUIDE TO RECOGNIZING CONTAMINATION)",
-                "The goal is to isolate the nicest parts of the mycelium you have grown to clean plates in order to get a nice stong and clean sample",
+                "The goal is to isolate the nicest parts of the mycelium you have grown to clean plates in order to get a nice strong and clean sample",
                 "Make sure to clean the outside of original place carefully before opening and cutting clean samples of the mycelium",
                 "If a petri dish is heavily contaminated with mold, discard it since mold spore can be invisible to the naked eye and make it harder to isolate clean samples",
-                "Repeat this procedure until you have aquired a petri dish growing only the desired mycelium",
+                "Repeat this procedure until you have acquired a petri dish growing only the desired mycelium",
             ],
             "website": "bigfungus",
             "item_type": "Trusted recipe",
@@ -184,15 +184,15 @@ def getMycoNetBuilds() -> dict:
                 "Once the grain is sufficiently cooked, strain the grain to eliminate as much water as possible and spread out over some paper towel to dry excess moisture",
                 "Wait 10-15 minutes for the grain to cool and for the surface moisture to evaporate from the grain",
                 "Collect and use the cooked grain to fill 1-2 mushroom UNICORN BAGS",
-                "Fold the tops of the bags down to prevent them from touching the sides of the autoclave while still allowing air transfer between the inside and outisde of the bag (to prevent rupture)",
+                "Fold the tops of the bags down to prevent them from touching the sides of the autoclave while still allowing air transfer between the inside and outside of the bag (to prevent rupture)",
                 "Autoclave the grain spawn for 1 hour at 121 degrees Celsius",
-                "Once the sterilisation cycle is finished, place grain spawn bag in front of your flow hood (dont forget to turn the flow hood ON)",
-                "Put on gloves and mask and disinfect the outside of your isolated mycelium dish and your scalpel (if it is not sterilised already)",
-                "Before innoculating your grain, make sure it has cooled to room temperature as to not kill the mycelium",
+                "Once the sterilization cycle is finished, place grain spawn bag in front of your flow hood (don't forget to turn the flow hood ON)",
+                "Put on gloves and mask and disinfect the outside of your isolated mycelium dish and your scalpel (if it is not sterilized already)",
+                "Before inoculating your grain, make sure it has cooled to room temperature as to not kill the mycelium",
                 "Using the scalpel, gently cut the agar in the petri dish into small pieces and put half into each bag",
                 "While remaining in front of your flow hood, seal the bag using a heat or IMPULSE SEALER, or simply tie the top of the bag tightly with a few elastics",
                 "Gently stir the bag around and place in a 20-22 degree C environment for 4-6 weeks",
-                "When the mycelium has taken over 1/3 to 1/2 of the bag, break it up and shake very gently to accelerate the full innoculation of the bag",
+                "When the mycelium has taken over 1/3 to 1/2 of the bag, break it up and shake very gently to accelerate the full inoculation of the bag",
             ],
             "website": "bigfungus",
             "item_type": "Trusted recipe",
@@ -255,10 +255,10 @@ def getShippingOptionsStripe():
 def getComment():
     comments = [
         {
-            "comment":"This is my first time purchaing, overall very satisfying process from start to finish. Very professional",
+            "comment":"This is my first time purchasing, overall very satisfying process from start to finish. Very professional",
         },
         {
-            "comment":"This is my second time purchaing, overall very satisfying process from start to finish. Very professional",
+            "comment":"This is my second time purchasing, overall very satisfying process from start to finish. Very professional",
         }
     ]
     return comments
