@@ -17,7 +17,7 @@ NGINX --> GUNICORN --> running app
 
 # To dos
 Create products on stripe and link them with the ones in .py script
-db itegration? probably will go with alchemy SQL
+db iteration? probably will go with alchemy SQL
 set environment variables
 Look into either using https://github.com/cscortes/htmxflask/blob/master/ACTIVESEARCH/templates/index.html or Ajax with flask to optimize page loading
     Somewhat optimized page loading with lazy loading and more selective sql queries.
@@ -25,3 +25,8 @@ Write staging script
 
 To Run:
     conda create --name bigFungus python=3.8 --file spec-file.txt
+
+SEO
+    Improve mobile experience
+    Get backlinks
+    Add alt text
