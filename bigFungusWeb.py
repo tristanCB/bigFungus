@@ -91,6 +91,7 @@ def time():
             sleep(1)
     return Response(streamer())
 
+@app.route('/vote/<mycNet>/', methods=['POST'])
 @app.route('/vote/<mycNet>/<itemType>', methods=['POST'])
 def vote(mycNet = None, itemType=None):
     if request.method == 'POST':
