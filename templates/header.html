@@ -33,14 +33,17 @@
 
 <title>Big Fungus</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
 <script src={{ url_for('static', filename='js/scripts.js') }}></script>
 <script src="https://js.stripe.com/v3/"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+<!-- <a href='https://www.freepik.com/vectors/mushroom'>Mushroom vector created by macrovector - www.freepik.com</a> -->
+
 <div class="header">
     <div class="topnav">
         <a id="menuItem" href="/Home" class='txt_logo' alt="home" alt="home">            
-            <img src="{{url_for('static', filename=logo_txt)}}" alt="home" />
+            <img id="txt_logo" src="{{url_for('static', filename=logo_txt)}}" alt="home"/>
         </a>
         {% for page in pages %}
             <a id="menuItem" href="/{{page}}" alt="{{page}}">{{page}}</a>

@@ -38,7 +38,7 @@
             {{itemTek|safe}}
         {% endfor %}
     </div>
-    <h2>{{items[item]["desc"]}}</h2>
+    <h2>{{items[item]["desc"]|safe}}</h2>
     <ol>
         {% for step in items[item]['steps'] %}
             <li>{{step}}</li>
