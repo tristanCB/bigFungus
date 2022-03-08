@@ -259,7 +259,7 @@ def getMycoNetBuilds() -> dict:
             "website": "bigfungus",
             "item_type": "Trusted recipe",
             "price":"~ 45 $",
-            "img_href": "teks/Block.png",
+            "img_href": "teks/block.png",
             "shortDesc": "Big Fungus approved procedure",
             "level": "Advanced"
         },
@@ -293,7 +293,7 @@ def getMycoNetBuilds() -> dict:
             "website": "bigfungus",
             "item_type": "Trusted recipe",
             "price":"~ 75 $",
-            "img_href": "teks/MushroomBlock.png",
+            "img_href": "teks/mushroomBlock.png",
             "shortDesc": "Big Fungus approved procedure",
             "level": "Advanced"
         },

@@ -123,24 +123,30 @@ def vote(mycNet = None, itemType=None):
 @app.route('/')
 @app.route('/Myco-NET')
 @app.route('/Myco-NET/')
+@app.route('/Mushroom')
+@app.route('/Mushroom/')
 def handle_redirect():
-    return redirect('/Myco-NET/GrowGuides')
+    return redirect('/Mushroom/Grow-Guides')
 
 @app.route('/', methods=['GET'])
 @app.route('/Myco-NET/')
 @app.route('/Myco-NET/<mycNet>')
 @app.route('/Myco-NET/<mycNet>/<itemType>')
+@app.route('/Mushroom/')
+@app.route('/Mushroom/<mycNet>')
+@app.route('/Mushroom/<mycNet>/<itemType>')
 def render_large_template(mycNet = None, itemType = None, items = None):
     pageToRender = 'myco-net-beta.html'
     print("-------")
     print(mycNet)
-    if (mycNet == "GrowGuides"):
+    if (mycNet == "GrowGuides" or mycNet == "Grow-Guides"):
         pageToRender = "mycoGrowingGuides.html"
         teks = getMycoNetBuilds()
         if itemType == None:
             items = teks
         else:
-            items = {f"{itemType}": teks[itemType]}
+            # The replace on items is for more human readable name, might consider just renameing products
+            items = {f"{itemType}": teks[itemType.replace('-', ' ')]}
     
     if (mycNet == "Equipment"):
         if itemType == None: itemType = keywords[0]

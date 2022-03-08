@@ -14,11 +14,24 @@
     flex-wrap: wrap;
 }
 
-.mycoNetNav img:hover {
-    background: #8AB7E0;
+.mycoNetNav p:hover {
+    background-color: #C1CED0;
 }
 .mycoNetNav .selectedMycNet {
-    background: #8AB7E0;
+    background-color: #C1CED0;
+}
+.mycoNetNav a p 
+{    
+    padding: 7px;
+    border-radius: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.mycoNetNav a {
+    all: unset;
+    cursor: pointer;
+    font-size: large;
+    font-weight: bolder;
 }
 
 #mycoNetStatment {
@@ -29,7 +42,7 @@
 #mycoNetLinks {
     display: flex;
     justify-content: center;
-
+    
 }
 
 #mycoNetLinks a {
@@ -44,8 +57,8 @@
     margin: 25px;
     margin-top: 0;
     background-color: rgb(190 176 147 / 37%);
-    padding-bottom: 25px;
-    padding-top: 25px;
+    padding-bottom: 12px;
+    padding-top: 12px;
 }
 
 .contentPanel a {

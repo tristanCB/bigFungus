@@ -46,7 +46,11 @@
             <img id="txt_logo" src="{{url_for('static', filename=logo_txt)}}" alt="home"/>
         </a>
         {% for page in pages %}
+        {% if page == "Myco-NET" %}             
+            <a id="menuItem" href="/Mushroom" alt="{{page}}">{{page}}</a>
+        {% else %}
             <a id="menuItem" href="/{{page}}" alt="{{page}}">{{page}}</a>
+        {% endif %}
         {% endfor %}
         <div class="ffm">
             <p onclick="toogleCart()">Cart <span id="CartTotal"> </span></p> 

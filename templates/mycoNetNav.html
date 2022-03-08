@@ -1,11 +1,11 @@
 <div class="mycoNetNav" >
-    <a href="/Myco-NET/GrowGuides" style="text-decoration: none;" alt="Growing Guides">
-        <img {% if 'GrowGuides' == mycNet %}class="selectedMycNet"{% endif %} src="{{ url_for('static', filename='mycoGrowGuides.png') }}">
+    <a href="/Mushroom/Grow-Guides" style="text-decoration: none;" alt="Growing Guides">
+        <p {% if 'Grow-Guides' == mycNet %}class="selectedMycNet"{% endif %}>Growing Guides</p>
     </a>
-    <a href="/Myco-NET/Equipment" style="text-decoration: none;" alt="Equipment Scraper">
-        <img {% if 'Equipment' == mycNet %}class="selectedMycNet"{% endif %} src="{{ url_for('static', filename='mycoEquipmentIcon.png') }}">
+    <a href="/Mushroom/Equipment" style="text-decoration: none;" alt="Equipment Scraper">
+        <p {% if 'Equipment' == mycNet %}class="selectedMycNet"{% endif %}>Equipment Scraper</p>
     </a>
-    <a href="/Myco-NET/Recipes" style="text-decoration: none;" alt="Recipe Scraper">
-        <img {% if 'Recipes' == mycNet %}class="selectedMycNet"{% endif %} src="{{ url_for('static', filename='mycoRecipesIcon.png') }}">
+    <a href="/Mushroom/Recipes" style="text-decoration: none;" alt="Recipe Scraper">
+        <p {% if 'Recipes' == mycNet %}class="selectedMycNet"{% endif %}>Recipe Scraper</p>
     </a>
 </div>
