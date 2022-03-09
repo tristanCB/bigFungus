@@ -2,7 +2,7 @@
 from binascii import Incomplete
 from operator import index
 from re import template
-from flask import Flask, redirect, request
+from flask import Flask, redirect, request, send_from_directory
 from flask import render_template, url_for, session, stream_with_context
 from flask import Response
 # from flask.logging import 
@@ -20,7 +20,11 @@ import stripe
 import pprint
 pp = pprint.PrettyPrinter(indent=2)
 # DB interface
-from content.products import getProducts, getShippingOptionsStripe, getMycoNetBuilds
+from content.products import getProducts
+from content.techniques import getMycoNetBuilds
+from content.indentification import getMycoNetIdentification
+from content.shipping import getShippingOptionsStripe
+
 # import logging 
 
 # This is your test secret API key.
@@ -47,10 +51,17 @@ keywords    = ["Steam Sterilizer", "Impulse sealer", "Mushroom bag", "Petri dish
 pages       = ["Myco-NET", "Shop"]
 
 distribution_ammounts = [1, 2, 3, 4, 5]
+
 # Theaming
 logo_txt = 'big_fungus.png'
 css = '/css/style.css'
 assert css
+
+@app.route('/robots.txt')
+@app.route('/sitemap.xml')
+def static_from_root():
+    return send_from_directory(app.static_folder, request.path[1:])
+
 
 @app.route('/shop')
 @app.route('/Shop')
@@ -147,6 +158,16 @@ def render_large_template(mycNet = None, itemType = None, items = None):
         else:
             # The replace on items is for more human readable name, might consider just renameing products
             items = {f"{itemType}": teks[itemType.replace('-', ' ')]}
+    
+    if (mycNet == "Identification"):
+        pageToRender = "mycoIdentification.html"
+        ids = getMycoNetIdentification()
+        if itemType == None:
+            items = ids
+        else:
+            # The replace on items is for more human readable name, might consider just renameing products
+            items = {f"{itemType}": ids[itemType.replace('-', ' ')]}
+    
     
     if (mycNet == "Equipment"):
         if itemType == None: itemType = keywords[0]

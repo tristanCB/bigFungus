@@ -1,0 +1,40 @@
+.pane .sourceIcon {
+    position: inherit;
+    margin-top: 3px;
+    height: 52px;
+    width: 110px;
+    margin-bottom: 32px;
+}
+#tektitle {
+    position: absolute;
+    width: 100%;
+    top: 31px;
+    text-align: center;
+    font-size: x-large;
+}
+#item {
+    text-align: center;
+}
+
+#shapeImage {
+    height: 200px;
+    padding: 20px;
+}
+
+#shapes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color:aliceblue;
+}
+#shapeName {
+    text-align: center;
+    margin-top: 0px;
+    width: 200px;
+}
+
+#shapeContainer {
+    background-color: white;
+    margin: 12px;
+    border-radius: 25px;
+}

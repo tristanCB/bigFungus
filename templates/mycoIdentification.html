@@ -1,8 +1,9 @@
 <!doctype html>
 {% include "header.html" %}
-
 <link rel="stylesheet" href="{{ url_for('static', filename='css/mycoNet.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/teks.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/identification.css') }}">
+
 
 <script src={{ url_for('static', filename='js/mycoNet.js') }}></script>
 <script src={{ url_for('static', filename='js/lazyBackground.js') }}></script>
@@ -12,17 +13,14 @@
     <div id="content">
         {% for item in items %}
             <div class="paneWrap" data="{{items[item]["item_type"]}}">
-                <a href="/Mushroom/Grow-Guides/{{item.replace(' ', '-')}}" alt="{{item}}">
+                <a href="/Mushroom/Identification/{{item.replace(' ', '-')}}" alt="{{item}}">
 
                     <div class="pane">
                             <img class="sourceIcon" src ="{{ url_for('static', filename=items[item]["website"]+'.png') }}" alt="Guide source icon"></img> 
-                            <p id="tektitle">{{item}}</p>
+                            <p id="tektitle">{{items[item]["item_title"]}}</p>
                             <img id="prodImageTek" class="tekDisplay" style="" src ="{{ url_for('static', filename=items[item]["img_href"]) }}" alt="Guide image"/>
-                            <div class="floaterPTek">
-                                <p class="priceTag">$ {{items[item]['price']}}</p>
-                            </div>
-                        <p class="itemDescription tek">{{items[item]['shortDesc']}}</p>
-                        <p class="dateTime">Expertise level: {{items[item]["level"]}}</p>
+                            <p id="item">{{item.replace('-', ' ')}}</p>
+                            <p class="dateTime">Division: {{items[item]["division"]|safe}}</p>
                     </div>
                 </a>
                
@@ -32,13 +30,15 @@
 </div>
 
 {% for item in items %}
-    <h1>{{item}}</h1>
-    <div id="affiliateLinks" alt="Amazon links to products"> 
-        {% for itemTek in items[item]['affiliateItems'] %}
-            {{itemTek|safe}}
-        {% endfor %}
+    <h1>{{item.replace('-', ' ')}}</h1>
+    <div id="shapes" alt="shapes"> 
+        {% for shape in items[item]['shapes'] %}
+            <div id="shapeContainer">
+                <img id="shapeImage" src="{{ url_for('static', filename='identification/'+ shape + '.png') }}"/>
+                <p id="shapeName">{{shape}}</p>
+            </div>
+            {% endfor %}
     </div>
-    <h2>{{items[item]["desc"]|safe}}</h2>
     <ol>
         {% for step in items[item]['steps'] %}
             <li>{{step|safe}}</li>
