@@ -2,16 +2,14 @@ def getMycoNetIdentification() -> dict:
     identification = {        
         "Small Fragile Gilled Mushroom" : {
             "shapes": [
-                "marasmii and inky caps",
-                "conocybes, psilocybes, mycenas, entolomas, and Witch's Hat",
-                "mycenas, collybias, nematolomas, psathyrellas, and the Velvet Foot",
-                "collybias, magnolia-cone mushroom, and others",
-                "Lichen Agaric, Chanterelle Waxy Cap, Small Chanterelle, and others",
-                "fiber heads, phaeocollybias, Fairy Ring Mushroom, and others",
-                "inky caps and others",
-                "collybias, Bluing Psilocybe, Deadly Conocybe, and others"
-                
-                
+                ("marasmii and inky caps", "marasmii and inky caps"),
+                ("conocybes, psilocybes, mycenas, entolomas, and Witch's Hat","conocybes, psilocybes, mycenas, entolomas, and Witch's Hat"),
+                ("mycenas, collybias, nematolomas, psathyrellas, and the Velvet Foot","mycenas, collybias, nematolomas, psathyrellas, and the Velvet Foot"),
+                ("collybias, magnolia-cone mushroom, and others","collybias, magnolia-cone mushroom, and others"),
+                ("Lichen Agaric, Chanterelle Waxy Cap, Small Chanterelle, and others","Lichen Agaric, Chanterelle Waxy Cap, Small Chanterelle, and others"),
+                ("fiber heads, phaeocollybias, Fairy Ring Mushroom, and others","fiber heads, phaeocollybias, Fairy Ring Mushroom, and others"),
+                ("inky caps and others","inky caps and others"),
+                ("collybias, Bluing Psilocybe, Deadly Conocybe, and others","collybias, Bluing Psilocybe, Deadly Conocybe, and others"),
             ],
             "desc": "From the National Audubon Society Field Guide to North America Mushrooms",
             "steps": [
@@ -28,9 +26,9 @@ def getMycoNetIdentification() -> dict:
         },
         "Veiled Mushrooms with Free Gills" : {
             "shapes": [
-                "volvariellas",
-                "amanitas",
-                "Death Cap and Destroying Angel",
+                ("volvariellas","volvariellas"),
+                ("amanitas","amanitas"),
+                ("Death Cap and Destroying Angel","Death Cap and Destroying Angel")
                 
                 
                 

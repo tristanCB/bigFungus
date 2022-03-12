@@ -34,8 +34,8 @@
     <div id="shapes" alt="shapes"> 
         {% for shape in items[item]['shapes'] %}
             <div id="shapeContainer">
-                <img id="shapeImage" src="{{ url_for('static', filename='identification/'+ shape + '.png') }}"/>
-                <p id="shapeName">{{shape}}</p>
+                <img id="shapeImage" src="{{ url_for('static', filename='identification/'+ shape[1] + '.png') }}"/>
+                <p id="shapeName">{{shape[0]}}</p>
             </div>
             {% endfor %}
     </div>
