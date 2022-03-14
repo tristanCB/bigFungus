@@ -28,10 +28,16 @@ def getMycoNetIdentification() -> dict:
             "shapes": [
                 ("volvariellas","volvariellas"),
                 ("amanitas","amanitas"),
-                ("Death Cap and Destroying Angel","Death Cap and Destroying Angel")
-                
-                
-                
+                ("Death Cap and Destroying Angel","Death Cap and Destroying Angel"),
+                ("amanitas","amanitas2"),
+                ("amanitas","amanitas3"),
+                ("amanitas","amanitas4"),
+                ("agarici, limacellas, and Smooth Lepiota","agarici, limacellas, and Smooth Lepiota"),
+                ("amanitas","amanitas5"),
+                ("agarici, amanitas, and Sharp-Scaled Lepiota","agarici, amanitas, and Sharp-Scaled Lepiota"),
+                ("agarici and lepiotas","agarici and lepiotas"),
+                ("stropharias, pholiotas, and Slimy-sheated Waxy Cap", "stropharias, pholiotas, and Slimy-sheated Waxy Cap"),
+                             
             ],
             "desc": "From the National Audubon Society Field Guide to North America Mushrooms",
             "steps": [

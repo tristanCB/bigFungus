@@ -154,7 +154,7 @@ def getMycoNetBuilds() -> dict:
             ],
             "desc": "This procedure will give you a step by step on how to make your own mushroom block and inoculate it with grain spawn to grown your own mushrooms, flow hood and autoclave strongly recommended",
             "steps": [
-                "Prepare the following items for 1 block (adjust for number of blocks): 1kg of MASTERs MIX, 1.1kg tap water, 1g of gypsum, 1g CaCO3, 1 mushroom bag, bulk grain spawn of choice",
+                "Prepare the following items for 1 block (adjust for number of blocks): 1kg of MASTERs MIX, 0.57kg tap water, 1g of gypsum, 1 mushroom bag, bulk grain spawn of choice",
                 "Put your 1kg of masters mix pellets in your mushroom bag.",
                 "Mix the gypsum and CaCO3 with your water to dissolve it",
                 "In one fast shot, dump all the water into the mushroom bag at the same time and immediately mix thoroughly . This will allow all the pellets to hydrate evenly",
