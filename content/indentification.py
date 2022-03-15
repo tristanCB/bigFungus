@@ -37,7 +37,7 @@ def getMycoNetIdentification() -> dict:
                 ("agarici, amanitas, and Sharp-Scaled Lepiota","agarici, amanitas, and Sharp-Scaled Lepiota"),
                 ("agarici and lepiotas","agarici and lepiotas"),
                 ("stropharias, pholiotas, and Slimy-sheated Waxy Cap", "stropharias, pholiotas, and Slimy-sheated Waxy Cap"),
-                             
+                
             ],
             "desc": "From the National Audubon Society Field Guide to North America Mushrooms",
             "steps": [
