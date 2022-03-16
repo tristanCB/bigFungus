@@ -37,7 +37,6 @@ def getMycoNetIdentification() -> dict:
                 ("agarici, amanitas, and Sharp-Scaled Lepiota","agarici, amanitas, and Sharp-Scaled Lepiota"),
                 ("agarici and lepiotas","agarici and lepiotas"),
                 ("stropharias, pholiotas, and Slimy-sheated Waxy Cap", "stropharias, pholiotas, and Slimy-sheated Waxy Cap"),
-                
             ],
             "desc": "From the National Audubon Society Field Guide to North America Mushrooms",
             "steps": [
@@ -48,7 +47,7 @@ def getMycoNetIdentification() -> dict:
             "item_type": "Veiled Mushrooms with Free Gills",
             "item_title": "Typical Shape",
 
-            "img_href": "identification/volvariellas.png",
+            "img_href": "identification/Veiled Mushrooms with Free Gills.png",
             "shortDesc": "Typical Shapes",
             "division": "<a href='https://en.wikipedia.org/wiki/Basidiomycota'>Basidiomycota</a>"
         }
