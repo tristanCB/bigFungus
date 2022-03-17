@@ -50,6 +50,25 @@ def getMycoNetIdentification() -> dict:
             "img_href": "identification/Veiled Mushrooms with Free Gills.png",
             "shortDesc": "Typical Shapes",
             "division": "<a href='https://en.wikipedia.org/wiki/Basidiomycota'>Basidiomycota</a>"
+        },
+        
+        "Mushrooms with Attached Gills" : {
+            "shapes": [
+                ("melanoleucas, entolomas, and Rooted Oudemansiella","melanoleucas, entolomas, and Rooted Oudemansiella"),
+                
+            ],
+            "desc": "From the National Audubon Society Field Guide to North America Mushrooms",
+            "steps": [
+
+            ],
+            
+            "website": "audubon",
+            "item_type": "Mushrooms with Attached Gills",
+            "item_title": "Typical Shape",
+
+            "img_href": "identification/Mushrooms with Attached Gills.png",
+            "shortDesc": "Typical Shapes",
+            "division": "<a href='https://en.wikipedia.org/wiki/Basidiomycota'>Basidiomycota</a>"
         }
     }
     return identification
