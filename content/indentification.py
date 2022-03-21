@@ -192,11 +192,13 @@ def getMycoNetIdentification() -> dict:
             "shortDesc": "Typical Shapes",
             "division": "<a href='https://en.wikipedia.org/wiki/Basidiomycota'>Basidiomycota</a>"
         },
-        "" : {
+        "Slimes, Jellies, and Crustlike Fungi" : {
             "shapes": [
-                ("",""),
-                ("",""),
-                ("",""),
+                ("slime molds and Cannon Fungus","slime molds and Cannon Fungus"),
+                ("slime molds and Spreading Yellow Tooth","slime molds and Spreading Yellow Tooth"),
+                ("jelly fungi","jelly fungi"),
+                ("cup fungi, crust fungi, and Silky Parchment","cup fungi, crust fungi, and Silky Parchment"),
+                ("parchement fungi, crust fungi, polypores, and others","parchement fungi, crust fungi, polypores, and others")
             ],
             "desc": "From the National Audubon Society Field Guide to North America Mushrooms",
             "steps": [
@@ -204,10 +206,93 @@ def getMycoNetIdentification() -> dict:
             ],
             
             "website": "audubon",
-            "item_type": "",
+            "item_type": "Slimes, Jellies, and Crustlike Fungi",
             "item_title": "Typical Shape",
 
-            "img_href": "identification/.png",
+            "img_href": "identification/Slimes, Jellies, and Crustlike Fungi.png",
+            "shortDesc": "Typical Shapes",
+            "division": "<a href='https://en.wikipedia.org/wiki/Basidiomycota'>Basidiomycota</a>"
+        },
+        "Cup-shaped Mushrooms and Bird's-nest Fungi" : {
+            "shapes": [
+                ("earth tongues, jelly fungi, and cup fungi","earth tongues, jelly fungi, and cup fungi"),
+                ("cup fungi and Blueberry Cup","cup fungi and Blueberry Cup"),
+                ("bird's-nest fungi","bird's-nest fungi"),
+            ],
+            "desc": "From the National Audubon Society Field Guide to North America Mushrooms",
+            "steps": [
+
+            ],
+            
+            "website": "audubon",
+            "item_type": "Cup-shaped Mushrooms and Bird's-nest Fungi",
+            "item_title": "Typical Shape",
+
+            "img_href": "identification/Cup-shaped Mushrooms and Bird's-nest Fungi.png",
+            "shortDesc": "Typical Shapes",
+            "division": "<a href='https://en.wikipedia.org/wiki/Basidiomycota'>Basidiomycota</a>"
+        },
+        "Puffballs, Earthstars, Amanita Buttons, and Others" : {
+            "shapes": [
+                ("puffballs, flask fungi, and Wolf's-milk Slime","puffballs, flask fungi, and Wolf's-milk Slime"),
+                ("gilled puffballs, Oregon White Truffle, and others","gilled puffballs, Oregon White Truffle, and others"),
+                ("Netted Rhodotus","Netted Rhodotus"),
+                ("amanita buttons and Gem-Studded Puffball","amanita buttons and Gem-Studded Puffball"),
+                ("earthstars and Pink Crown","earthstars and Pink Crown"),
+            ],
+            "desc": "From the National Audubon Society Field Guide to North America Mushrooms",
+            "steps": [
+
+            ],
+            
+            "website": "audubon",
+            "item_type": "Puffballs, Earthstars, Amanita Buttons, and Others",
+            "item_title": "Typical Shape",
+
+            "img_href": "identification/Puffballs, Earthstars, Amanita Buttons, and Others.png",
+            "shortDesc": "Typical Shapes",
+            "division": "<a href='https://en.wikipedia.org/wiki/Basidiomycota'>Basidiomycota</a>"
+        },
+        "Morels, Stinkhorns, and Other Club-shaped Mushrooms" : {
+            "shapes": [
+                ("earth tongues and Goldenthread Cordyceps","earth tongues and Goldenthread Cordyceps"),
+                ("cordyceps, corals, stinkhorns, and others","cordyceps, corals, stinkhorns, and others"),
+                ("stinkhorns","stinkhorns"),
+                ("inky caps and stinkhorns, and Smooth Thimble-cap","inky caps and stinkhorns, and Smooth Thimble-cap"),
+                ("morels","morels"),
+                ("false morels","false morels"),
+                ("helvellas and Saddle-shaped False Morel","helvellas and Saddle-shaped False Morel"),
+                ("earth tongues, jelly clubs, stalked puffballs, and others","earth tongues, jelly clubs, stalked puffballs, and others")
+            ],
+            "desc": "From the National Audubon Society Field Guide to North America Mushrooms",
+            "steps": [
+
+            ],
+            
+            "website": "audubon",
+            "item_type": "Morels, Stinkhorns, and Other Club-shaped Mushrooms",
+            "item_title": "Typical Shape",
+
+            "img_href": "identification/Morels, Stinkhorns, and Other Club-shaped Mushrooms.png",
+            "shortDesc": "Typical Shapes",
+            "division": "<a href='https://en.wikipedia.org/wiki/Basidiomycota'>Basidiomycota</a>"
+        },
+        "Coral-like Mushrooms" : {
+            "shapes": [
+                ("coral fungi and slime molds","coral fungi and slime molds"),
+                ("coral fungi, Yellow Tuning Fork, and others","coral fungi, Yellow Tuning Fork, and others"),
+                ("cauliflower mushrooms, Red Raspberry Slime, Stalked Cauliflower Fungus, and Jelly Leaf","cauliflower mushrooms, Red Raspberry Slime, Stalked Cauliflower Fungus, and Jelly Leaf"),
+            ],
+            "desc": "From the National Audubon Society Field Guide to North America Mushrooms",
+            "steps": [
+
+            ],
+            
+            "website": "audubon",
+            "item_type": "Coral-like Mushrooms",
+            "item_title": "Typical Shape",
+
+            "img_href": "identification/Coral-like Mushrooms.png",
             "shortDesc": "Typical Shapes",
             "division": "<a href='https://en.wikipedia.org/wiki/Basidiomycota'>Basidiomycota</a>"
         }
