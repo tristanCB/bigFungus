@@ -131,7 +131,7 @@ def getMycoNetIdentification() -> dict:
             "shortDesc": "Typical Shapes",
             "division": "<a href='https://en.wikipedia.org/wiki/Basidiomycota'>Basidiomycota</a>"
         },
-        "chanterelles and Other Vase-shaped Mushrooms" : {
+        "chanterelles and Other Vase shaped Mushrooms" : {
             "shapes": [
                 ("chanterelles, lentinelli, Jack O'Lantern, and others","chanterelles, lentinelli, Jack O'Lantern, and others"),
                 ("chanterelles, thelephores, Apricot Jelly, and others","chanterelles, thelephores, Apricot Jelly, and others"),
@@ -213,7 +213,7 @@ def getMycoNetIdentification() -> dict:
             "shortDesc": "Typical Shapes",
             "division": "<a href='https://en.wikipedia.org/wiki/Basidiomycota'>Basidiomycota</a>"
         },
-        "Cup-shaped Mushrooms and Bird's-nest Fungi" : {
+        "Cup shaped Mushrooms and Bird's nest Fungi" : {
             "shapes": [
                 ("earth tongues, jelly fungi, and cup fungi","earth tongues, jelly fungi, and cup fungi"),
                 ("cup fungi and Blueberry Cup","cup fungi and Blueberry Cup"),
@@ -253,7 +253,7 @@ def getMycoNetIdentification() -> dict:
             "shortDesc": "Typical Shapes",
             "division": "<a href='https://en.wikipedia.org/wiki/Basidiomycota'>Basidiomycota</a>"
         },
-        "Morels, Stinkhorns, and Other Club-shaped Mushrooms" : {
+        "Morels, Stinkhorns, and Other Club shaped Mushrooms" : {
             "shapes": [
                 ("earth tongues and Goldenthread Cordyceps","earth tongues and Goldenthread Cordyceps"),
                 ("cordyceps, corals, stinkhorns, and others","cordyceps, corals, stinkhorns, and others"),
@@ -277,7 +277,7 @@ def getMycoNetIdentification() -> dict:
             "shortDesc": "Typical Shapes",
             "division": "<a href='https://en.wikipedia.org/wiki/Basidiomycota'>Basidiomycota</a>"
         },
-        "Coral-like Mushrooms" : {
+        "Coral like Mushrooms" : {
             "shapes": [
                 ("coral fungi and slime molds","coral fungi and slime molds"),
                 ("coral fungi, Yellow Tuning Fork, and others","coral fungi, Yellow Tuning Fork, and others"),

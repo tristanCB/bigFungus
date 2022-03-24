@@ -24,6 +24,7 @@ from content.products import getProducts
 from content.techniques import getMycoNetBuilds
 from content.indentification import getMycoNetIdentification
 from content.shipping import getShippingOptionsStripe
+from content.seo import getMeta, getPages
 
 # import logging 
 
@@ -48,11 +49,10 @@ import model
 #     return r
 
 keywords    = ["Steam Sterilizer", "Impulse sealer", "Mushroom bag", "Petri dish", "Isopropyl", "Hepa filter", "Humidifier"]
-pages       = ["Myco-NET", "Shop"]
 
 distribution_ammounts = [1, 2, 3, 4, 5]
 
-# Theaming
+# Theming
 logo_txt = 'big_fungus.png'
 css = '/css/style.css'
 assert css
@@ -62,10 +62,9 @@ assert css
 def static_from_root():
     return send_from_directory(app.static_folder, request.path[1:])
 
-
 @app.route('/shop')
 @app.route('/Shop')
-def format():    
+def shop():    
     return render_template(
         'index.html', 
         distribution_ammounts=distribution_ammounts, 
@@ -73,7 +72,8 @@ def format():
         css=css,
         splash=False,
         logo_txt=logo_txt,
-        pages=pages,
+        pages=getPages(),
+        seo=getMeta()
     )
 
 @app.route('/Home')
@@ -84,7 +84,8 @@ def splash():
     return render_template(
         'home.html',
         logo_txt=logo_txt,
-        pages=pages,
+        pages=getPages(),
+        seo=getMeta()
     )
 
 def stream_template(template_name, **context):
@@ -139,6 +140,10 @@ def vote(mycNet = None, itemType=None):
 def handle_redirect():
     return redirect('/Mushroom/Grow-Guides')
 
+@app.route('/Myco-NET/GrowGuides/Grain Spawn')
+def handle_dead_name_redirect():
+    return redirect('/Mushroom/Grow-Guides/Seed Spawn')
+
 @app.route('/', methods=['GET'])
 @app.route('/Myco-NET/')
 @app.route('/Myco-NET/<mycNet>')
@@ -168,7 +173,6 @@ def render_large_template(mycNet = None, itemType = None, items = None):
             # The replace on items is for more human readable name, might consider just renameing products
             items = {f"{itemType}": ids[itemType.replace('-', ' ')]}
     
-    
     if (mycNet == "Equipment"):
         if itemType == None: itemType = keywords[0]
         print(type(model.Autocalves.query))
@@ -184,13 +188,21 @@ def render_large_template(mycNet = None, itemType = None, items = None):
         items = model.Recipes.query.order_by(model.Recipes.rating.desc()).all()
         
     print(mycNet)
-    return render_template(pageToRender, items=items, logo_txt=logo_txt,
-        pages=pages, mycNet=mycNet, keywords=keywords, itemType=itemType)
+    return render_template(
+            pageToRender, 
+            items=items, 
+            logo_txt=logo_txt,
+            pages=getPages(),
+            mycNet=mycNet, 
+            keywords=keywords, 
+            itemType=itemType,
+            seo=getMeta()
+        )
 
 @app.route('/add/<code>/<quantity>', methods=['POST'])
 def add_product_to_cart(code = None, quantity = None):
     print(code, quantity)
-    return redirect(url_for('format', page="shop"))
+    return redirect(url_for('shop', page="shop"))
 
 # Should add a thank you for ordering page, your order is being prepared when payment confirmed
 YOUR_DOMAIN = 'https://bigfungus.ca'

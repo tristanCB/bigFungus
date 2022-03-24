@@ -18,7 +18,7 @@
                     <div class="pane">
                             <img class="sourceIcon" src ="{{ url_for('static', filename=items[item]["website"]+'.png') }}" alt="Guide source icon"></img> 
                             <img id="prodImageTek" class="tekDisplay" style="" src ="{{ url_for('static', filename=items[item]["img_href"]) }}" alt="Guide image"/>
-                            <p id="item">{{item.replace('-', ' ')}}</p>
+                            <p id="item">{{items[item]["item_type"]}}</p>
                             <p class="dateTime">Division: {{items[item]["division"]|safe}}</p>
                     </div>
                 </a>
