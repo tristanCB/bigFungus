@@ -132,29 +132,21 @@ def vote(mycNet = None, itemType=None):
         db.session.commit()
         return redirect(f'/Myco-NET/{mycNet}/{itemType}')
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 @app.route('/Myco-NET')
 @app.route('/Myco-NET/')
 @app.route('/Mushroom')
 @app.route('/Mushroom/')
-def handle_redirect():
-    return redirect('/Mushroom/Grow-Guides')
-
-@app.route('/Myco-NET/GrowGuides/Grain Spawn')
-def handle_dead_name_redirect():
-    return redirect('/Mushroom/Grow-Guides/Seed Spawn')
-
-@app.route('/', methods=['GET'])
-@app.route('/Myco-NET/')
 @app.route('/Myco-NET/<mycNet>')
 @app.route('/Myco-NET/<mycNet>/<itemType>')
+def handle_redirect(mycNet = None, itemType = None):
+    return redirect('/Mushroom/Grow-Guides')
+
 @app.route('/Mushroom/')
 @app.route('/Mushroom/<mycNet>')
 @app.route('/Mushroom/<mycNet>/<itemType>')
 def render_large_template(mycNet = None, itemType = None, items = None):
     pageToRender = 'myco-net-beta.html'
-    print("-------")
-    print(mycNet)
     if (mycNet == "GrowGuides" or mycNet == "Grow-Guides"):
         pageToRender = "mycoGrowingGuides.html"
         teks = getMycoNetBuilds()
