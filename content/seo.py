@@ -1,5 +1,5 @@
 meta = {
-        "Myco-NET": {
+        "Guides": {
             "Grow-Guides": {
                 "title": "Mushroom growing: Collective knowledge for growing mushrooms",
                 "description" : "Growing mushrooms can be tricky. BigFungus provides you with all the necessary information needed to grow mushrooms indoor and outdoors. Whether you are searching for beginner techniques, obscure teks or anything of the like, bigfungus provides you with vetted protocols and established experience to grow your very own mushrooms at home."

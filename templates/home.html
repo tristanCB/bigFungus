@@ -1,8 +1,15 @@
 <!doctype html>
 {% include "header.html" %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
 
 <body>
-    <div id="logo">
-        <img id="logo-gif" src="{{url_for('static', filename="logo.gif")}}" align="middle" alt="logo-gif"/>
+    <div id="Lander-container row">
+        <div class="column">
+            <p id="sub-header">Mushroom Growing</p>
+            <h1 id="siteMessege">Growing mushrooms can be tricky. BigFungus provides you with all the necessary information needed to grow mushrooms indoor and outdoors</h1>
+        </div>
+        <div class="column">
+            <img id="Lander-Img" src="{{url_for('static', filename="sideGrape.png")}}" alt="logo"/>
+        </div>
     </div>
 </body>

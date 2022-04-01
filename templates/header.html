@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 
 {% if mycNet is defined %}
-    {% set description = seo["Myco-NET"][mycNet]["description"]%}
-    {% set title = seo["Myco-NET"][mycNet]["title"]%}
+    {% set description = seo["Guides"][mycNet]["description"]%}
+    {% set title = seo["Guides"][mycNet]["title"]%}
 
     {% if mycNet == "Grow-Guides" and itemType != none%}
         {% set description = items[itemType]["desc"]%}
@@ -57,7 +57,7 @@
             <img id="txt_logo" src="{{url_for('static', filename=logo_txt)}}" alt="home"/>
         </a>
         {% for page in pages %}
-        {% if page == "Myco-NET" %}             
+        {% if page == "Guides" %}             
             <a id="menuItem" href="/Mushroom" alt="{{page}}">{{page}}</a>
         {% else %}
             <a id="menuItem" href="/{{page}}" alt="{{page}}">{{page}}</a>

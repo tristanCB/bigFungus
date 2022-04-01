@@ -53,7 +53,7 @@ keywords    = ["Steam Sterilizer", "Impulse sealer", "Mushroom bag", "Petri dish
 distribution_ammounts = [1, 2, 3, 4, 5]
 
 # Theming
-logo_txt = 'big_fungus.png'
+logo_txt = 'logoCircle.png'
 css = '/css/style.css'
 assert css
 
@@ -133,6 +133,7 @@ def vote(mycNet = None, itemType=None):
         return redirect(f'/Myco-NET/{mycNet}/{itemType}')
 
 @app.route('/', methods=['GET'])
+@app.route('/Guides')
 @app.route('/Myco-NET')
 @app.route('/Myco-NET/')
 @app.route('/Mushroom')

@@ -2,8 +2,7 @@
   display: flex;
 }
 #menuItem img{
-  height: 18px ;
-  width: 164px ;
+  height: 53px ;
 }
 
 .topnav {
@@ -14,17 +13,6 @@
   width: 100%;
   flex-wrap: wrap;
   align-items: center
-}
-.logo {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  background-color: rgba(226, 219, 200, 1);
-  text-align: center;
-}
-.logo img {
-  max-width:185px;
-  width: auto;
-  height: auto;
 }
 
 .products{
@@ -254,11 +242,6 @@
 .topnav a.active {
   background-color: rgba(1, 19, 33, 1);
   color: white;
-}
-
-#logo {
-  width: 100%;
-  text-align:center;
 }
 
 html,body
