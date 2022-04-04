@@ -6,7 +6,8 @@
         "markdown",
         "latex",
         "plaintext",
-        "python"
+        "python",
+        "django-html"
     ],
     "spellright.parserByClass": {
         "django-html": {

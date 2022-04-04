@@ -1,15 +1,29 @@
 <!doctype html>
 {% include "header.html" %}
+<style>
+</style>
+
 <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
 
 <body>
-    <div id="Lander-container row">
-        <div class="column">
-            <p id="sub-header">Mushroom Growing</p>
-            <h1 id="siteMessege">Growing mushrooms can be tricky. BigFungus provides you with all the necessary information needed to grow mushrooms indoor and outdoors</h1>
+    <div id="homeRow">
+        <div id="Lander-container row">
+            <div class="column">
+                <p id="sub-header">Mushroom Growing</p>
+                <h1 id="siteMessege">Organic mushroom farming made simple.</h1>
+                <!-- <p id="missionStatement">BigFungus valorizes various feedstocks to produce high quality edible Mushrooms. Our Consulting service, free online guides and shop will suit mushroom productions of all stages.</p> --> 
+                <p id="missionStatement">Big Fungus valorizes various feedstocks to produce high quality edible mushrooms. Our
+                    consulting service, free online guides and shop will suit mushroom enthusiasts from hobbyists to producers.</p> 
+
+                <a id="mailTo" href="mailto:bigfungus.ca@gmail.com" alt="Link to email">Contact Us</a>
+            </div>
+            <div class="column R">
+                <img id="Lander-Img" src="{{url_for('static', filename="crossSection.png")}}" alt="logo"/>
+            </div>
         </div>
-        <div class="column">
-            <img id="Lander-Img" src="{{url_for('static', filename="sideGrape.png")}}" alt="logo"/>
+        <div id="secondRow">
+            <!-- <img id="fieldID" src="{{url_for('static', filename="background.png")}}" alt="field id guide picture"/>  -->
+            <!-- <p>Learn How to Identify Mushrooms</p> -->
         </div>
     </div>
 </body>

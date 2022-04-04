@@ -53,7 +53,7 @@ keywords    = ["Steam Sterilizer", "Impulse sealer", "Mushroom bag", "Petri dish
 distribution_ammounts = [1, 2, 3, 4, 5]
 
 # Theming
-logo_txt = 'logoCircle.png'
+logo_txt = 'big_fungus.png'
 css = '/css/style.css'
 assert css
 

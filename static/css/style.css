@@ -2,7 +2,6 @@
   display: flex;
 }
 #menuItem img{
-  height: 53px ;
 }
 
 .topnav {
@@ -228,6 +227,9 @@
 .ffm {
   width: 66px;
   display: contents;
+}
+.ffm p {
+  margin-right: 20px;
 }
 
 .txt_logo {

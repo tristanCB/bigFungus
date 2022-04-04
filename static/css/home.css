@@ -1,43 +1,96 @@
+h1, p {
+  overflow-wrap: break-word;
+}
 #logo {
-    padding: 20px;
-    width: 200px;
-    height: 240px;
-    text-align:left;
-  }
-
+  padding: 20px;
+  width: 200px;
+  height: 240px;
+  text-align:left;
+}
+#homeRow {
+  display: grid;
+  justify-items: center;
+}
 #Lander-Img {
- 
+  float: right;
+  padding-top: 34px;
+  width: 80%;
 }
 #sub-header {
-    color: #431313;
-    font-size: 18px;
-    line-height: 27px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 20px;
-    padding-top:0px;
-    padding-bottom:0px;
-    margin-bottom: 0px;
+  color: #431313;
+  font-size: 18px;
+  line-height: 27px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 66px;
+  padding-top: 17px;
+  padding-bottom: 12px;
+  margin-bottom: 0px;
 }
 #siteMessege {
-    margin-top: 8px;
-    margin-bottom: 0px;
-    color: #394141;
-    font-size: 55px;
-    line-height: 64px;
-    font-weight: 800;
-    letter-spacing: 1px;
-    padding: 20px;
-    padding-top:0px;
+  margin-top: 8px;
+  margin-bottom: 0px;
+  color: #394141;
+  font-size: 55px;
+  line-height: 64px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  padding: 75px;
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 .column {
-    float: left;
-    width: 50%;
-  }
-  
-  /* Clear floats after the columns */
+  float: left;
+  width: 60%;
+}
 .row:after {
-    content: "";
-    display: table;
-    clear: both;
+  content: "";
+  display: table;
+  clear: both;
+}
+#missionStatement {
+  display: block;
+  margin-top: 32px;
+  margin-bottom: 0px;
+  font-family: 'Nunito Sans', sans-serif;
+  color: #394141;
+  font-size: 18px;
+  line-height: 27px;
+  letter-spacing: 0.5px;
+  padding-left: 78px;
+}
+.R {
+  width:40%;
+}
+#mailTo {
+  position: relative;
+  top: auto;
+  bottom: 0px;
+  display: inline-block;
+  height: auto;
+  margin-top: 64px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  background-color: #302b28;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  width: 204px;
+  border-radius: 45px;
+  align-items: center;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  margin-left: 78px;
+  color: white;
+}
+
+@media (max-width:900px) {
+  .R {
+    width:100%;
+  }
+  .column {
+    width: 100%;
+  }
 }
