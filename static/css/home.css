@@ -1,4 +1,4 @@
-h1, p {
+h1, p, div {
   overflow-wrap: break-word;
 }
 #logo {
@@ -86,11 +86,46 @@ h1, p {
   color: white;
 }
 
-@media (max-width:900px) {
+@media only screen and (max-width: 768px) {
   .R {
     width:100%;
   }
   .column {
     width: 100%;
+  }
+  #siteMessege {
+    margin-top: 8px;
+    margin-bottom: 0px;
+    color: #394141;
+    font-size: 24px;
+    line-height: 27px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    padding: 29px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+  #missionStatement {
+    display: block;
+    margin-bottom: 0px;
+    font-family: 'Nunito Sans', sans-serif;
+    color: #394141;
+    font-size: 18px;
+    line-height: 27px;
+    letter-spacing: 0.5px;
+    padding: 27px;
+    padding-top: 0px;
+    overflow-wrap: break-word;
+  }
+  #sub-header {
+    color: #431313;
+    font-size: 16px;
+    line-height: 27px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 29px;
+    padding-top: 17px;
+    padding-bottom: 12px;
+    margin-bottom: 0px;
   }
 }
