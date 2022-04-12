@@ -3,12 +3,22 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/mycoNet.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/teks.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/identification.css') }}">
-
+<link rel="stylesheet" href="{{ url_for('static', filename='css/headerPane.css') }}">
 
 <script src={{ url_for('static', filename='js/mycoNet.js') }}></script>
 <script src={{ url_for('static', filename='js/lazyBackground.js') }}></script>
 
 {% include "mycoNetNav.html" %}
+<div id="headerPane" class="row">
+    <div class="col-1">
+        <img id="headerTile" src="{{ url_for('static', filename='tileDesktopID.png') }}" alt="Example of a mushroom to Identify"></img> 
+    </div>
+    <div class="col-2">
+        <h1>Learn How to Identify Any Mushroom in the Wild.</h1>
+        <h3>Identifying Mushrooms in the wild can be tricky. The following shapes can be used to narrow things down. These icons are reproductions from various sources.</h3>
+        <p>Always be careful and respectful of the flora when gathering. Some mushrooms are poisonous, all depictions shown here come with no data on edibility. These images are only intended for identifications as they relate to observing biodiversity and nothing else. As an old saying goes: There are old mycologist, and a bold mycologist, but there are no old bold mycologist.</p>
+    </div>
+</div>
 <div class="contentPanel">
     <div id="content">
         {% for item in items %}

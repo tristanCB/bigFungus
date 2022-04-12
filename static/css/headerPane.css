@@ -1,0 +1,44 @@
+#headerTile {
+    margin-top: 18px;
+}
+#headerPane {
+    background-color: #E5E5E5;
+    margin-bottom: 21px;
+    padding: 25px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.col-1 {
+    float: left;
+    width: 478px;
+}
+.col-2 {
+    float: left;
+    width: 55%;
+}
+  
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+#headerPane h1 {
+    width: 100%;
+    text-align: left;
+    background-color: transparent;
+    font-style: italic;
+    padding: 0px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+@media only screen and (max-width: 768px) { 
+    .col-1 {
+        width: 100%;
+    }
+    .col-2 {
+        width: 100%;
+    }
+}
