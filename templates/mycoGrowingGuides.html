@@ -18,8 +18,9 @@
                             <img class="sourceIcon" src ="{{ url_for('static', filename=items[item]["website"]+'.png') }}" alt="Guide source icon"></img> 
                             <p id="tektitle">{{item}}</p>
                             <img id="prodImageTek" class="tekDisplay" style="" src ="{{ url_for('static', filename=items[item]["img_href"]) }}" alt="Guide image"/>
+
                             <div class="floaterPTek">
-                                <p class="priceTag">$ {{items[item]['price']}}</p>
+                                <p class="priceTag">Material & Setup <br>{{items[item]['price']}}</p>
                             </div>
                         <p class="itemDescription tek">{{items[item]['shortDesc']}}</p>
                         <p class="dateTime">Expertise level: {{items[item]["level"]}}</p>
