@@ -46,7 +46,7 @@ class AcumaticaOdata():
         items = self.getStockItems()
         stockItems = {}
         
-        for item in  items:
+        for item in items:
             itemAttributes = {}
             for atrib in attributes:
                 if item['NoteID'] == atrib['RefNoteID']:
