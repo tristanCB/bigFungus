@@ -36,15 +36,13 @@ class AcumaticaOdata():
                 print("Connected to MySQL Server version ", db_Info)
         except Error as e:
             print("Error while connecting to MySQL", e)
-        self.getImageFromDatabase()
         
-    def getImageFromDatabase(self, fileId='b33c365a-0651-4889-af52-6d08249af45d'):
+    def getImageFromDatabase(self, fileName, fileId='b33c365a-0651-4889-af52-6d08249af45d'):
         mycursor = self.connection.cursor()
         mycursor.execute(f"SELECT * FROM uploadfilerevision where FileID = '{fileId}'")
         myresult = mycursor.fetchone()
-        print(myresult[3])
         #Save Image
-        with open("./static/fetchedImages/test.jpg", "wb") as fh:
+        with open(f"./static/product_images/{fileName}.png", "wb") as fh:
             fh.write(myresult[3])
     
     def get(self, endpt= "CSAnswers"):
@@ -75,6 +73,7 @@ class AcumaticaOdata():
             for file in files:
                 if self.getInvCDfromName(file['Name']) == item['InventoryCD']:
                     itemAttributes["FileID"] = file['FileID']
+                    self.getImageFromDatabase(item['InventoryCD'], fileId= file['FileID'])
                     pass                    
             stockItems[item["InventoryCD"]] = itemAttributes
             
