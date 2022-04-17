@@ -53,7 +53,7 @@ class AcumaticaOdata():
             self.DBPASS = os.environ["DBPASS"]
 
             self.connection = mysql.connector.connect(host = self.DBENDPOINT,
-                                                database = self.DBNAME =,
+                                                database = self.DBNAME,
                                                 user = self.DBPASS ,
                                                 password = self.DBPASS)
             if self.connection.is_connected():
@@ -109,7 +109,7 @@ class AcumaticaOdata():
             product.description = itemAttributes['SHORTDESC']
         if 'DESCRIPTIO' in keys:
             product.description2 = itemAttributes['DESCRIPTIO']
-
+        print(product.key['TITLEDESC'])
         return dict(product)
 
     def getItemWithAttributes(self):
