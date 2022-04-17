@@ -3,6 +3,8 @@
 
 # Uses an acumatica stock item as a shop item in an e-commerce website
 from lib2to3.pytree import convert
+from tokenize import String
+from unicodedata import decimal
 from aiohttp import request
 from grpc import StatusCode
 import requests
@@ -18,19 +20,42 @@ import requests
 import json
 import shutil
 
+class prodDict():
+    def __init__(self):
+        self.name               = str()
+        self.alt_name           = str()
+        self.price              = 0.00
+        self.price_code         = str()
+        self.uom                = 'unit'
+        self.image_url          = str()
+        self.image_url_desc     = str()
+        self.title_description  = str()
+        self.description        = str()
+        self.description2       = str()
+        
+    def __iter__(self):
+        # For converting to dict:
+        # https://stackoverflow.com/questions/61517/python-dictionary-from-an-objects-fields
+        iters = dict((x,y) for x,y in self.__dict__.items() if x[:2] != '__')
+        iters.update(self.__dict__)
+        for x,y in iters.items():
+            yield x,y
+
 class AcumaticaOdata():
     def __init__(self) -> None:
         self.COMPANY = 'Company'
-        self.DBENDPOINT = os.environ["DBENDPOINT"]
+        self.DBNAME = 'acumaticadb'
         self.BASEENDPT = os.environ["ACUMATICAENDPT"]
-        self.DBPASS = os.environ["DBPASS"]
         self.SERVICE_URL = f'{self.BASEENDPT}/odatav4/{self.COMPANY}/'
         self.GETFILE = f"{self.BASEENDPT}/Frames/GetFile.ashx?fileID="
         try:
-            self.connection = mysql.connector.connect(host=self.DBENDPOINT,
-                                                database='acumaticadb',
-                                                user=self.DBPASS ,
-                                                password=self.DBPASS)
+            self.DBENDPOINT = os.environ["DBENDPOINT"]
+            self.DBPASS = os.environ["DBPASS"]
+
+            self.connection = mysql.connector.connect(host = self.DBENDPOINT,
+                                                database = self.DBNAME =,
+                                                user = self.DBPASS ,
+                                                password = self.DBPASS)
             if self.connection.is_connected():
                 db_Info = self.connection.get_server_info()
                 print("Connected to MySQL Server version ", db_Info)
@@ -41,9 +66,11 @@ class AcumaticaOdata():
         mycursor = self.connection.cursor()
         mycursor.execute(f"SELECT * FROM uploadfilerevision where FileID = '{fileId}'")
         myresult = mycursor.fetchone()
+        filePath = f"./static/product_images/{fileName}.png"
         #Save Image
-        with open(f"./static/product_images/{fileName}.png", "wb") as fh:
+        with open(filePath, "wb") as fh:
             fh.write(myresult[3])
+        return filePath
     
     def get(self, endpt= "CSAnswers"):
         r=requests.get(self.SERVICE_URL+endpt, auth=('admin', os.environ["ACUMATICAPWD"]), verify=False)
@@ -58,11 +85,38 @@ class AcumaticaOdata():
 
     def getInvCDfromName(self, string : str) -> str:
         return string.split("(")[1].split(")")[0]
+    
+    def buildProductFromAttributes(self, itemAttributes : dict):
+        product = prodDict()
+        keys = itemAttributes.keys()
+        if 'NAME' in keys:
+            product.name = itemAttributes['NAME']
+        if 'ALTNAME' in keys:
+            product.alt_name  = itemAttributes['ALTNAME']
+        if 'PRICE' in keys:
+            product.price = itemAttributes['PRICE']
+        if 'PRICECODE' in keys:
+            product.price_code = itemAttributes['PRICECODE']
+        if 'UOM' in keys:
+            product.uom = itemAttributes['UOM']
+        if 'image_url' in keys:
+            product.image_url = itemAttributes['image_url']
+        if 'IMAGEURLDE' in keys:
+            product.image_url_desc = itemAttributes['IMAGEURLDE']
+        if 'TITLEDESC' in keys:
+            product.title_description = itemAttributes['TITLEDESC']
+        if 'SHORTDESC' in keys:
+            product.description = itemAttributes['SHORTDESC']
+        if 'DESCRIPTIO' in keys:
+            product.description2 = itemAttributes['DESCRIPTIO']
+
+        return dict(product)
 
     def getItemWithAttributes(self):
         attributes = self.get()
         files = self.getInvFiles()
         items = self.getStockItems()
+        products = []
         stockItems = {}
         
         for item in items:
@@ -73,60 +127,14 @@ class AcumaticaOdata():
             for file in files:
                 if self.getInvCDfromName(file['Name']) == item['InventoryCD']:
                     itemAttributes["FileID"] = file['FileID']
-                    self.getImageFromDatabase(item['InventoryCD'], fileId= file['FileID'])
-                    pass                    
-            stockItems[item["InventoryCD"]] = itemAttributes
-            
-        return stockItems
-
-# pp.pprint(AcumaticaOdata().getStockItems())
-# %%
-# print('Stock Items (GYPSUM    )\\gypsum.jpg'
-# %%
-pp.pprint(AcumaticaOdata().getItemWithAttributes())
-
-# pp.pprint(AcumaticaOdata().get(endpt="InventoryItem"))
-# pp.pprint(AcumaticaOdata().getInvFiles())
-# exit()
-# stock = AcumaticaOdata().getItemWithAttributes()
-# pp.pprint(stock)
-exit()
-# %%
-acumaticaEndpoint = os.environ["ACUMATICAENDPT"]
-acumaticaPWD = os.environ["ACUMATICAPWD"]
-
-class acumaticaApi():
-    creds = {
-        "name" : "admin",
-        "password" : acumaticaPWD,
-        "company" : "Company",
-        "branch" : "BigFungus",
-        "locale" : "en-US"
-    }    
-    def getStockItem(self):
-        urlForGettingStock = acumaticaEndpoint + "/entity/Default/20.200.001/StockItem?$expand=Attributes"
-        return requests.get(urlForGettingStock, cookies=self.login.cookies, headers=self.login.cookies)
-
-    def __init__(self) -> None:
-        self.login = requests.post(f'{acumaticaEndpoint}/entity/auth/login', self.creds)
-        print(self.login)
-        print(self.login.content)
-        #assert self.login.status_code == StatusCode.OUT_OF_RANGE
-        pass
+                    itemAttributes["image_url"] = self.getImageFromDatabase(item['InventoryCD'], fileId= file['FileID'])
+                    pass
+            if itemAttributes != {}:
+                stockItems[item["InventoryCD"]] = itemAttributes
+                if itemAttributes['ISECOM'] == '1':
+                    product = self.buildProductFromAttributes(itemAttributes)
+                    products.append(product)
+        return products
     
-    def __enter__(self):
-        return self
-    
-    def __exit__(self, type, value, traceback):
-        #Exception handling here
-        logout = requests.post(f'{acumaticaEndpoint}/entity/auth/logout', self.creds)
-        #assert logout.status_code == StatusCode.OUT_OF_RANGE
-
-# %%
-from ast import literal_eval
-import codecs
-acumaticaAp = acumaticaApi()
-with acumaticaAp as a:
-    stockItems =  literal_eval(codecs.decode(a.getStockItem().content, 'UTF-8'))
-pp.pprint(stockItems)
-
+if __name__ == "__main__":
+    pp.pprint(AcumaticaOdata().getItemWithAttributes())
