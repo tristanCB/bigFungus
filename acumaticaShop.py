@@ -88,20 +88,21 @@ class AcumaticaOdata():
     
     def buildProductFromAttributes(self, itemAttributes : dict):
         product = prodDict()
-        oneToOneMapping = {'NAME':'name', 
-                           'ALTNAME':'alt_name',
-                           'PRICE':'price',
-                           'PRICECODE':'price_code',
-                           'UOM':'uom',
-                           'image_url':'image_url',
-                           'IMAGEURLDE':'image_url_desc',
-                           'TITLEDESC':'title_description',
-                           'SHORTDESC':'description',
-                           'DESCRIPTIO':'description2',
-                           }
+        oneToOneMapping = {
+            'NAME':'name', 
+            'ALTNAME':'alt_name',
+            'PRICE':'price',
+            'PRICECODE':'price_code',
+            'UOM':'uom',
+            'image_url':'image_url',
+            'IMAGEURLDE':'image_url_desc',
+            'TITLEDESC':'title_description',
+            'SHORTDESC':'description',
+            'DESCRIPTIO':'description2',
+        }
         for key in oneToOneMapping:
             if key in itemAttributes:
-                print(key, oneToOneMapping[key])
+                # print(key, oneToOneMapping[key])
                 setattr(product, oneToOneMapping[key], itemAttributes[key])
         
         return dict(product)
