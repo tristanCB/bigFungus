@@ -88,28 +88,22 @@ class AcumaticaOdata():
     
     def buildProductFromAttributes(self, itemAttributes : dict):
         product = prodDict()
-        keys = itemAttributes.keys()
-        if 'NAME' in keys:
-            product.name = itemAttributes['NAME']
-        if 'ALTNAME' in keys:
-            product.alt_name  = itemAttributes['ALTNAME']
-        if 'PRICE' in keys:
-            product.price = itemAttributes['PRICE']
-        if 'PRICECODE' in keys:
-            product.price_code = itemAttributes['PRICECODE']
-        if 'UOM' in keys:
-            product.uom = itemAttributes['UOM']
-        if 'image_url' in keys:
-            product.image_url = itemAttributes['image_url']
-        if 'IMAGEURLDE' in keys:
-            product.image_url_desc = itemAttributes['IMAGEURLDE']
-        if 'TITLEDESC' in keys:
-            product.title_description = itemAttributes['TITLEDESC']
-        if 'SHORTDESC' in keys:
-            product.description = itemAttributes['SHORTDESC']
-        if 'DESCRIPTIO' in keys:
-            product.description2 = itemAttributes['DESCRIPTIO']
-        print(product.key['TITLEDESC'])
+        oneToOneMapping = {'NAME':'name', 
+                           'ALTNAME':'alt_name',
+                           'PRICE':'price',
+                           'PRICECODE':'price_code',
+                           'UOM':'uom',
+                           'image_url':'image_url',
+                           'IMAGEURLDE':'image_url_desc',
+                           'TITLEDESC':'title_description',
+                           'SHORTDESC':'description',
+                           'DESCRIPTIO':'description2',
+                           }
+        for key in oneToOneMapping:
+            if key in itemAttributes:
+                print(key, oneToOneMapping[key])
+                setattr(product, oneToOneMapping[key], itemAttributes[key])
+        
         return dict(product)
 
     def getItemWithAttributes(self):
