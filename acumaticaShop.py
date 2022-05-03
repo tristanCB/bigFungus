@@ -63,13 +63,17 @@ class AcumaticaOdata():
             print("Error while connecting to MySQL", e)
         
     def getImageFromDatabase(self, fileName, fileId='b33c365a-0651-4889-af52-6d08249af45d'):
-        mycursor = self.connection.cursor()
+        self.connection.reconnect()
+        mycursor = self.connection.cursor(buffered=True)
         mycursor.execute(f"SELECT * FROM uploadfilerevision where FileID = '{fileId}'")
         myresult = mycursor.fetchone()
-        filePath = f"./static/product_images/{fileName}.png"
+        base = './static'
+        filePath = f'/product_images/{fileName}.png'
         #Save Image
-        with open(filePath, "wb") as fh:
+        with open(base + filePath, "wb") as fh:
             fh.write(myresult[3])
+        mycursor.close()
+        self.connection.close()
         return filePath
     
     def get(self, endpt= "CSAnswers"):
@@ -79,6 +83,9 @@ class AcumaticaOdata():
     
     def getInvFiles(self):
         return self.get(endpt="File?$filter=PrimaryScreenID eq 'IN2025PL'")
+    
+    def getInvFilesDetailed(self):
+        return self.get(endpt="File?$filter=PrimaryScreenID eq 'IN202500'")
     
     def getStockItems(self):
         return self.get(endpt="InventoryItem")
@@ -109,26 +116,42 @@ class AcumaticaOdata():
 
     def getItemWithAttributes(self):
         attributes = self.get()
-        files = self.getInvFiles()
+        files = self.getInvFiles() + self.getInvFilesDetailed()
+
         items = self.getStockItems()
         products = []
         stockItems = {}
         
+        pp.pprint(files)
         for item in items:
+            # pp.pprint("########## ITEM ############")
+            # pp.pprint(item)
+
             itemAttributes = {}
             for atrib in attributes:
                 if item['NoteID'] == atrib['RefNoteID']:
                     itemAttributes[atrib['AttributeID']] = atrib['Value']
             for file in files:
+                # pp.pprint("########### FILE ###########")
+                # pp.pprint(file)
+
                 if self.getInvCDfromName(file['Name']) == item['InventoryCD']:
-                    itemAttributes["FileID"] = file['FileID']
-                    itemAttributes["image_url"] = self.getImageFromDatabase(item['InventoryCD'], fileId= file['FileID'])
-                    pass
+                    # itemAttributes["FileID"] = file['FileID']
+                    
+                    if file['PrimaryScreenID'] == 'IN202500':
+                        itemAttributes["image_url"] = self.getImageFromDatabase(item['InventoryCD'], fileId= file['FileID'])
+                    else:
+                        itemAttributes["IMAGEURLDE"] = self.getImageFromDatabase(item['InventoryCD'], fileId= file['FileID'])
+                        
             if itemAttributes != {}:
                 stockItems[item["InventoryCD"]] = itemAttributes
                 if itemAttributes['ISECOM'] == '1':
                     product = self.buildProductFromAttributes(itemAttributes)
                     products.append(product)
+        try:
+            self.connection.close()
+        except Exception as e:
+            print(f"Could not close db connection: {e}")
         return products
     
 if __name__ == "__main__":

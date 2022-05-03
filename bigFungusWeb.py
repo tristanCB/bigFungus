@@ -12,6 +12,7 @@ import datetime
 # import content
 from flask_sqlalchemy import SQLAlchemy, Model, BaseQuery
 from sqlalchemy.orm.attributes import flag_modified
+
 import typing
 import os
 import glob
@@ -26,13 +27,20 @@ from content.indentification import getMycoNetIdentification
 from content.shipping import getShippingOptionsStripe
 from content.seo import getMeta, getPages
 
+from acumaticaShop import AcumaticaOdata
+acumaticaProducts = []
+try:
+    acumaticaProducts = AcumaticaOdata().getItemWithAttributes()
+except Exception as e:
+    print(f'{e}: Error retrieving products from acumatica')
+    
 # import logging 
 
 # This is your test secret API key.
 stripe.api_key = os.environ["stripeApiKey"]
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+mysqlconnector://admin:{os.environ["pwd"]}@{os.environ["DBENDPOINT"]}/big-fungus-2'
+app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+mysqlconnector://{os.environ["DBPASS"]}:{os.environ["DBPASS"]}@{os.environ["DBENDPOINT"]}/big_fungus_db'
 db = SQLAlchemy(app)
 db.create_all()
 
@@ -49,7 +57,6 @@ import model
 #     return r
 
 keywords    = ["Steam Sterilizer", "Impulse sealer", "Mushroom bag", "Petri dish", "Isopropyl", "Hepa filter", "Humidifier"]
-
 distribution_ammounts = [1, 2, 3, 4, 5]
 
 # Theming
@@ -68,7 +75,7 @@ def shop():
     return render_template(
         'index.html', 
         distribution_ammounts=distribution_ammounts, 
-        products=getProducts(),
+        products=getProducts()+acumaticaProducts,
         css=css,
         splash=False,
         logo_txt=logo_txt,
