@@ -206,7 +206,7 @@
 /* Style the links inside the navigation bar */
 .topnav a, .topnav div,  .topnav p, .topnav span{
   /* float: justify; */
-  color: rgb(255, 255, 255);;
+  color: black;
   text-align: center;
   text-decoration: none;
   /* padding-right:7%;

@@ -8,14 +8,15 @@
 <script src={{ url_for('static', filename='js/mycoNet.js') }}></script>
 <script src={{ url_for('static', filename='js/lazyBackground.js') }}></script>
 
-{% include "mycoNetNav.html" %}
 {% if items|length > 1 %}
     <div id="headerPane" class="row">
+        <div class="col-0">
+            <h1>Learn How to Grow High Quality Gourmet and Medicinal Mushrooms.</h1>
+        </div>
         <div class="col-1">
             <img id="headerTile" src="{{ url_for('static', filename='operation.png') }}" alt="Example of a mushroom to Identify"></img> 
         </div>
         <div class="col-2">
-            <h1>Learn How to Grow High Quality Gourmet and Medicinal Mushrooms.</h1>
             <h3>Growing mushrooms can be as easy as you want to make it. The following recipes describe a range of teks used by all sorts of mushrooms growers and enthusiasts around the world.</h3>
             <p>The following tiles link to the individual procedures for you to try. Please feel free to use our amazon affiliate link to support this website. The products they linked to only serve as visual reference and are by no means the best approach for commercial operations.</p>
         </div>

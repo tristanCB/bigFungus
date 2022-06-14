@@ -1,21 +1,22 @@
 #headerTile {
-    margin-top: 18px;
+    padding-top: 10px;
+    width: 100%;
 }
 #headerPane {
-    background-color: #E5E5E5;
-    margin-bottom: 21px;
     padding: 25px;
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    align-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.col-0 {
 }
 .col-1 {
-    float: left;
-    width: 478px;
 }
 .col-2 {
-    float: left;
-    width: 55%;
+    max-width: 1000px;
 }
   
 /* Clear floats after the columns */
@@ -32,6 +33,7 @@
     padding: 0px;
     margin-top: auto;
     margin-bottom: auto;
+
 }
 
 @media only screen and (max-width: 768px) { 

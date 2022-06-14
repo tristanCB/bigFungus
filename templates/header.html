@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 
 {% if mycNet is defined %}
-    {% set description = seo["Guides"][mycNet]["description"]%}
-    {% set title = seo["Guides"][mycNet]["title"]%}
+    {% set description = seo["Grow Guides"][mycNet]["description"]%}
+    {% set title = seo["Grow Guides"][mycNet]["title"]%}
 
     {% if mycNet == "Grow-Guides" and itemType != none%}
         {% set description = items[itemType]["desc"]%}
@@ -57,23 +57,22 @@
             <img id="txt_logo" src="{{url_for('static', filename=logo_txt)}}" alt="home"/>
         </a>
         {% for page in pages %}
-        {% if page == "Guides" %}             
-            <a id="menuItem" href="/Mushroom" alt="{{page}}">{{page}}</a>
-        {% else %}
             <a id="menuItem" href="/{{page}}" alt="{{page}}">{{page}}</a>
-        {% endif %}
         {% endfor %}
-        <div class="ffm">
-            <p onclick="toogleCart()">Cart <span id="CartTotal"> </span></p> 
-        </div>
     </div>
     
     <script>
-        var currentPage = window.location.href
+        var currentPage = window.location.href.substring(window.location.href.lastIndexOf('/') + 1).replaceAll(' ', '-')
+
         var elements = document.querySelectorAll('[id=menuItem]');
+        
         for (const element of elements) {
-            if (currentPage.includes(element.href)) {
-                element.style["text-decoration"] = "underline"
+            var elementPage = decodeURI(element.href.substring(element.href.lastIndexOf('/') + 1)).replaceAll(' ', '-')
+            console.log(currentPage);
+            console.log(elementPage);
+            console.log(currentPage == elementPage);
+            if (currentPage == elementPage) {
+                element.style["background-color"] = "white"
             }
         }
     </script>
