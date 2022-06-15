@@ -1,4 +1,4 @@
-def getProductsClean(requestForm):
+def getProductsClean():
     products = [
     {
         "type":"Mushroom Tissue Culture",
@@ -6,41 +6,61 @@ def getProductsClean(requestForm):
             {   "subType":"Medicinal",     
                 "description": "May or may not extend your lifespan",
                 "cost":22,
+                "formMapping":"medicinal_tissue"
             },
             {   
                 "subType":"Oyster",          
                 "description": "Easy to grow",
                 "cost":17,
+                "formMapping":"oyster_tissue"
+
             },
             {        
                 "subType":"Other",          
                 "description": "An Assortment of types",
                 "cost":15,
-            },
-        
-            
+                "formMapping":"other_tissue"
+            },        
         ],
     },
     {
         "type":"Growing Kits",
         "subTypes": [
-            {   "subType":"Medicinal",     
+            {   
+                "subType":"Medicinal",     
                 "description": "May or may not extend your lifespan",
                 "cost":35,
+                "formMapping":"medicinal_block"
+
             },
             {   
                 "subType":"Oyster",          
                 "description": "Easy to grow",
                 "cost":22,
+                "formMapping":"oyster_block"
+
             },
             {        
                 "subType":"Other",          
                 "description": "An Assortment of types",
                 "cost":22,
+                "formMapping":"other_block"
+
             },
             
         ],
-    }        
+    },
+    {
+        "type":"Beetle Feed",
+        "subTypes": [
+            {
+                "subType":"Kinshi",     
+                "description": "Tailored Nutrition for Beetles",
+                "cost":35,
+                "formMapping":"kinshi_block"
+            }
+        ]
+    }
     ]
     return products
 

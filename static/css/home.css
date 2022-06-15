@@ -10,12 +10,14 @@ h1, p, div {
 #homeRow {
   display: grid;
   justify-items: center;
+  margin-bottom: 25px;
 }
 #Lander-Img {
   float: right;
   padding-top: 34px;
   width: 80%;
 }
+
 #sub-header {
   color: #431313;
   font-size: 18px;
@@ -62,6 +64,7 @@ h1, p, div {
 .R {
   width:40%;
 }
+
 #mailTo {
   position: relative;
   top: auto;

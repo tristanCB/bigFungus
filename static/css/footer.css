@@ -1,0 +1,33 @@
+.footer dd {
+    margin-inline-start: 0px;
+}
+.footer {
+    display: flex;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #beb093;
+    margin-top: 10px;
+    padding: 20px;
+}
+.footer a {
+    text-decoration:none;
+}
+.footer dl {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.footer dt {
+    padding-right: 10px;
+}
+#socials {
+    display: flex;
+    flex-direction: row;
+}
+#endForm {
+    display: flex;
+
+}

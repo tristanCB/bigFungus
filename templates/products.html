@@ -5,41 +5,27 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/products.css') }}">
 
 <body>
+    <div class="content">
+        <form method=post>
+        {% for prodType in products %}
+        <h1>{{prodType["type"]}}</h1>
 
-    {% for prodType in products %}
-    <h1>{{prodType["type"]}}</h1>
+        <div id="prodSubTypePane">
+            {% for subType in prodType["subTypes"] %}
+                <div id="prodSKUSelector">
+                    <h2>{{subType["subType"]}}    ({{subType["cost"]}}$)</h2>
+                    <img id={{subType["subType"]}} src ="{{ url_for('static', filename="product_images/"+subType["formMapping"]+"_placeholder.png") }}" alt="Guide image"/>
+                    <h3>{{subType["description"]}}</h3>
 
-    <div id="prodSubTypePane">
-        {% for subType in prodType["subTypes"] %}
-            <div id="prodSKUSelector">
-                <h2>{{subType["subType"]}}    ({{subType["cost"]}}$)</h2>
-                <h3>{{subType["description"]}}</h3>
-                {% if subType["subType"] == "Medicinal" %}
-                    <form method=post>
-                        <dl>
-                            {{ render_field(formMedicinalTissue.sku) }}
-                        </dl>
-                        <p><input type=submit value=Buy>
-                    </form>
-                {% endif %}
-                {% if subType["subType"] == "Oyster" %}
-                    <form method=post>
-                        <dl>
-                            {{ render_field(formOysterTissue.sku) }}
-                        </dl>
-                        <p><input type=submit value=Buy>
-                    </form>
-                {% endif %}
-                {% if subType["subType"] == "Other" %}
-                <form method=post>
                     <dl>
-                        {{ render_field(formOtherTissue.sku) }}
+                        {{ render_field(form|attr(subType["formMapping"])) }}
                     </dl>
-                    <p><input type=submit value=Buy>
-                </form>
-                {% endif %}
-            </div>
+                        
+                </div>
+            {% endfor %}
+        </div>
         {% endfor %}
+        </form>
     </div>
-    {% endfor %}
+    {% include "footer.html" %}
 </body>

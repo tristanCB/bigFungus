@@ -19,34 +19,25 @@ css = '/css/style.css'
 assert css
 
 from wtforms import Form, SelectField
+from wtforms import validators
+from wtforms import EmailField
 
 class RegistrationForm(Form):
     userType = SelectField("Type", choices=['1','2'])
+
+class SKUs(Form):
+    medicinal_tissue = SelectField("Select", choices=["Reishi", "Lion's Mane","Turkey Tail", "Cordyceps"])
+    oyster_tissue = SelectField("Select", choices=["Elm Oyster", "Pink Oyster", "Blue Oyster", "Black Oyster", "Pearl Oyster", "King Oyster", "Italian Oyster", "Golden Oyster"])
+    other_tissue = SelectField("Select", choices=["Enoki", "Shiitake", "Hen of the Woods", "Cheatnut", "Shimeji (White)", "Shimeji (Black)" ])
     
-class SKUMedicinal(Form):
-    sku = SelectField("Type", choices=["Lion's Mane","Turkey Tail", "Cordyceps"])
-
-class SKUOyster(Form):
-    sku = SelectField("Type", choices=["Elm Oyster","Blue Oyster", "Black Oyster", "Pearl Oyster", "King Oyster", "Italian Oyster", "Golden Oyster"])
-
-class SKUSpecial(Form):
-    sku = SelectField("Type", choices=["Tidal Wave","Eclipse", "True Albino Teacher", "Golden Teacher"])
-
-class SKUOther(Form):
-    sku = SelectField("Type", choices=["Shiitake", "Hen of the Woods", "Enoki", "Cheatnut", "Shimeji (White)", "Shimeji (Black)" ])
-
+    medicinal_block = SelectField("Select", choices=["Lion's Mane","Turkey Tail", "Cordyceps", "Reishi"])
+    oyster_block  = SelectField("Select", choices=["Pink Oyster", "Elm Oyster","Blue Oyster", "Black Oyster", "Pearl Oyster", "King Oyster", "Italian Oyster", "Golden Oyster"])
+    other_block  = SelectField("Select", choices=["Shiitake", "Enoki", "Hen of the Woods", "Cheatnut", "Shimeji (White)", "Shimeji (Black)" ])
     
-@app.route('/register', methods=['GET', 'POST'])
-def register():
-    form = RegistrationForm(request.form)
-    if request.method == 'POST' and form.validate():
-        user = [form.username.data, form.email.data,
-                    form.password.data]
-        # db_session.add(user)
-        print(user)
-        print('Thanks for registering')
-        return redirect(url_for('register'))
-    return render_template('register.html', form=form)
+    kinshi_block = SelectField("Select", choices=["Italian Oyster","Turkey Tail"])
+
+class RequestAQuote(Form):
+    email = EmailField('Email address', [validators.DataRequired(), validators.Email()])
 
 @app.route('/Grow-Guides')
 @app.route('/Grow Guides')
@@ -81,24 +72,24 @@ def guidesRedirect():
 @app.route('/', methods=['GET'])
 @app.route('/Home')
 def Home():
+    emailForm = RequestAQuote(request.form)
     return render_template(
         'home.html',
         logo_txt=logo_txt,
         pages=getPages(),
-        seo=getMeta()
+        seo=getMeta(),
+        emailForm = emailForm,
     )
 
 @app.route('/Products', methods=['GET', 'POST'])
 def Products():
-        form = RegistrationForm(request.form)
-        
-        formMedicinalTissue = SKUMedicinal(request.form)
-        formOysterTissue = SKUOyster(request.form)
-        formOtherTissue = SKUOther(request.form)
-        
+        form = SKUs(request.form)
+        emailForm = RequestAQuote(request.form)
+        products = getProductsClean()
+        print(emailForm)
+        print(form)
         if request.method == 'POST' and form.validate():
-            user = [form.userType.data]
-            print(user)
+            print(form)
             print('Thanks for your interest')
             return redirect(url_for('Products'))
         
@@ -106,13 +97,11 @@ def Products():
         return render_template(
             pageToRender, 
             logo_txt=logo_txt,
-            products=getProductsClean(request.form),
+            products=products,
             pages=getPages(),
             seo=getMeta(),
             form=form,
-            formMedicinalTissue=formMedicinalTissue,
-            formOysterTissue=formOysterTissue,
-            formOtherTissue=formOtherTissue,
+            emailForm=emailForm,
         )
 
 @app.route('/Mushroom/Growing/Guides')

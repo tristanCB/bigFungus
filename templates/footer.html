@@ -1,0 +1,22 @@
+{% from "_formhelpers.html" import render_field %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+<footer class="footer">
+    <div id="socials">
+        <a href="https://www.tiktok.com/@bigfungus.ca" >
+            <img id="icon" src ="{{ url_for('static', filename="icons/tiktok.png") }}" alt="TikTok icon"/>
+        </a>
+        <a href="https://www.instagram.com/bigfungus.ca/" >
+            <img id="icon" src ="{{ url_for('static', filename="icons/instagram.png") }}" alt="TikTok icon"/>
+        </a>
+    </div>
+    <p><a href="mailto:bigfungus.ca@gmail.com">bigfungus.ca@gmail.com</a></p>
+    <form method=post>
+        <div id="endForm">
+            <dl>
+                {{ render_field(emailForm.email) }}
+            </dl>
+            <p><input type=submit value="Request a quote">
+        </div>
+    </form>
+</footer>
