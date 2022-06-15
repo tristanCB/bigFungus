@@ -1,4 +1,4 @@
-from flask import Flask, redirect, request, send_from_directory
+from flask import Flask, redirect, request, send_from_directory, url_for
 from flask import render_template
 import datetime
 from time import sleep
@@ -6,7 +6,7 @@ from flask import Response
 import pprint
 pp = pprint.PrettyPrinter(indent=2)
 
-from content.products import getProducts
+from content.products import getProductsClean, getProducts
 from content.techniques import getMycoNetBuilds
 from content.indentification import getMycoNetIdentification
 from content.seo import getMeta, getPages
@@ -18,48 +18,35 @@ logo_txt = 'big_fungus.png'
 css = '/css/style.css'
 assert css
 
-@app.route('/robots.txt')
-@app.route('/sitemap.xml')
-def static_from_root():
-    return send_from_directory(app.static_folder, request.path[1:])
+from wtforms import Form, SelectField
 
-@app.route('/shop')
-@app.route('/Shop')
-def shop():
-        return redirect('/Home')
+class RegistrationForm(Form):
+    userType = SelectField("Type", choices=['1','2'])
     
-@app.route('/Products')
-def productPageRedirect():
-        return redirect('/Mushroom/Products')
+class SKUMedicinal(Form):
+    sku = SelectField("Type", choices=["Lion's Mane","Turkey Tail", "Cordyceps"])
 
-@app.route('/Mushroom/Products')
-def productPage():
-        pageToRender = 'products.html',
-        return render_template(
-            pageToRender, 
-            logo_txt=logo_txt,
-            pages=getPages(),
-            seo=getMeta()
-        )
+class SKUOyster(Form):
+    sku = SelectField("Type", choices=["Elm Oyster","Blue Oyster", "Black Oyster", "Pearl Oyster", "King Oyster", "Italian Oyster", "Golden Oyster"])
 
-@app.route('/', methods=['GET'])
-@app.route('/Home')
-@app.route('/About')
-def splash():
-    return render_template(
-        'home.html',
-        logo_txt=logo_txt,
-        pages=getPages(),
-        seo=getMeta()
-    )
+class SKUSpecial(Form):
+    sku = SelectField("Type", choices=["Tidal Wave","Eclipse", "True Albino Teacher", "Golden Teacher"])
 
-@app.route('/time/')
-def time():
-    def streamer():
-        while True:
-            yield str(datetime.datetime.now())
-            sleep(1)
-    return Response(streamer())
+class SKUOther(Form):
+    sku = SelectField("Type", choices=["Shiitake", "Hen of the Woods", "Enoki", "Cheatnut", "Shimeji (White)", "Shimeji (Black)" ])
+
+    
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    form = RegistrationForm(request.form)
+    if request.method == 'POST' and form.validate():
+        user = [form.username.data, form.email.data,
+                    form.password.data]
+        # db_session.add(user)
+        print(user)
+        print('Thanks for registering')
+        return redirect(url_for('register'))
+    return render_template('register.html', form=form)
 
 @app.route('/Grow-Guides')
 @app.route('/Grow Guides')
@@ -71,46 +58,98 @@ def time():
 @app.route('/Mushroom/')
 @app.route('/Myco-NET/<mycNet>')
 @app.route('/Myco-NET/<mycNet>/<itemType>')
-def handle_redirect(mycNet = None, itemType = None):
-    return redirect('/Mushroom/Grow-Guides')
-
+@app.route('/About')
 @app.route('/Mushroom/')
 @app.route('/Mushroom/<mycNet>')
 @app.route('/Mushroom/<mycNet>/<itemType>')
-def render_large_template(mycNet = None, itemType = None, items = None):
-    pageToRender = 'myco-net-beta.html'
-    if (mycNet == 'GrowGuides' or mycNet == 'Grow-Guides'):
-        pageToRender = 'mycoGrowingGuides.html'
-        teks = getMycoNetBuilds()
-        if itemType == None:
-            items = teks
-        else:
-            items = {f'{itemType}': teks[itemType.replace('-', ' ')]}
-    
-    if (mycNet == 'Identification'):
-        pageToRender = 'mycoIdentification.html'
-        ids = getMycoNetIdentification()
-        if itemType == None:
-            items = ids
-        else:
-            items = {f'{itemType}': ids[itemType.replace('-', ' ')]}
+def deprecatedUrls():
+    return redirect('/Home')
 
-    print(mycNet)
+@app.route('/robots.txt')
+@app.route('/sitemap.xml')
+def static_from_root():
+    return send_from_directory(app.static_folder, request.path[1:])
+    
+@app.route('/Identification/')
+def handle_redirect_identification():
+    return redirect('/Mushroom/Identification')
+    
+@app.route('/Guides')
+def guidesRedirect():
+        return redirect('/Mushroom/Growing/Guides')
+
+@app.route('/', methods=['GET'])
+@app.route('/Home')
+def Home():
+    return render_template(
+        'home.html',
+        logo_txt=logo_txt,
+        pages=getPages(),
+        seo=getMeta()
+    )
+
+@app.route('/Products', methods=['GET', 'POST'])
+def Products():
+        form = RegistrationForm(request.form)
+        
+        formMedicinalTissue = SKUMedicinal(request.form)
+        formOysterTissue = SKUOyster(request.form)
+        formOtherTissue = SKUOther(request.form)
+        
+        if request.method == 'POST' and form.validate():
+            user = [form.userType.data]
+            print(user)
+            print('Thanks for your interest')
+            return redirect(url_for('Products'))
+        
+        pageToRender = 'products.html',
+        return render_template(
+            pageToRender, 
+            logo_txt=logo_txt,
+            products=getProductsClean(request.form),
+            pages=getPages(),
+            seo=getMeta(),
+            form=form,
+            formMedicinalTissue=formMedicinalTissue,
+            formOysterTissue=formOysterTissue,
+            formOtherTissue=formOtherTissue,
+        )
+
+@app.route('/Mushroom/Growing/Guides')
+@app.route('/Mushroom/Growing/Guides/<item>')
+def Guides(item = None):
+    if (item == None):
+        items = getMycoNetBuilds()
+    else:
+        items = getMycoNetBuilds(item.replace('-', ' '))
+        
+    return render_template(
+            'mycoGrowingGuides.html', 
+            items=items, 
+            logo_txt=logo_txt,
+            pages=getPages(),
+            seo=getMeta()
+        )
+        
+@app.route('/Mushroom/Identification')
+@app.route('/Mushroom/Identification/<item>')
+def Identification(item = None):
+    
+    pageToRender = 'mycoIdentification.html'
+    ids = getMycoNetIdentification()
+    if item == None:
+        items = ids
+    else:
+        items = {f'{item}': ids[item.replace('-', ' ')]}
+
+    print(item)
     return render_template(
             pageToRender, 
             items=items, 
             logo_txt=logo_txt,
             pages=getPages(),
-            mycNet=mycNet, 
-            # keywords=keywords, 
-            itemType=itemType,
             seo=getMeta()
         )
-    
-@app.route('/Identification/')
-def handle_redirect_identification():
-    return redirect('/Mushroom/Identification')
-
 
 if __name__ == '__main__':
     # context = ('cert.pem', 'key.pem') #certificate and key files  // ssl_context=context

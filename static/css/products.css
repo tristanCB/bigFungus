@@ -1,0 +1,23 @@
+#prodSKUSelector {
+    width: 337px;
+    height: 494px;
+    background-color: #E3DBC7;
+    margin: 10px;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#prodSubTypePane {
+    display: flex;
+    justify-content: space-around;
+}
+h1 {
+    text-align: center;
+}
+h3 {
+    padding: 20px;
+    text-align: center;
+
+}

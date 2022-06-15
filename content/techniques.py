@@ -1,5 +1,5 @@
 
-def getMycoNetBuilds() -> dict: 
+def getMycoNetBuilds(item: str = None) -> dict: 
     teks = {        
         "Agar Plates" : {
             # "affiliateItems": [
@@ -284,4 +284,8 @@ def getMycoNetBuilds() -> dict:
             "level": "Beginner"
         },
     }
-    return teks
+    if item == None:
+        return teks
+    else:
+        print(teks[item])
+        return {item : teks[item]}

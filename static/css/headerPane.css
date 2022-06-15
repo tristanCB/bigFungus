@@ -1,6 +1,7 @@
 #headerTile {
     padding-top: 10px;
     width: 100%;
+    max-width: 900px;
 }
 #headerPane {
     padding: 25px;
@@ -29,7 +30,6 @@
     width: 100%;
     text-align: left;
     background-color: transparent;
-    font-style: italic;
     padding: 0px;
     margin-top: auto;
     margin-bottom: auto;

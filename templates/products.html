@@ -1,6 +1,45 @@
 <!doctype html>
 {% include "header.html" %}
+{% from "_formhelpers.html" import render_field %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/products.css') }}">
 
 <body>
 
+    {% for prodType in products %}
+    <h1>{{prodType["type"]}}</h1>
+
+    <div id="prodSubTypePane">
+        {% for subType in prodType["subTypes"] %}
+            <div id="prodSKUSelector">
+                <h2>{{subType["subType"]}}    ({{subType["cost"]}}$)</h2>
+                <h3>{{subType["description"]}}</h3>
+                {% if subType["subType"] == "Medicinal" %}
+                    <form method=post>
+                        <dl>
+                            {{ render_field(formMedicinalTissue.sku) }}
+                        </dl>
+                        <p><input type=submit value=Buy>
+                    </form>
+                {% endif %}
+                {% if subType["subType"] == "Oyster" %}
+                    <form method=post>
+                        <dl>
+                            {{ render_field(formOysterTissue.sku) }}
+                        </dl>
+                        <p><input type=submit value=Buy>
+                    </form>
+                {% endif %}
+                {% if subType["subType"] == "Other" %}
+                <form method=post>
+                    <dl>
+                        {{ render_field(formOtherTissue.sku) }}
+                    </dl>
+                    <p><input type=submit value=Buy>
+                </form>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
 </body>

@@ -3,23 +3,8 @@
 
 <meta charset="UTF-8">
 
-{% if mycNet is defined %}
-    {% set description = seo["Grow Guides"][mycNet]["description"]%}
-    {% set title = seo["Grow Guides"][mycNet]["title"]%}
-
-    {% if mycNet == "Grow-Guides" and itemType != none%}
-        {% set description = items[itemType]["desc"]%}
-        {% set title = "Mushroom growing how-to: " + itemType.replace("-", " ")%}
-    {% endif %}
-    
-{% elif request.endpoint == 'shop' %}   
-    {% set description = seo["Shop"]["description"]%}
-    {% set title = seo["Shop"]["title"]%}
-    
-{% else %}
-    {% set description = "Growing mushrooms can be tricky. BigFungus provides you with all the necessary information needed to grow mushrooms indoor and outdoors. Whether you are searching for beginner techniques, obscure teks or anything of the like, bigfungus provides you with vetted protocols and established experience to grow your very own mushrooms at home." %}
-    {% set title = "Mushroom growing: Collective knowledge for growing mushrooms" %} 
-{% endif %}
+{% set description = seo[request.endpoint]["description"]%}
+{% set title = seo[request.endpoint]["title"]%}
 
 <title>{{title}}</title>
 

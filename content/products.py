@@ -1,3 +1,49 @@
+def getProductsClean(requestForm):
+    products = [
+    {
+        "type":"Mushroom Tissue Culture",
+        "subTypes": [
+            {   "subType":"Medicinal",     
+                "description": "May or may not extend your lifespan",
+                "cost":22,
+            },
+            {   
+                "subType":"Oyster",          
+                "description": "Easy to grow",
+                "cost":17,
+            },
+            {        
+                "subType":"Other",          
+                "description": "An Assortment of types",
+                "cost":15,
+            },
+        
+            
+        ],
+    },
+    {
+        "type":"Growing Kits",
+        "subTypes": [
+            {   "subType":"Medicinal",     
+                "description": "May or may not extend your lifespan",
+                "cost":35,
+            },
+            {   
+                "subType":"Oyster",          
+                "description": "Easy to grow",
+                "cost":22,
+            },
+            {        
+                "subType":"Other",          
+                "description": "An Assortment of types",
+                "cost":22,
+            },
+            
+        ],
+    }        
+    ]
+    return products
+
 def getProducts():
     products = [
             {
