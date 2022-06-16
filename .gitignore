@@ -4,3 +4,4 @@ __pycache__/bigFungus.cpython-38.pyc
 nohup.out
 static/product_images/certbot-beta-installer-win32.exe
 content/__pycache__
+.vscode

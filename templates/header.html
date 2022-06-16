@@ -57,7 +57,9 @@
             console.log(elementPage);
             console.log(currentPage == elementPage);
             if (currentPage == elementPage) {
-                element.style["background-color"] = "white"
+                if (currentPage != "Home") {
+                    element.style["background-color"] = "white"
+                }
             }
         }
     </script>

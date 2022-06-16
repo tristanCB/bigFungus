@@ -2,21 +2,46 @@
 
 <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
 <footer class="footer">
-    <div id="socials">
-        <a href="https://www.tiktok.com/@bigfungus.ca" >
-            <img id="icon" src ="{{ url_for('static', filename="icons/tiktok.png") }}" alt="TikTok icon"/>
-        </a>
-        <a href="https://www.instagram.com/bigfungus.ca/" >
-            <img id="icon" src ="{{ url_for('static', filename="icons/instagram.png") }}" alt="TikTok icon"/>
-        </a>
+    <div id="siteMap">
+        <h5>Links</h5>
+        <ul>
+            <li><a href="/Home">Home</a></li>
+            <li><a href="/Guides">Guides</a></li>
+            <li><a href="/Products">Products</a></li>
+            <li><a href="/Identification">Identification</a></li>
+
+        </ul>
     </div>
-    <p><a href="mailto:bigfungus.ca@gmail.com">bigfungus.ca@gmail.com</a></p>
-    <form method=post>
-        <div id="endForm">
-            <dl>
-                {{ render_field(emailForm.email) }}
-            </dl>
-            <p><input type=submit value="Request a quote">
+    <div>
+        <h5>Contact Us</h5>
+        <form method=post>
+            <div id="textArea">
+                <dl>
+                    {{ render_field(emailForm.email) }}
+                </dl>
+                <dl>
+                    {{ render_field(emailForm.body) }}
+                </dl>
+            </div>
+                <p><input type=submit value="Send"> </p>
+        </form>
+    </div>
+    <div>
+        <h5>Social Media</h5>
+        <div id="socials">
+            <a href="https://www.tiktok.com/@bigfungus.ca" >
+                <img id="icon" src ="{{ url_for('static', filename="icons/tiktok.png") }}" alt="TikTok icon"/>
+            </a>
+            <a href="https://www.instagram.com/bigfungus.ca/" >
+                <img id="icon" src ="{{ url_for('static', filename="icons/instagram.png") }}" alt="TikTok icon"/>
+            </a>
         </div>
-    </form>
+        <div id="copyright">    
+            <p>
+                <a href="mailto:bigfungus.ca@gmail.com">bigfungus.ca@gmail.com</a>
+            </p>
+        </div>
+    </div>
+
+
 </footer>

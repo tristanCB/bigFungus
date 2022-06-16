@@ -7,24 +7,49 @@
 
 <body>
     <div id="homeRow">
-        <div id="Lander-container row">
-            <div class="column">
-                <p id="sub-header">Mushroom Growing</p>
-                <h1 id="siteMessege">Organic mushroom farming made simple.</h1>
-                <!-- <p id="missionStatement">BigFungus valorizes various feedstocks to produce high quality edible Mushrooms. Our Consulting service, free online guides and shop will suit mushroom productions of all stages.</p> --> 
-                <p id="missionStatement">Big Fungus valorizes various feedstocks to produce high quality edible mushrooms. Our
-                    consulting service, free online guides and products will suit mushroom enthusiasts from hobbyists to producers.</p> 
-
-                <a id="mailTo" href="mailto:bigfungus.ca@gmail.com" alt="Link to email">Contact Us</a>
-            </div>
-            <div class="column R">
-                <img id="Lander-Img" src="{{url_for('static', filename="crossSection.png")}}" alt="logo"/>
-            </div>
+        <div id="foreword">
+            <p id="sub-header">Mushroom Growing</p>
+            <h1 id="siteMessege">Organic mushroom farming made simple.</h1>
+            <!-- <p id="missionStatement">BigFungus valorizes various feedstocks to produce high quality edible Mushrooms. Our Consulting service, free online guides and shop will suit mushroom productions of all stages.</p> --> 
+            <p id="missionStatement">Big Fungus valorizes various feedstocks to produce high quality edible mushrooms. Our
+                consulting service, free online guides and products will suit mushroom enthusiasts from hobbyists to producers.</p> 
         </div>
-        <div id="secondRow">
-            <!-- <img id="fieldID" src="{{url_for('static', filename="background.png")}}" alt="field id guide picture"/> 
-            <!-- <p>Learn How to Identify Mushrooms</p> -->
+        <div class="column R">
+            <img id="Lander-Img" src="{{url_for('static', filename="crossSection.png")}}" alt="logo"/>
         </div>
+    </div>
+    <div id="linkPane">
+        <div id="linkContext">
+            <h2>Existing is hard, growing is easy.</h2>
+            <h5>Get big yields with small effort using Big Fungus technology and other such words that make it feel like we know what we’re doing.</h5>
+            <a href="/Guides">Check out Grow Guides</a>
+        </div>
+        <div>
+            <img id="LinkPaneImage" src="{{url_for('static', filename="growLink.png")}}" alt="An image for this link"/>
+        </div>
+    </div>
+    <div id="linkPane">
+        <div>
+            <img id="LinkPaneImage" src="{{url_for('static', filename="productsLink.png")}}" alt="An image for this link"/>
+        </div>
+        <div id="linkContext">
+            <h2>Invite your palates on a mush needed trip.</h2>
+            <h5>Gain an understanding of time and space through the  connection of the mycelial network.  Whether you are conecting through your mind or your sense of taste, let us take you on an adventure.</h5>
+            <a href="/Products">Check out Products</a>
+        </div>
+    </div>
+    <div id="linkPane">
+        <div id="linkContext">
+            <h2>Existing is hard, growing is easy.</h2>
+            <h5>Get big yields with small effort using Big Fungus technology and other such words that make it feel like we know what we’re doing.</h5>
+            <a href="/Identification">Check out our Identification</a>
+        </div>
+        <div>
+            <img id="LinkPaneImage" src="{{url_for('static', filename="identificationLink.png")}}" alt="An image for this link"/>
+        </div>
+    </div>
+    <div id="contactUs">
+        <a id="mailTo" href="mailto:bigfungus.ca@gmail.com" alt="Link to email">Contact Us</a>
     </div>
     {% include "footer.html" %}
 

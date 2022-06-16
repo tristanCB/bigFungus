@@ -10,6 +10,7 @@ from content.products import getProductsClean, getProducts
 from content.techniques import getMycoNetBuilds
 from content.indentification import getMycoNetIdentification
 from content.seo import getMeta, getPages
+from content.contactform import feedbackForm
 
 app = Flask(__name__)
 
@@ -18,9 +19,7 @@ logo_txt = 'big_fungus.png'
 css = '/css/style.css'
 assert css
 
-from wtforms import Form, SelectField
-from wtforms import validators
-from wtforms import EmailField
+from wtforms import validators, EmailField, Form, SelectField, TextAreaField
 
 class RegistrationForm(Form):
     userType = SelectField("Type", choices=['1','2'])
@@ -38,6 +37,7 @@ class SKUs(Form):
 
 class RequestAQuote(Form):
     email = EmailField('Email address', [validators.DataRequired(), validators.Email()])
+    body = TextAreaField(u'Request', [validators.optional(), validators.length(max=200)])
 
 @app.route('/Grow-Guides')
 @app.route('/Grow Guides')
@@ -69,10 +69,13 @@ def handle_redirect_identification():
 def guidesRedirect():
         return redirect('/Mushroom/Growing/Guides')
 
-@app.route('/', methods=['GET'])
-@app.route('/Home')
+@app.route('/', methods=['GET', 'POST'])
+@app.route('/Home', methods=['GET', 'POST'])
 def Home():
     emailForm = RequestAQuote(request.form)
+    if request.method == 'POST' and emailForm.validate():
+        feedbackForm(emailForm.email.data, emailForm.body.data)
+    
     return render_template(
         'home.html',
         logo_txt=logo_txt,
@@ -88,10 +91,9 @@ def Products():
         products = getProductsClean()
         print(emailForm)
         print(form)
-        if request.method == 'POST' and form.validate():
-            print(form)
-            print('Thanks for your interest')
-            return redirect(url_for('Products'))
+        if request.method == 'POST' and emailForm.validate():
+            feedbackForm(emailForm.email.data, emailForm.body.data)
+            return redirect(url_for('Home'))
         
         pageToRender = 'products.html',
         return render_template(
