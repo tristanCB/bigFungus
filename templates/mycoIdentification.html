@@ -19,34 +19,38 @@
         </div>
     </div>
 {% endif %}
-<div class="contentPanel">
-    <div id="content">
-        {% for item in items %}
-            <div class="paneWrap" data="{{items[item]["item_type"]}}">
-                <a href="/Mushroom/Identification/{{item.replace(' ', '-')}}" alt="{{item}}">
+<div class="flexfloater">
+    <div class="contentPanel">
+        <div id="content">
+            {% for item in items %}
+                <div class="paneWrap" data="{{items[item]["item_type"]}}">
+                    <a href="/Mushroom/Identification/{{item.replace(' ', '-')}}" alt="{{item}}">
 
-                    <div class="pane">
-                            <img class="sourceIcon" src ="{{ url_for('static', filename=items[item]["website"]+'.png') }}" alt="Guide source icon"></img> 
-                            <img id="prodImageTek" class="tekDisplay" style="" src ="{{ url_for('static', filename=items[item]["img_href"]) }}" alt="Guide image"/>
-                            <p id="item">{{items[item]["item_type"]}}</p>
-                            <p class="dateTime">Division: {{items[item]["division"]|safe}}</p>
-                    </div>
-                </a>
-               
-            </div>
-        {% endfor %}
+                        <div class="pane">
+                                <img class="sourceIcon" src ="{{ url_for('static', filename=items[item]["website"]+'.png') }}" alt="Guide source icon"></img> 
+                                <img id="prodImageTek" class="tekDisplay" style="" src ="{{ url_for('static', filename=items[item]["img_href"]) }}" alt="Guide image"/>
+                                <p id="item">{{items[item]["item_type"]}}</p>
+                                <p class="dateTime">Division: {{items[item]["division"]|safe}}</p>
+                        </div>
+                    </a>
+                
+                </div>
+            {% endfor %}
+        </div>
     </div>
 </div>
 
 {% for item in items %}
     <h1>{{item.replace('-', ' ')}}</h1>
-    <div id="shapes" alt="shapes"> 
-        {% for shape in items[item]['shapes'] %}
-            <div id="shapeContainer">
-                <img id="shapeImage" src="{{ url_for('static', filename='identification/'+ shape[1] + '.png') }}"/>
-                <p id="shapeName">{{shape[0]}}</p>
-            </div>
-            {% endfor %}
+    <div class="flexfloater aliceblue"> 
+        <div id="shapes" alt="shapes"> 
+            {% for shape in items[item]['shapes'] %}
+                <div id="shapeContainer">
+                    <img id="shapeImage" src="{{ url_for('static', filename='identification/'+ shape[1] + '.png') }}"/>
+                    <p id="shapeName">{{shape[0]}}</p>
+                </div>
+                {% endfor %}
+        </div>
     </div>
     <ol>
         {% for step in items[item]['steps'] %}

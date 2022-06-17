@@ -17,6 +17,7 @@ app = Flask(__name__)
 # Theming
 logo_txt = 'big_fungus.png'
 css = '/css/style.css'
+PRODIMGS = "/static/product_images/"
 assert css
 
 from wtforms import validators, EmailField, Form, SelectField, TextAreaField
@@ -25,15 +26,40 @@ class RegistrationForm(Form):
     userType = SelectField("Type", choices=['1','2'])
 
 class SKUs(Form):
-    medicinal_tissue = SelectField("Select", choices=["Reishi", "Lion's Mane","Turkey Tail", "Cordyceps"])
-    oyster_tissue = SelectField("Select", choices=["Elm Oyster", "Pink Oyster", "Blue Oyster", "Black Oyster", "Pearl Oyster", "King Oyster", "Italian Oyster", "Golden Oyster"])
-    other_tissue = SelectField("Select", choices=["Enoki", "Shiitake", "Hen of the Woods", "Cheatnut", "Shimeji (White)", "Shimeji (Black)" ])
+    def formatChoices(type, category):
+        if category == "oyster":
+            vars = ["Pink Oyster", "Elm Oyster", "Blue Oyster", "Black Oyster", "Pearl Oyster", "King Oyster", "Italian Oyster", "Golden Oyster"]
+        elif category == "medicinal":
+            vars = ["Lion's Mane", "Reishi","Turkey Tail", "Cordyceps"]
+        elif category == "other":
+            vars = ["Enoki", "Shiitake", "Hen of the Woods", "Cheatnut", "Shimeji (White)", "Shimeji (Black)" ]
+        else: 
+            vars = []
+        return [(PRODIMGS+i.lower().replace(" ", "_").replace("'", "")+"_"+type+".png", i) for i in vars]
     
-    medicinal_block = SelectField("Select", choices=["Lion's Mane","Turkey Tail", "Cordyceps", "Reishi"])
-    oyster_block  = SelectField("Select", choices=["Pink Oyster", "Elm Oyster","Blue Oyster", "Black Oyster", "Pearl Oyster", "King Oyster", "Italian Oyster", "Golden Oyster"])
-    other_block  = SelectField("Select", choices=["Shiitake", "Enoki", "Hen of the Woods", "Cheatnut", "Shimeji (White)", "Shimeji (Black)" ])
+    medicinal_tissue = SelectField("Select", 
+        choices= formatChoices("tissue", "medicinal"))
     
-    kinshi_block = SelectField("Select", choices=["Italian Oyster","Turkey Tail"])
+    oyster_tissue = SelectField("Select", 
+        choices=formatChoices("tissue", "oyster"))
+    
+    other_tissue = SelectField("Select", 
+        choices=formatChoices("tissue", "other"))
+    
+    medicinal_block = SelectField("Select", 
+        choices=formatChoices("block", "medicinal"))
+    
+    oyster_block  = SelectField("Select", 
+        choices=formatChoices("block", "oyster"))
+    
+    other_block  = SelectField("Select", 
+        choices=formatChoices("block", "other"))
+    
+    kinshi_block = SelectField("Select", 
+        choices=[
+            (PRODIMGS+"kinshi.png","Italian Oyster"),
+            (PRODIMGS+"kinshi.png","Turkey Tail"),
+        ])
 
 class RequestAQuote(Form):
     email = EmailField('Email address', [validators.DataRequired(), validators.Email()])
@@ -75,7 +101,8 @@ def Home():
     emailForm = RequestAQuote(request.form)
     if request.method == 'POST' and emailForm.validate():
         feedbackForm(emailForm.email.data, emailForm.body.data)
-    
+        redirect(url_for('Products'))
+        
     return render_template(
         'home.html',
         logo_txt=logo_txt,

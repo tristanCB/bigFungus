@@ -24,6 +24,7 @@
     </div>
 </div>
 {% endif %}
+<div class="flexfloater">
 <div class="contentPanel">
     <div id="content">
         {% for item in items %}
@@ -47,7 +48,7 @@
         {% endfor %}
     </div>
 </div>
-
+</div>
 {% for item in items %}
     <h1>{{item}}</h1>
     <div id="affiliateLinks" alt="Amazon links to products"> 
@@ -55,10 +56,12 @@
             {{itemTek|safe}}
         {% endfor %}
     </div>
-    <h2>{{items[item]["desc"]|safe}}</h2>
-    <ol>
-        {% for step in items[item]['steps'] %}
-            <li>{{step|safe}}</li>
-        {% endfor %}
-    </ol>
+    <div class="flexfloater cc">
+        <h2 id="procedureDescription">{{items[item]["desc"]|safe}}</h2>
+        <ol>
+            {% for step in items[item]['steps'] %}
+                <li>{{step|safe}}</li>
+            {% endfor %}
+        </ol>
+    </div>
 {% endfor %}

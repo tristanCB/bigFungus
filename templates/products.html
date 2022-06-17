@@ -14,10 +14,11 @@
             {% for subType in prodType["subTypes"] %}
                 <div id="prodSKUSelector">
                     <h2>{{subType["subType"]}}    ({{subType["cost"]}}$)</h2>
-                    <img id={{subType["subType"]}} src ="{{ url_for('static', filename="product_images/"+subType["formMapping"]+"_placeholder.png") }}" alt="Guide image"/>
+                    <img id={{subType["subType"]}} src ="" alt="Guide image" onerror="this.src='/static/product_images/out_of_stock.png';"/>
+                    
                     <h3>{{subType["description"]}}</h3>
 
-                    <dl>
+                    <dl class="changeImage">
                         {{ render_field(form|attr(subType["formMapping"])) }}
                     </dl>
                         
@@ -28,4 +29,12 @@
         </form>
     </div>
     {% include "footer.html" %}
+    <script>
+        $('.changeImage select').change(function(e){
+            $(e.currentTarget).parent().parent().parent().find('img').attr('src', this.value)
+        });
+        $('select').each(function() {
+            $(this).parent().parent().parent().find('img').attr('src', this.value)
+        });
+    </script>
 </body>

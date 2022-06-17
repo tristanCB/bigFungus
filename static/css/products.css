@@ -15,7 +15,10 @@
     justify-content: center;
     flex-wrap: wrap;
 }
-
+#prodSubTypePane img {
+    height: 200px;
+    width:200px;
+}
 h1 {
     text-align: center;
 }
