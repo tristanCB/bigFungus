@@ -30,15 +30,15 @@ class SKUs(Form):
         if category == "oyster":
             vars = ["Pink Oyster", "Elm Oyster", "Blue Oyster", "Black Oyster", "Pearl Oyster", "King Oyster", "Italian Oyster", "Golden Oyster"]
         elif category == "medicinal":
-            vars = ["Lion's Mane", "Reishi","Turkey Tail", "Cordyceps"]
+            vars = ["Turkey Tail", "Lion's Mane", "Reishi", "Cordyceps"]
         elif category == "other":
-            vars = ["Enoki", "Shiitake", "Hen of the Woods", "Cheatnut", "Shimeji (White)", "Shimeji (Black)" ]
+            vars = ["Enoki", "Shiitake", "Hen of the Woods", "Chestnut", "Shimeji (White)", "Shimeji (Black)" ]
         else: 
             vars = []
         return [(PRODIMGS+i.lower().replace(" ", "_").replace("'", "")+"_"+type+".png", i) for i in vars]
     
     medicinal_tissue = SelectField("Select", 
-        choices= formatChoices("tissue", "medicinal"))
+        choices= formatChoices("tissue", "medicinal"), name="medicinal_tissue")
     
     oyster_tissue = SelectField("Select", 
         choices=formatChoices("tissue", "oyster"))
@@ -64,6 +64,8 @@ class SKUs(Form):
 class RequestAQuote(Form):
     email = EmailField('Email address', [validators.DataRequired(), validators.Email()])
     body = TextAreaField(u'Request', [validators.optional(), validators.length(max=200)])
+
+
 
 @app.route('/Grow-Guides')
 @app.route('/Grow Guides')
@@ -115,12 +117,12 @@ def Home():
 def Products():
         form = SKUs(request.form)
         emailForm = RequestAQuote(request.form)
-        products = getProductsClean()
-        print(emailForm)
-        print(form)
+        
         if request.method == 'POST' and emailForm.validate():
             feedbackForm(emailForm.email.data, emailForm.body.data)
             return redirect(url_for('Home'))
+
+        products = getProductsClean()
         
         pageToRender = 'products.html',
         return render_template(
@@ -133,9 +135,14 @@ def Products():
             emailForm=emailForm,
         )
 
-@app.route('/Mushroom/Growing/Guides')
-@app.route('/Mushroom/Growing/Guides/<item>')
+@app.route('/Mushroom/Growing/Guides', methods=['GET', 'POST'])
+@app.route('/Mushroom/Growing/Guides/<item>', methods=['GET', 'POST'])
 def Guides(item = None):
+    emailForm = RequestAQuote(request.form)
+    if request.method == 'POST' and emailForm.validate():
+        feedbackForm(emailForm.email.data, emailForm.body.data)
+        return redirect(url_for('Home'))
+    
     if (item == None):
         items = getMycoNetBuilds()
     else:
@@ -146,12 +153,17 @@ def Guides(item = None):
             items=items, 
             logo_txt=logo_txt,
             pages=getPages(),
-            seo=getMeta()
+            seo=getMeta(),
+            emailForm=emailForm,
         )
         
-@app.route('/Mushroom/Identification')
-@app.route('/Mushroom/Identification/<item>')
+@app.route('/Mushroom/Identification', methods=['GET', 'POST'])
+@app.route('/Mushroom/Identification/<item>', methods=['GET', 'POST'])
 def Identification(item = None):
+    emailForm = RequestAQuote(request.form)
+    if request.method == 'POST' and emailForm.validate():
+        feedbackForm(emailForm.email.data, emailForm.body.data)
+        return redirect(url_for('Home'))
     
     pageToRender = 'mycoIdentification.html'
     ids = getMycoNetIdentification()
@@ -166,7 +178,8 @@ def Identification(item = None):
             items=items, 
             logo_txt=logo_txt,
             pages=getPages(),
-            seo=getMeta()
+            seo=getMeta(),
+            emailForm=emailForm,
         )
 
 if __name__ == '__main__':

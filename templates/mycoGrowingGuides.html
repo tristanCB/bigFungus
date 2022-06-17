@@ -24,7 +24,7 @@
     </div>
 </div>
 {% endif %}
-<div class="flexfloater">
+<div class="flexfloater bgfullcolor">
 <div class="contentPanel">
     <div id="content">
         {% for item in items %}
@@ -50,7 +50,9 @@
 </div>
 </div>
 {% for item in items %}
-    <h1>{{item}}</h1>
+    {% if items|length > 1 %}
+        <h1 class="tektile">{{item}}</h1>
+    {% endif %}
     <div id="affiliateLinks" alt="Amazon links to products"> 
         {% for itemTek in items[item]['affiliateItems'] %}
             {{itemTek|safe}}
@@ -65,3 +67,5 @@
         </ol>
     </div>
 {% endfor %}
+{% include "footer.html" %}
+

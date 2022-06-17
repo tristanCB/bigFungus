@@ -6,10 +6,19 @@
         <h5>Links</h5>
         <ul>
             <li><a href="/Home">Home</a></li>
-            <li><a href="/Guides">Guides</a></li>
             <li><a href="/Products">Products</a></li>
-            <li><a href="/Identification">Identification</a></li>
-
+            <li><a href="/Guides">Guides</a>
+                <ul class="nestedList">
+                    <li><a href="/Mushroom/Growing/Guides/Agar-Plates">Agar Plates</a></li>
+                    <li><a href="/Mushroom/Growing/Guides/Tissue-Culture">Tissue Culture</a></li>
+                    <li><a href="/Mushroom/Growing/Guides/Seed-Spawn">Grain Spawn</a></li>
+                    <li><a href="/Mushroom/Growing/Guides/Bulk-Spawn">Bird Seed Spawn</a></li>
+                    <li><a href="/Mushroom/Growing/Guides/Block">Block</a></li>
+                    <li><a href="/Mushroom/Growing/Guides/Mushroom-Block">Mushrooms</a></li>
+                </ul>
+            </li>
+            <li><a href="/Identification">Identification</a>
+            </li>
         </ul>
     </div>
     <div>
@@ -36,12 +45,10 @@
                 <img id="icon" src ="{{ url_for('static', filename="icons/instagram.png") }}" alt="TikTok icon"/>
             </a>
         </div>
-        <div id="copyright">    
-            <p>
-                <a href="mailto:bigfungus.ca@gmail.com">bigfungus.ca@gmail.com</a>
-            </p>
-        </div>
     </div>
-
-
+    <div id="copyright">    
+        <p>
+            © <a href="mailto:bigfungus.ca@gmail.com">bigfungus.ca@gmail.com</a>
+        </p>
+    </div>
 </footer>

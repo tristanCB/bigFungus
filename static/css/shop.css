@@ -1,42 +1,42 @@
 .toggled_content {
-    width: 100%;
-    background-color: rgba(209, 191, 155, 0.5);
-    box-shadow: 0 0 20px rgba(148, 135, 110, 0.788);
-    text-align: left;
-    display: flex;
-    flex-wrap: wrap;
+  width: 100%;
+  background-color: rgba(209, 191, 155, 0.5);
+  box-shadow: 0 0 20px rgba(148, 135, 110, 0.788);
+  text-align: left;
+  display: flex;
+  flex-wrap: wrap;
 }
 .toggler {
-    cursor: pointer;
+  cursor: pointer;
 }
 .product-image-desc {
-    width: auto;
-    height: 350px;
+  width: auto;
+  height: 350px;
 }  
 .description{
-    padding-left:20px;
-    color: rgb(0, 0, 0);
+  padding-left:20px;
+  color: rgb(0, 0, 0);
 }
 .description2 {
-    padding-left: 20px;
-    padding-right: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
-  #textContentDesc{
-    display: flex;
-    flex-wrap: wrap;
-    align-content: flex-start;
-    justify-content: center;
-    width: auto;
-  }
-  h1 {
-    width: 100%;
-    text-align: center;
-    background-color: #00000021;
-    font-style: italic;
-    padding: 5px;
-    margin-top: auto;
-    margin-bottom: auto
-  }
-  .image {
-    margin-top: 20px;
-  }
+#textContentDesc{
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: center;
+  width: auto;
+}
+h1 {
+  width: 100%;
+  text-align: center;
+  background-color: #00000003;
+  padding: 5px;
+  margin-top: auto;
+  margin-bottom: auto;
+  box-shadow: inset 0 0 2px 0;
+}
+.image {
+  margin-top: 20px;
+}

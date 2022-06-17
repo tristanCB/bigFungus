@@ -6,7 +6,7 @@ client = boto3.client('ses', region_name='us-east-1')
 def feedbackForm(email, body):
 	# Replace sender@example.com with your "From" address.
 	# This address must be verified with Amazon SES.
-	SENDER = "Sender Name <bigfungus.ca@gmail.com>"
+	SENDER = "Big Fungus <bigfungus.ca@gmail.com>"
 
 	# Replace recipient@example.com with a "To" address. If your account 
 	# is still in the sandbox, this address must be verified.
@@ -20,18 +20,18 @@ def feedbackForm(email, body):
 	BODY_TEXT = (f"Thanks for contacting us!\r\n"
 				"A service representative will get back to you shortly for your inquiry:\r\n"
 				f"{body}"
-				f"{RECIPIENT}"
 				)
 				
 	# The HTML body of the email.
 	BODY_HTML = f"""<html>
 	<head></head>
-	<body>
-	<h1>Thanks for contacting us!</h1>
- 	<p>A service representative will get back to you shortly for your inquiry:</p>
-	<p>{body}</p>
- 	<p>{RECIPIENT}</p>
-	</body>
+		<body>
+			<h1>Thanks for contacting us!</h1>
+			<p>A service representative will get back to you shortly for your inquiry:</p>
+			<p>{body}</p>
+   			<br/>
+			<img src='https://bigfungus.ca/static/big_fungus.png' alt= 'image not found' />
+		</body>
 	</html>
 				"""            
 
@@ -44,7 +44,7 @@ def feedbackForm(email, body):
 		response = client.send_email(
 			Destination={
 				'ToAddresses': [
-					# RECIPIENT,
+					RECIPIENT,
 					"bigfungus.ca@gmail.com",
 				],
 			},
@@ -73,3 +73,6 @@ def feedbackForm(email, body):
 	else:
 		print("Email sent! Message ID:"),
 		print(response['MessageId'])
+  
+if __name__ == "__main__":
+    feedbackForm("rhsensors@gmail.com", "this is a test email")
