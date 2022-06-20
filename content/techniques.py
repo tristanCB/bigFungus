@@ -2,6 +2,11 @@
 def getMycoNetBuilds(item: str = None) -> dict: 
     teks = {        
         "Agar Plates" : {
+            "images":[
+                    "teks/plate/autoclaving_agar.png",
+                    "teks/plate/cooling_down_agar.png",
+                    "teks/plate/pouring_plates.png"
+                ],
             "desc": "This procedure will give you a step by step on how to make your own petri dishes to isolate your mycelium",
             "steps": [
                 "Dice 200g of potatoes",
@@ -24,6 +29,11 @@ def getMycoNetBuilds(item: str = None) -> dict:
             "level": "Advanced"
         },
         "Tissue Culture" : {
+            "images":[
+                    "teks/tissue/selecting_a_piece_of_mycelium.png",
+                    "teks/tissue/after_isolation.png",
+                    "teks/tissue/results.png"
+                ],
             "desc": "This procedure will give you a step by step on how to isolate your chosen mycelium on an empty petri dish",
             "steps": [
                 "Note: it is recommend to wear a mask and nitrile gloves for this procedure to minimize bacterial contamination",

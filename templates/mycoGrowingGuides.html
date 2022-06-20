@@ -53,9 +53,9 @@
     {% if items|length > 1 %}
         <h1 class="tektile">{{item}}</h1>
     {% endif %}
-    <div id="affiliateLinks" alt="Amazon links to products"> 
-        {% for itemTek in items[item]['affiliateItems'] %}
-            {{itemTek|safe}}
+    <div id="images" class="flexfloater flexwrap" alt="A set of images depicting the process"> 
+        {% for image in items[item]['images'] %}
+        <img src="{{ url_for('static', filename=image) }}"></img> 
         {% endfor %}
     </div>
     <div class="flexfloater cc">

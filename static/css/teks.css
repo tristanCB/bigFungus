@@ -70,3 +70,11 @@ ol {
 .tek {
     cursor:default;
 }
+
+#images img {
+    padding: 5px;
+    border-radius: 10px;
+}
+.flexwrap {
+    flex-wrap: wrap;
+}
