@@ -66,7 +66,10 @@ class RequestAQuote(Form):
     body = TextAreaField(u'Request', [validators.optional(), validators.length(max=200)])
 
 
-
+@app.route('/Myco-NET/GrowGuides/Seed Spawn')
+@app.route('/Myco-NET/Equipment')
+@app.route('/Mushroom/Recipes')
+@app.route('/Mushroom/Grow-Guides/PF-Tek')
 @app.route('/Grow-Guides')
 @app.route('/Grow Guides')
 @app.route('/Myco-NET')
