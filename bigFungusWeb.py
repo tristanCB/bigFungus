@@ -66,22 +66,12 @@ class RequestAQuote(Form):
     body = TextAreaField(u'Request', [validators.optional(), validators.length(max=200)])
 
 
-@app.route('/Myco-NET/GrowGuides/Seed Spawn')
-@app.route('/Myco-NET/Equipment')
-@app.route('/Mushroom/Recipes')
-@app.route('/Mushroom/Grow-Guides/PF-Tek')
-@app.route('/Grow-Guides')
-@app.route('/Grow Guides')
-@app.route('/Myco-NET')
 @app.route('/Mushroom/')
-@app.route('/Myco-NET')
-@app.route('/Myco-NET/')
 @app.route('/Mushroom')
-@app.route('/Mushroom/')
+@app.route('/mushroom')
 @app.route('/Myco-NET/<mycNet>')
 @app.route('/Myco-NET/<mycNet>/<itemType>')
 @app.route('/About')
-@app.route('/Mushroom/')
 @app.route('/Mushroom/<mycNet>')
 @app.route('/Mushroom/<mycNet>/<itemType>')
 def deprecatedUrls():
@@ -95,7 +85,15 @@ def static_from_root():
 @app.route('/Identification/')
 def handle_redirect_identification():
     return redirect('/Mushroom/Identification')
-    
+
+@app.route('/Myco-NET/GrowGuides/Seed Spawn')
+@app.route('/Myco-NET/Equipment')
+@app.route('/Mushroom/Recipes')
+@app.route('/Mushroom/Grow-Guides/PF-Tek')
+@app.route('/Grow-Guides')
+@app.route('/Grow Guides')
+@app.route('/Myco-NET')
+@app.route('/Myco-NET/')
 @app.route('/Guides')
 def guidesRedirect():
         return redirect('/Mushroom/Growing/Guides')
