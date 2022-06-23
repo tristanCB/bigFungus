@@ -96,7 +96,11 @@ def handle_redirect_identification():
 @app.route('/Myco-NET/')
 @app.route('/Guides')
 def guidesRedirect():
-        return redirect('/Mushroom/Growing/Guides')
+    return redirect('/Mushroom/Growing/Guides')
+
+@app.route("/Mushroom/Grow-Guides/Uncle-Ben's-Tek")
+def ubRedirect():
+    return redirect("/Mushroom/Growing/Guides/Uncle-Ben's-Tek")
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/Home', methods=['GET', 'POST'])
