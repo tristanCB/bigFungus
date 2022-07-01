@@ -86,10 +86,8 @@ def static_from_root():
 def handle_redirect_identification():
     return redirect('/Mushroom/Identification')
 
-@app.route('/Myco-NET/GrowGuides/Seed Spawn')
 @app.route('/Myco-NET/Equipment')
 @app.route('/Mushroom/Recipes')
-@app.route('/Mushroom/Grow-Guides/PF-Tek')
 @app.route('/Grow-Guides')
 @app.route('/Grow Guides')
 @app.route('/Myco-NET')
@@ -98,9 +96,11 @@ def handle_redirect_identification():
 def guidesRedirect():
     return redirect('/Mushroom/Growing/Guides')
 
-@app.route("/Mushroom/Grow-Guides/Uncle-Ben's-Tek")
-def ubRedirect():
-    return redirect("/Mushroom/Growing/Guides/Uncle-Ben's-Tek")
+@app.route('/Myco-NET/GrowGuides/<tek>')
+@app.route("/Mushroom/Grow-Guides/<tek>")
+@app.route("/Mushroom/Grow-Guides/<tek>")
+def ubRedirect(tek):
+    return redirect(f"/Mushroom/Growing/Guides/{tek}")
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/Home', methods=['GET', 'POST'])
