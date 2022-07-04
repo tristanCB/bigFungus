@@ -89,7 +89,6 @@ def handle_redirect_identification():
 @app.route('/Myco-NET/Equipment')
 @app.route('/Mushroom/Recipes')
 @app.route('/Grow-Guides')
-@app.route('/Grow Guides')
 @app.route('/Myco-NET')
 @app.route('/Myco-NET/')
 @app.route('/Guides')

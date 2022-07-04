@@ -1,6 +1,0 @@
-Mystic Orb
-crag
-charge trait on front bar --> increases status effect
-back bar --> infused with weapon damage enchant.
-
-drop talon and orbs and instead put in mage light entropy
