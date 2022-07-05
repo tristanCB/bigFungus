@@ -9,8 +9,8 @@ import glob
 frames_per_seconds = 20
 save_path='./timelapse.avi'
 fourcc = cv2.VideoWriter_fourcc(*'mp4v') 
-video = cv2.VideoWriter('video.avi', fourcc, 30, (2144, 1424))
-timelapse_img_dir = 'C:/Users/Tristan/Desktop/Session1'
+video = cv2.VideoWriter('video.avi', fourcc, frames_per_seconds, (2144, 1424))
+timelapse_img_dir = r'C:\Users\Tristan\Desktop\drive-download-20220705T012104Z-001'
 
 def images_to_video(video, image_dir, clear_images=False):
     image_list = glob.glob(f"{image_dir}/*")

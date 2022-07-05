@@ -65,7 +65,6 @@ class RequestAQuote(Form):
     email = EmailField('Email address', [validators.DataRequired(), validators.Email()])
     body = TextAreaField(u'Request', [validators.optional(), validators.length(max=200)])
 
-
 @app.route('/Mushroom/')
 @app.route('/Mushroom')
 @app.route('/mushroom')
@@ -74,7 +73,7 @@ class RequestAQuote(Form):
 @app.route('/About')
 @app.route('/Mushroom/<mycNet>')
 @app.route('/Mushroom/<mycNet>/<itemType>')
-def deprecatedUrls():
+def deprecatedUrls(mycNet="", itemType=""):
     return redirect('/Home')
 
 @app.route('/robots.txt')
