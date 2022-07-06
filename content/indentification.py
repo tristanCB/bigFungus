@@ -11,7 +11,7 @@ def getMycoNetIdentification() -> dict:
                 ("inky caps and others","inky caps and others"),
                 ("collybias, Bluing Psilocybe, Deadly Conocybe, and others","collybias, Bluing Psilocybe, Deadly Conocybe, and others"),
             ],
-            "desc": "From the National Audubon Society Field Guide to North America Mushrooms",
+            "desc": "Small Fragile Gilled Mushroom: From the National Audubon Society Field Guide to North America Mushrooms",
             "steps": [
 
             ],
@@ -37,7 +37,7 @@ def getMycoNetIdentification() -> dict:
                 ("agarici, amanitas, and Sharp-Scaled Lepiota","agarici, amanitas, and Sharp-Scaled Lepiota"),
                 ("agarici and lepiotas","agarici and lepiotas"),
             ],
-            "desc": "From the National Audubon Society Field Guide to North America Mushrooms",
+            "desc": "Veiled Mushrooms with Free Gills: From the National Audubon Society Field Guide to North America Mushrooms",
             "steps": [
 
             ],
@@ -59,7 +59,7 @@ def getMycoNetIdentification() -> dict:
                 ("stropharias, pholiotas, and Slimy-sheated Waxy Cap", "stropharias, pholiotas, and Slimy-sheated Waxy Cap"),
                 ("gomphidii and chroogomphi","gomphidii and chroogomphi"),
             ],
-            "desc": "From the National Audubon Society Field Guide to North America Mushrooms",
+            "desc": "Veiled Mushrooms with Attached Gills: From the National Audubon Society Field Guide to North America Mushrooms",
             "steps": [
 
             ],

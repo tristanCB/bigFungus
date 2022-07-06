@@ -78,3 +78,6 @@ ol {
 .flexwrap {
     flex-wrap: wrap;
 }
+#images {
+    margin-top: 10px;
+}

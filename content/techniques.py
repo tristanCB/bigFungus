@@ -59,7 +59,33 @@ def getMycoNetBuilds(item: str = None) -> dict:
             "shortDesc": "Big Fungus approved procedure",
             "level": "Advanced"
         },
+        "CCFP Tek" : {
+            "content": [
+                '<blockquote class="tiktok-embed" cite="https://www.tiktok.com/@bigfungus.ca/video/7116706167249767685" data-video-id="7116706167249767685" style="max-width: 605px;min-width: 325px;" > <section> <a target="_blank" title="@bigfungus.ca" href="https://www.tiktok.com/@bigfungus.ca">@bigfungus.ca</a> coffee filter tek for mushroom grain spawn. <a title="growyourown" target="_blank" href="https://www.tiktok.com/tag/growyourown">#growyourown</a> <a title="mushrooms" target="_blank" href="https://www.tiktok.com/tag/mushrooms">#mushrooms</a> <a title="mushroom" target="_blank" href="https://www.tiktok.com/tag/mushroom">#mushroom</a> <a target="_blank" title="♬ original sound - user5582984906762" href="https://www.tiktok.com/music/original-sound-7116706134538406662">♬ original sound - user5582984906762</a> </section> </blockquote> <script async src="https://www.tiktok.com/embed.js"></script>'
+            ],
+            "desc": "Cheap Coffee Filter Port tek for jar grain spawn. Used as a replacement to micron filter ports.",
+            "steps": [
+                "List: 4 x coffee filter (preferably for 12 - 8 cups), 1 mason jar (wide) with lid assembly, 1 drill bit (rated for metal) and substrate.",
+                "Drill hole into mason jar's lid using drill bit ~ 1/4 of an inch.", 
+                "Fill jar with desired substrate",
+                "Place holed metal lid on the filled jar",
+                "Place 4 coffee filters on top then secure the lid with the metal ring",
+                "fold coffee the excess filter material on top of the jar",
+                "Cover with aluminum foil",
+                "Autoclave then use immediately once cooled",
+                "Note that the aluminum foil on the top should be left during colonization of the substrate to minimize chance of contamination"
+            ],
+            "website": "bigfungus",
+            "item_type": "Trusted recipe",
+            "price":"~ 2.99 $",
+            "img_href": "teks/coffeeFilterTek.png",
+            "shortDesc": "Big Fungus approved procedure",
+            "level": "Beginner"
+        },
         "Seed Spawn" : {
+            "images": [
+            
+                ],
             "desc": "This procedure will give you a step by step on how to prepare your grain spawn to ready it for your chosen mycelium",
             "steps": [
                 "Place 1kg of dry rye grain into a large pot with 1L of tap water",
@@ -67,10 +93,10 @@ def getMycoNetBuilds(item: str = None) -> dict:
                 "The grain is ready when all the water is evaporated and you are left with a dry but hydrated grain",
                 "Once the grain is sufficiently cooked, remove from heat and let air dry to let excess steam escape. For use with a rice cooker, simply leave it on the warm setting",
                 "Wait 10-15 minutes for the grain to cool and for the surface moisture to evaporate from the grain",
-                "Collect and use the cooked grain to fill as many mushroom unicorn bags as you wish. recommended 4-5 bags",
+                "Collect and use the cooked grain to fill as many mushroom grow bags as you wish. recommended 4-5 bags",
                 "Fold the tops of the bags down to prevent them from touching the sides of the autoclave while still allowing air transfer between the inside and outside of the bag (to prevent rupture)",
                 "Autoclave the grain spawn for 1 hour at 121 degrees Celsius",
-                "Once the sterilization cycle is finished, place grain spawn bags in front of your flow hood or still air box(don't forget to turn the flow hood on)",
+                "Once the sterilization cycle is finished, place grain spawn bags in front of your flow hood or still air box (don't forget to turn the flow hood on)",
                 "Put on gloves and mask and disinfect the outside of your isolated mycelium dish and your scalpel (if it is not sterilized already)",
                 "Before inoculating your grain, make sure it has cooled to room temperature as to not kill the mycelium",
                 "Using the scalpel, gently cut the agar in the petri dish into small pieces and put 1 petri dish per grain bag",
@@ -86,6 +112,10 @@ def getMycoNetBuilds(item: str = None) -> dict:
             "level": "Advanced"
         },
         "Bulk Spawn" : {
+            "images":[
+                    "teks/bulkSpawn/loading_bulk_grain_spawn.png",
+                    "teks/bulkSpawn/innoculating_bulk_grain.png",
+                ],
             "desc": "This procedure will give you a step by step on how to transfer seed spawn to bulk spawn in preparation for block inoculation",
             "steps": [
                 "Place 4kg of dry rye grain into a large pot with 4L of tap water (more can be done in one shot, make sure your ratio remains 1:1)",

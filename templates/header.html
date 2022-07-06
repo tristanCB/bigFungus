@@ -1,40 +1,55 @@
 <!doctype html>
 <html prefix="og: https://ogp.me/ns#" lang="en">
-
-<meta charset="UTF-8">
-
-{% set description = seo[request.endpoint]["description"]%}
-{% set title = seo[request.endpoint]["title"]%}
-
-<title>{{title}}</title>
-
-<meta property="og:title" content="{{title}}" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://bigfungus.ca/" />
-<meta property="og:image" content="{{ url_for('static', filename='logo.png') }}" />
-<meta property="og:description" content="{{description}}" />
-<meta property="og:site_name" content="Big Fungus">
-
 <meta name="robots" content="max-image-preview:large">
-<meta name="description" content="{{description}}">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EHTEQ4E6NG"></script>
 <meta name="google-site-verification" content="b4TX8d_iYCuewWMk8AD502m_9dMdQmtzv0l7GvXII2U">
-<meta name="thumbnail" content={{ url_for('static', filename='figmaDeploy/logo.png') }}>
+
+{% if items|length == 1 %}
+    {% for item in items %}
+        {% set title = item%}
+        <title>{{title|safe}}</title>
+
+        <meta property="og:title" content="{{item}}" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="{{url_for(request.endpoint, **request.view_args)}}" />
+        <meta property="og:image" content="{{url_for('static', filename=items[item]["img_href"]) }}" />
+        <meta property="og:description" content="{{"Mushroom growing guide: "}}{{items[item]["desc"]}}" />
+        <meta property="og:site_name" content="Big Fungus">
+        <meta property="og:locale" content="en_US" />
+
+        <meta name="description" content="{{"Mushroom growing guide: "}}{{items[item]["desc"]}}">
+        <meta name="thumbnail" content="{{url_for('static', filename=items[item]["img_href"]) }}">
+
+    {% endfor %}
+
+{% else %}
+    {% set title = seo[request.endpoint]["title"]%}
+    <title>{{title|safe}}</title>
+
+    <meta property="og:title" content="{{title}}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{url_for(request.endpoint, **request.view_args)}}" />
+    <meta property="og:image" content="{{ url_for('static', filename='LogoCircle.png') }}" />
+    <meta property="og:description" content="{{seo[request.endpoint]["description"]}}" />
+    <meta property="og:site_name" content="Big Fungus">
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="title" content="{{title}}" >
+    <meta name="description" content="{{seo[request.endpoint]["description"]}}">
+    <meta name="thumbnail" content={{ url_for('static', filename='LogoCircle.png') }}>
+
+{% endif %}
+
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-EHTEQ4E6NG');
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-EHTEQ4E6NG');
 </script>
 
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-<script src={{ url_for('static', filename='js/scripts.js') }}></script>
-<script src="https://js.stripe.com/v3/"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-<!-- <a href='https://www.freepik.com/vectors/mushroom'>Mushroom vector created by macrovector - www.freepik.com</a> -->
 
 <div class="header">
     <div class="topnav">
@@ -53,9 +68,6 @@
         
         for (const element of elements) {
             var elementPage = decodeURI(element.href.substring(element.href.lastIndexOf('/') + 1)).replaceAll(' ', '-')
-            console.log(currentPage);
-            console.log(elementPage);
-            console.log(currentPage == elementPage);
             if (currentPage == elementPage) {
                 if (currentPage != "Home") {
                     element.style["background-color"] = "white"
@@ -63,28 +75,5 @@
             }
         }
     </script>
-
-    {% if splash %}
-        <div class="logo">
-            {% if static_content_figma %}
-            <img src="{{url_for('static', filename=static_content_figma)}}" align="middle" />
-            {% else %}
-            <img src="{{url_for('static', filename='logo.png')}}" align="middle" />
-            {% endif %}
-        </div>
-    {% endif %}
 </div>
 
-<form action="/create-checkout-session/" method="POST" name="cart" id="CartMenu" style="display: none;">
-    <div id="cartTop">
-        <img id="cartIcon" src={{url_for('static', filename='shoppingCart.png')}} alt="shopping cart"/>
-        <div id="Cart">
-            
-        </div>
-    </div>
-    <div id="cartBottom">
-        <button type="submit" id="checkout-button" alt="checkout">Checkout</button>
-        <button type="button" id="clear-cart" onclick="clearCart()" alt="clearCart">Clear</button>
-    </div>
-</form>
-<script>refreshCart()</script>

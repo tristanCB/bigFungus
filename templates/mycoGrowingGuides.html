@@ -5,9 +5,6 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/teks.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/headerPane.css') }}">
 
-<script src={{ url_for('static', filename='js/mycoNet.js') }}></script>
-<script src={{ url_for('static', filename='js/lazyBackground.js') }}></script>
-
 {% if items|length > 1 %}
 <div>
     <div id="headerPane" class="row">
@@ -55,7 +52,10 @@
     {% endif %}
     <div id="images" class="flexfloater flexwrap" alt="A set of images depicting the process"> 
         {% for image in items[item]['images'] %}
-        <img src="{{ url_for('static', filename=image) }}"></img> 
+            <img src="{{ url_for('static', filename=image) }}"></img> 
+        {% endfor %}
+        {% for content in items[item]['content'] %}
+            {{content|safe}}
         {% endfor %}
     </div>
     <div class="flexfloater cc">
