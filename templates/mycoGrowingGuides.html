@@ -50,14 +50,16 @@
     {% if items|length > 1 %}
         <h1 class="tektile">{{item}}</h1>
     {% endif %}
-    <div id="images" class="flexfloater flexwrap" alt="A set of images depicting the process"> 
-        {% for image in items[item]['images'] %}
-            <img src="{{ url_for('static', filename=image) }}"></img> 
-        {% endfor %}
-        {% for content in items[item]['content'] %}
-            {{content|safe}}
-        {% endfor %}
-    </div>
+    {% if items|length == 1 %}
+        <div id="images" class="flexfloater flexwrap" alt="A set of images depicting the process"> 
+            {% for image in items[item]['images'] %}
+                <img src="{{ url_for('static', filename=image) }}"></img> 
+            {% endfor %}
+            {% for content in items[item]['content'] %}
+                {{content|safe}}
+            {% endfor %}
+        </div>
+    {% endif %}
     <div class="flexfloater cc">
         <h2 id="procedureDescription">{{items[item]["desc"]|safe}}</h2>
         <ol>
