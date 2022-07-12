@@ -2,61 +2,65 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://bigfungus.ca</loc>
-        <lastmod>2022-07-05</lastmod>
+        <lastmod>2022-07-12</lastmod>
     </url>
     <url>
-        <loc>https://bigfungus.ca/Mushroom/Growing/Guides</loc>
-        <lastmod>2022-07-05</lastmod>
+        <loc>https://bigfungus.ca/Guides</loc>
+        <lastmod>2022-07-12</lastmod>
     </url>
     <url>
-        <loc>https://bigfungus.ca/Mushroom/Identification</loc>
-        <lastmod>2022-07-05</lastmod>
+        <loc>https://bigfungus.ca/Identification</loc>
+        <lastmod>2022-07-12</lastmod>
     </url>
     <url>
         <loc>https://bigfungus.ca/Products</loc>
-        <lastmod>2022-07-05</lastmod>
+        <lastmod>2022-07-12</lastmod>
     </url>
     <url>
         <loc>https://bigfungus.ca/Home</loc>
-        <lastmod>2022-07-05</lastmod>
+        <lastmod>2022-07-12</lastmod>
     </url>
     <url>
-        <loc>https://bigfungus.ca/Mushroom/Growing/Guides/Agar-Plates</loc>
-        <lastmod>2022-07-05</lastmod>
-    </url>
-
-    <url>
-        <loc>https://bigfungus.ca/Mushroom/Growing/Guides/Tissue-Culture</loc>
-        <lastmod>2022-07-05</lastmod>
+        <loc>https://bigfungus.ca/Guides/Agar-Plates</loc>
+        <lastmod>2022-07-12</lastmod>
     </url>
 
     <url>
-        <loc>https://bigfungus.ca/Mushroom/Growing/Guides/Seed-Spawn</loc>
-        <lastmod>2022-07-05</lastmod>
+        <loc>https://bigfungus.ca/Guides/Tissue-Culture</loc>
+        <lastmod>2022-07-12</lastmod>
     </url>
 
     <url>
-        <loc>https://bigfungus.ca/Mushroom/Growing/Guides/Bulk-Spawn</loc>
-        <lastmod>2022-07-05</lastmod>
+        <loc>https://bigfungus.ca/Guides/Seed-Spawn</loc>
+        <lastmod>2022-07-12</lastmod>
     </url>
 
     <url>
-        <loc>https://bigfungus.ca/Mushroom/Growing/Guides/Block</loc>
-        <lastmod>2022-07-05</lastmod>
+        <loc>https://bigfungus.ca/Guides/Bulk-Spawn</loc>
+        <lastmod>2022-07-12</lastmod>
     </url>
 
     <url>
-        <loc>https://bigfungus.ca/Mushroom/Growing/Guides/Mushroom-Block</loc>
-        <lastmod>2022-07-05</lastmod>
+        <loc>https://bigfungus.ca/Guides/Block</loc>
+        <lastmod>2022-07-12</lastmod>
     </url>
 
     <url>
-        <loc>https://bigfungus.ca/Mushroom/Growing/Guides/PF-Tek</loc>
-        <lastmod>2022-07-05</lastmod>
+        <loc>https://bigfungus.ca/Guides/Mushroom-Block</loc>
+        <lastmod>2022-07-12</lastmod>
     </url>
 
     <url>
-        <loc>https://bigfungus.ca/Mushroom/Growing/Guides/Uncle-Ben's-Tek</loc>
-        <lastmod>2022-07-05</lastmod>
+        <loc>https://bigfungus.ca/Guides/PF-Tek</loc>
+        <lastmod>2022-07-12</lastmod>
+    </url>
+
+    <url>
+        <loc>https://bigfungus.ca/Guides/Uncle-Ben's-Tek</loc>
+        <lastmod>2022-07-12</lastmod>
+    </url>
+        <url>
+        <loc>https://bigfungus.ca/Guides/CCFP-Tek</loc>
+        <lastmod>2022-07-12</lastmod>
     </url>
 </urlset>

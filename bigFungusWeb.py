@@ -65,14 +65,7 @@ class RequestAQuote(Form):
     email = EmailField('Email address', [validators.DataRequired(), validators.Email()])
     body = TextAreaField(u'Request', [validators.optional(), validators.length(max=200)])
 
-@app.route('/Mushroom/')
-@app.route('/Mushroom')
-@app.route('/mushroom')
-@app.route('/Myco-NET/<mycNet>')
-@app.route('/Myco-NET/<mycNet>/<itemType>')
 @app.route('/About')
-@app.route('/Mushroom/<mycNet>')
-@app.route('/Mushroom/<mycNet>/<itemType>')
 def deprecatedUrls(mycNet="", itemType=""):
     return redirect('/Home')
 
@@ -81,25 +74,6 @@ def deprecatedUrls(mycNet="", itemType=""):
 def static_from_root():
     return send_from_directory(app.static_folder, request.path[1:])
     
-@app.route('/Identification/')
-def handle_redirect_identification():
-    return redirect('/Mushroom/Identification')
-
-@app.route('/Myco-NET/Equipment')
-@app.route('/Mushroom/Recipes')
-@app.route('/Grow-Guides')
-@app.route('/Myco-NET')
-@app.route('/Myco-NET/')
-@app.route('/Guides')
-def guidesRedirect():
-    return redirect('/Mushroom/Growing/Guides')
-
-@app.route('/Myco-NET/GrowGuides/<tek>')
-@app.route("/Mushroom/Grow-Guides/<tek>")
-@app.route("/Mushroom/Grow-Guides/<tek>")
-def ubRedirect(tek):
-    return redirect(f"/Mushroom/Growing/Guides/{tek}")
-
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/Home', methods=['GET', 'POST'])
 def Home():
@@ -138,14 +112,24 @@ def Products():
             emailForm=emailForm,
         )
 
-@app.route('/Mushroom/Growing/Guides', methods=['GET', 'POST'])
+@app.route('/Guides', methods=['GET', 'POST'])
+@app.route('/Guides/<item>', methods=['GET', 'POST'])
+@app.route("/Mushroom/Grow-Guides/<item>", methods=['GET', 'POST'])
 @app.route('/Mushroom/Growing/Guides/<item>', methods=['GET', 'POST'])
-def Guides(item = None):
+@app.route('/Mushroom/Growing/Guides', methods=['GET', 'POST'])
+@app.route('/Mushroom/Recipes', methods=['GET', 'POST'])
+@app.route('/Mushroom/Equipment', methods=['GET', 'POST'])
+@app.route('/Grow-Guides', methods=['GET', 'POST'])
+@app.route('/Myco-NET', methods=['GET', 'POST'])
+@app.route('/Myco-NET/', methods=['GET', 'POST'])
+@app.route('/Myco-NET/GrowGuides/<item>', methods=['GET', 'POST'])
+@app.route('/Myco-NET/Equipment', methods=['GET', 'POST'])
+@app.route('/Myco-NET/Equipment/<mycNet>', methods=['GET', 'POST'])
+def Guides(item = None, mycNet=None):
     emailForm = RequestAQuote(request.form)
     if request.method == 'POST' and emailForm.validate():
         feedbackForm(emailForm.email.data, emailForm.body.data)
         return redirect(url_for('Home'))
-    
     if (item == None):
         items = getMycoNetBuilds()
     else:
@@ -159,9 +143,12 @@ def Guides(item = None):
             seo=getMeta(),
             emailForm=emailForm,
         )
-        
+    
+@app.route('/Myco-NET/Identification', methods=['GET', 'POST'])
+@app.route('/Identification', methods=['GET', 'POST'])
 @app.route('/Mushroom/Identification', methods=['GET', 'POST'])
 @app.route('/Mushroom/Identification/<item>', methods=['GET', 'POST'])
+@app.route('/Identification/<item>', methods=['GET', 'POST'])
 def Identification(item = None):
     emailForm = RequestAQuote(request.form)
     if request.method == 'POST' and emailForm.validate():

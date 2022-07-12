@@ -8,7 +8,7 @@ import time
 HOST            = os.environ["AWSEC"]
 FOLDER          = r"C:\Users\Tristan\Desktop\bigFungus"
 PEMLOCATION     = r"C:\Users\Tristan\Desktop\topcap.pem"
-REMOTE_PATH     = "/home/ubuntu/testUpload"
+REMOTE_PATH     = "/home/ubuntu/"
 LAUNCH_SCRIPT   = f"cd {REMOTE_PATH}/bigFungus && nohup gunicorn --workers=5 bigFungusWeb:app && exit" 
 COMMAND_GETPID  = "ps ax  | grep bigFungusWeb | awk '{print $1}'"
 COMMAND_UPLOAD  = f"scp -i {PEMLOCATION} -r {FOLDER} {HOST}:{REMOTE_PATH}"
