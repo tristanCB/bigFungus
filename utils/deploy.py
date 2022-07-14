@@ -9,7 +9,7 @@ HOST            = os.environ["AWSEC"]
 FOLDER          = r"C:\Users\Tristan\Desktop\bigFungus"
 PEMLOCATION     = r"C:\Users\Tristan\Desktop\topcap.pem"
 REMOTE_PATH     = "/home/ubuntu/"
-LAUNCH_SCRIPT   = f"cd {REMOTE_PATH}/bigFungus && nohup gunicorn --workers=5 bigFungusWeb:app && exit" 
+LAUNCH_SCRIPT   = f"cd {REMOTE_PATH}/bigFungus && nohup gunicorn --workers=3 --access-logfile log bigFungusWeb:app && exit" 
 COMMAND_GETPID  = "ps ax  | grep bigFungusWeb | awk '{print $1}'"
 COMMAND_UPLOAD  = f"scp -i {PEMLOCATION} -r {FOLDER} {HOST}:{REMOTE_PATH}"
 
@@ -29,7 +29,7 @@ def upload_files():
     pass
 
 #WATCH OUT FOR ALIAS IN NGINX CONFIG!
-upload_files()
+# upload_files()
 try:
     pidstring = ' '.join([str(int(i)) for i in exec_remote(COMMAND_GETPID)])
     print(f"KILLING --> : {pidstring}")

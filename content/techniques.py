@@ -260,5 +260,5 @@ def getMycoNetBuilds(item: str = None) -> dict:
     if item == None:
         return teks
     else:
-        print(teks[item])
+        # print(teks[item])
         return {item : teks[item]}
